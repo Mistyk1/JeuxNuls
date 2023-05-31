@@ -1,6 +1,6 @@
 #!/bin/bash
 
-javac -d /home/infoetu/maxime.blot.etu/dev/JeuxNuls/classes /home/infoetu/maxime.blot.etu/dev/JeuxNuls/*/*.java
+javac -d classes */*.java
 if [ $1 = c ]
 then
 	read -p 'Version: ' ver
