@@ -1,4 +1,5 @@
-package Puissance4;
+package Jeux;
+
 import java.util.Scanner;
 
 public class Puissance4{
@@ -7,6 +8,24 @@ public class Puissance4{
     Puissance4(){
         Puissance4.main(null);
     }
+
+    //---- Classe Plateau ----
+    private static class Plateau{
+        int[][] cases;
+        boolean tour;
+        int gagnant;
+
+        Plateau(){
+            this.cases = new int[][]{{0, 0, 0, 0, 0, 0, 0},
+                                    {0, 0, 0, 0, 0, 0, 0},
+                                    {0, 0, 0, 0, 0, 0, 0},
+                                    {0, 0, 0, 0, 0, 0, 0},
+                                    {0, 0, 0, 0, 0, 0, 0},
+                                    {0, 0, 0, 0, 0, 0, 0}};
+            this.tour = true;
+        }
+    }
+    //------------------------
     
     public static void regles(){
         System.out.println("--- Règles ---");
@@ -16,7 +35,7 @@ public class Puissance4{
         sc.next();
     }
 
-    public static void afficherPlateau(Plateau4 p){
+    public static void afficherPlateau(Plateau p){
         int caseP;
         for (int i = 0; i < 6; i += 1){
             for (int j = 0; j < 7; j += 1){
@@ -39,7 +58,7 @@ public class Puissance4{
         }
     }
 
-    public static void afficherPlateau(Plateau4 p, String j1, String j2){
+    public static void afficherPlateau(Plateau p, String j1, String j2){
         System.out.println();
         System.out.print("Tour de ");
         if (p.tour){
@@ -50,7 +69,7 @@ public class Puissance4{
         afficherPlateau(p);
     }
 
-    public static void placerPion(Plateau4 p){
+    public static void placerPion(Plateau p){
         boolean verif = false;
         int col = 0;
         System.out.print("Choisissez une colonne ");
@@ -75,7 +94,7 @@ public class Puissance4{
         }
     }
 
-    public static boolean colonnePleine(Plateau4 p, int col){
+    public static boolean colonnePleine(Plateau p, int col){
         int plein = 0;
         for (int i = 0; i < 6; i += 1){
             if (p.cases[i][col] != 0){
@@ -85,7 +104,7 @@ public class Puissance4{
         return plein == 6;
     }
 
-    public static boolean plateauPlein(Plateau4 p){
+    public static boolean plateauPlein(Plateau p){
         int verif = 0;
         for (int i = 0; i < 7; i += 1){
             if (colonnePleine(p, i)){
@@ -95,7 +114,7 @@ public class Puissance4{
         return verif == 7;
     }
 
-    public static boolean puissance4(Plateau4 p){
+    public static boolean puissance4(Plateau p){
         boolean verif = false;
         int cpti = 0;
         int cptj;
@@ -161,7 +180,7 @@ public class Puissance4{
         String j1 = sc.next();
         System.out.print("Comment s'appelle le joueur 2? > ");
         String j2 = sc.next();
-        Plateau4 p = new Plateau4();
+        Plateau p = new Plateau();
         boolean fin = false;
         while (!fin){
             afficherPlateau(p, j1, j2);

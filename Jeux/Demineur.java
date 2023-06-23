@@ -1,3 +1,5 @@
+package Jeux;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,6 +15,71 @@ public class Demineur{
         Demineur.main(null);
     }
 
+
+    //---- Classe Plateau ----
+    private static class Plateau{
+        private int largeur;
+        private int longueur;
+        private int proba;
+        private int[][] mines;
+        private boolean[][] trouve;
+
+        Plateau(int largeur, int longueur, int proba){
+            this.largeur = largeur;
+            this.longueur = longueur;
+            this.proba = proba;
+            this.mines = new int[largeur][longueur];
+            this.trouve = new boolean[largeur][longueur];
+
+            this.placerMines();
+            this.calculerProxi();
+        }
+
+        public int getLargeur(){
+            return largeur;
+        }
+
+        public int getLongueur(){
+            return longueur;
+        }
+
+        public int[][] getMines(){
+            return mines;
+        }
+
+        public boolean[][] getTrouve(){
+            return trouve;
+        }
+
+        private void placerMines(){
+            Random rand = new Random();
+            for (int i = 0; i < largeur; i += 1){
+                for (int j = 0; j < longueur; j += 1){
+                    if (rand.nextInt(100) <= proba){
+                        mines[i][j] = -1;
+                    }
+                    trouve[i][j] = false;
+                }
+            }
+        }
+
+        private void calculerProxi(){
+            for (int i = 0; i < largeur; i += 1){
+                for (int j = 0; j < longueur; j += 1){
+                    if (mines[i][j] != -1){
+                        for (int k = -1; k < 2; k += 1){
+                            for (int l = -1; l < 2; l += 1){
+                                if ((i+k >= 0 && i+k <= largeur-1 && j+l >= 0 && j+l <= longueur-1) && (mines[i+k][j+l] == -1)){
+                                    mines[i][j] += 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //------------------------
     public static void regles(){
         System.out.println("--- Règles ---");
         System.out.println("Vous disposez d'un plateau contenant des mines cachées");
@@ -25,44 +92,9 @@ public class Demineur{
         sc.next();
     }
 
-    public static PlateauDem newPlateau(int largeur, int longueur, int proba){
-        PlateauDem p = new PlateauDem(largeur, longueur);
-        placerMines(p, largeur, longueur, proba);
-        calculerProxi(p, largeur, longueur);
-        return p;
-    }
-
-    public static void placerMines(PlateauDem p, int largeur, int longueur, int proba){
-        Random rand = new Random();
-        for (int i = 0; i < largeur; i += 1){
-            for (int j = 0; j < longueur; j += 1){
-                if (rand.nextInt(100) <= proba){
-                    p.mines[i][j] = -1;
-                }
-                p.trouve[i][j] = false;
-            }
-        }
-    }
-
-    public static void calculerProxi(PlateauDem p, int largeur, int longueur){
-        for (int i = 0; i < largeur; i += 1){
-            for (int j = 0; j < longueur; j += 1){
-                if (p.mines[i][j] != -1){
-                    for (int k = -1; k < 2; k += 1){
-                        for (int l = -1; l < 2; l += 1){
-                            if ((i+k >= 0 && i+k <= largeur-1 && j+l >= 0 && j+l <= longueur-1) && (p.mines[i+k][j+l] == -1)){
-                                p.mines[i][j] += 1;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public static void printTab(PlateauDem p){
+    public static void printTab(Plateau p){
         System.out.print("   ");
-        for (int i = 0; i < p.mines[0].length; i += 1){
+        for (int i = 0; i < p.getLongueur(); i += 1){
             if (i < 9){
                 System.out.print(i + 1 + " ");
             } else {
@@ -70,18 +102,18 @@ public class Demineur{
             }
         }
         System.out.println("\n");
-        for (int i = 0; i < p.mines.length; i += 1){
+        for (int i = 0; i < p.getLargeur(); i += 1){
             if (i < 9){
                 System.out.print(i + 1 + "  ");
             } else {
                 System.out.print(i + 1 + " ");
             }
-            for (int j = 0; j < p.mines[0].length; j += 1){
-                if (p.trouve[i][j]){
-                    if (p.mines[i][j] > 0){
-                        System.out.print(ANSI_GREEN + p.mines[i][j] + " " + ANSI_RESET);
-                    } else if (p.mines[i][j] == 0){
-                        System.out.print(ANSI_WHITE + p.mines[i][j] + " " + ANSI_RESET);
+            for (int j = 0; j < p.getLongueur(); j += 1){
+                if (p.getTrouve()[i][j]){
+                    if (p.getMines()[i][j] > 0){
+                        System.out.print(ANSI_GREEN + p.getMines()[i][j] + " " + ANSI_RESET);
+                    } else if (p.getMines()[i][j] == 0){
+                        System.out.print(ANSI_WHITE + p.getMines()[i][j] + " " + ANSI_RESET);
                     } else {
                         System.out.print(ANSI_RED + "@ " + ANSI_RESET);
                     }
@@ -93,58 +125,58 @@ public class Demineur{
         }
     }
 
-    public static boolean estBombe(PlateauDem p, int largeur, int longueur){
-        return (p.mines[largeur][longueur] == -1);
+    public static boolean estBombe(Plateau p, int x, int y){
+        return (p.getMines()[x][y] == -1);
     }
 
-    public static void devoilerMines(PlateauDem p, int largeur, int longueur){
-        for (int i = 0; i < largeur; i += 1){
-            for (int j = 0; j < longueur; j += 1){
-                if (p.mines[i][j] == -1){
-                    p.trouve[i][j] = true;
+    public static void devoilerMines(Plateau p, int x, int y){
+        for (int i = 0; i < x; i += 1){
+            for (int j = 0; j < y; j += 1){
+                if (p.getMines()[i][j] == -1){
+                    p.getTrouve()[i][j] = true;
                 }
             }
         }
     }
 
-    public static void voisinVide(PlateauDem p, int largeur, int longueur, int[] coo, int fonct){
-        if (p.mines[coo[0]][coo[1]] == 0 && p.trouve[coo[0]][coo[1]] != true){
-            p.trouve[coo[0]][coo[1]] = true;
+    public static void voisinVide(Plateau p, int x, int y, int[] coo, int fonct){
+        if (p.getMines()[coo[0]][coo[1]] == 0 && p.getTrouve()[coo[0]][coo[1]] != true){
+            p.getTrouve()[coo[0]][coo[1]] = true;
             if (fonct != 1){
-                if (coo[0] < largeur-1){
-                    voisinVide(p, largeur, longueur, new int[]{coo[0]+1, coo[1]}, -1);
+                if (coo[0] < x-1){
+                    voisinVide(p, x, y, new int[]{coo[0]+1, coo[1]}, -1);
                 }
             }
             if (fonct != -1){
                 if (coo[0] > 0){
-                    voisinVide(p, largeur, longueur, new int[]{coo[0]-1, coo[1]}, 1);
+                    voisinVide(p, x, y, new int[]{coo[0]-1, coo[1]}, 1);
                 }
             }
             if (fonct != 2){
-                if (coo[1] < longueur-1){
-                    voisinVide(p, largeur, longueur, new int[]{coo[0], coo[1]+1}, -2);
+                if (coo[1] < y-1){
+                    voisinVide(p, x, y, new int[]{coo[0], coo[1]+1}, -2);
                 }
             }
             if (fonct != -2){
                 if (coo[1] > 0){
-                    voisinVide(p, largeur, longueur, new int[]{coo[0], coo[1]-1}, 2);
+                    voisinVide(p, x, y, new int[]{coo[0], coo[1]-1}, 2);
                 }
             }
-        } else if (p.mines[coo[0]][coo[1]] > 0 && p.trouve[coo[0]][coo[1]] != true){
-            p.trouve[coo[0]][coo[1]] = true;
+        } else if (p.getMines()[coo[0]][coo[1]] > 0 && p.getTrouve()[coo[0]][coo[1]] != true){
+            p.getTrouve()[coo[0]][coo[1]] = true;
         }
     }
 
-    public static boolean finPartie(PlateauDem p, int largeur, int longueur){
+    public static boolean finPartie(Plateau p, int x, int y){
         int verif = 0;
-        for (int i = 0; i < largeur; i += 1){
-            for (int j = 0; j < longueur; j += 1){
-                if ((p.mines[i][j] != -1 && p.trouve[i][j] == true) || (p.mines[i][j] == -1 && p.trouve[i][j] == false)){
+        for (int i = 0; i < x; i += 1){
+            for (int j = 0; j < y; j += 1){
+                if ((p.getMines()[i][j] != -1 && p.getTrouve()[i][j] == true) || (p.getMines()[i][j] == -1 && p.getTrouve()[i][j] == false)){
                     verif += 1;
                 }
             }
         }
-        return (verif+1 == largeur * longueur);
+        return (verif+1 == x * y);
     }
 
     public static void main(String[] args){
@@ -171,7 +203,7 @@ public class Demineur{
             System.out.print("> ");
             proba = sc.nextInt();
         }
-        PlateauDem p = newPlateau(largeur, longueur, proba);
+        Plateau p = new Plateau(largeur, longueur, proba);
         boolean fin = false;
         boolean bombe = false;
         boolean verif = false;
@@ -200,7 +232,7 @@ public class Demineur{
                     }
                 }
                 verif = false;
-                verifAlt = !p.trouve[coo[0]][coo[1]];
+                verifAlt = !p.getTrouve()[coo[0]][coo[1]];
                 if (!verifAlt){
                     System.out.println(ANSI_RED + "Case déjà vérifiée" + ANSI_RESET);
                 }
@@ -211,7 +243,7 @@ public class Demineur{
             if (!bombe){
                 voisinVide(p, largeur, longueur, coo, 0);
             } else {
-                p.trouve[coo[0]][coo[1]] = true;
+                p.getTrouve()[coo[0]][coo[1]] = true;
             }
         }
         printTab(p);
