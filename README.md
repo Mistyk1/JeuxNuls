@@ -21,7 +21,3 @@ Jouez à Cult of the Lamb
 ### DZQH
 
 2048
-
-### Cartes
-
-On ne mentionne pas les cartes
