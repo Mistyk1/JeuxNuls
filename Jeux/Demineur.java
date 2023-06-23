@@ -1,4 +1,4 @@
-package Jeux;
+package jeux;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -11,7 +11,7 @@ public class Demineur{
     public static final String ANSI_WHITE = "\u001B[37m";
     private static final Scanner sc = new Scanner(System.in);
 
-    Demineur(){
+    public Demineur(){
         Demineur.main(null);
     }
 

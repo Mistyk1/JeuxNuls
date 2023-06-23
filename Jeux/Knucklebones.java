@@ -1,4 +1,4 @@
-package Jeux;
+package jeux;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -8,7 +8,7 @@ public class Knucklebones{
     public static final String ANSI_RESET = "\u001B[0m";
     private static final Scanner sc = new Scanner(System.in);
 
-    Knucklebones(){
+    public Knucklebones(){
         Knucklebones.main(null);
     }
 

@@ -1,11 +1,11 @@
-package Jeux;
+package jeux;
 
 import java.util.Scanner;
 
 public class Puissance4{
     private static final Scanner sc = new Scanner(System.in);
 
-    Puissance4(){
+    public Puissance4(){
         Puissance4.main(null);
     }
 

@@ -1,4 +1,4 @@
-package Jeux;
+package jeux;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -8,7 +8,7 @@ public class DZQH {
     private static final Scanner sc = new Scanner(System.in);
     private static final Random r = new Random();
 
-    DZQH(){
+    public DZQH(){
         DZQH.main(null);
     }
 
