@@ -9,6 +9,10 @@ public class Demineur{
     public static final String ANSI_WHITE = "\u001B[37m";
     private static final Scanner sc = new Scanner(System.in);
 
+    Demineur(){
+        Demineur.main(null);
+    }
+
     public static void regles(){
         System.out.println("--- Règles ---");
         System.out.println("Vous disposez d'un plateau contenant des mines cachées");

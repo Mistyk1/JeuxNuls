@@ -2,13 +2,14 @@ import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public class Hub{
     private static Scanner sc = new Scanner(System.in);
     private static final String RESET = "\u001B[0m";
     private static final String RED = "\u001B[31m";
     private static final String GREEN = "\u001B[32m";
-    //private static final String YELLOW = "\u001B[33m";
+    private static final String YELLOW = "\u001B[33m";
     private static final String BLUE = "\u001B[34m";
     //private static final String PURPLE = "\u001B[35m";
     //private static final String CYAN = "\u001B[36m";
@@ -28,8 +29,7 @@ public class Hub{
             fileW.write(str);
             fileW.close();
         } catch (IOException  e){
-            System.out.println("Erreur");
-            e.printStackTrace();
+            error(e, "Le fichier n'a pas pu être ouvert");
         }
     }
 
@@ -42,23 +42,42 @@ public class Hub{
             }
             scFile.close();
         } catch (IOException e){
-            System.out.println("Erreur");
-            e.printStackTrace();
+            error(e, "Le fichier n'a pas pu être ouvert");
         }
     }
-    
-    public static char retour(){
+
+    private static void error(Exception e, String msg){
+        System.out.println(RED + msg + YELLOW);
+        e.printStackTrace();
+        System.out.print(RESET);
+    }
+
+    public static char jouer(Class<?> cls){
         char c = '#';
-        //System.out.println(BLUE + "\nActions du hub:\n- H|h: Hub\n- R|r: Recommencer\n- 0: Quitter" + RESET);
-        System.out.println(BLUE + "\nActions du hub:\n- H|h: Hub\n- 0: Quitter" + RESET);
-        while (c != '0' && c != 'h' && c != 'H'){
-            System.out.print("> ");
-            c = sc.next().charAt(0);
+        while (c == '#'){
+            try {
+                cls.getDeclaredConstructor(new Class[0]).newInstance();
+            } catch (InstantiationException e) {
+                error(e, "Erreur d'instanciation");
+            } catch (IllegalAccessException e) {
+                error(e, "Impossible d'instancier la classe ciblée");
+            } catch (NoSuchMethodException e) {
+                error(e, "La classe ciblée ne possède pas cette classe");
+            } catch (InvocationTargetException e) {
+                error(e, "Erreur de ciblage d'invocation de classe");
+            }
+            System.out.println(BLUE + "\nActions du hub:\n- H|h: Hub\n- R|r: Recommencer\n- 0: Quitter" + RESET);
+            while (c != '0' && c != 'h' && c != 'H' && c != 'r' && c != 'R'){
+                System.out.print("> ");
+                c = sc.next().charAt(0);
+            }
+            if (c == 'r' || c == 'R'){ c = '#'; }
         }
         return c;
     }
 
     public static void main(String[] args){
+        boolean idea = (System.getProperty("user.name").equals("maxime.blot.etu") || System.getProperty("user.name").equals("blotm")) && (args.length != 0 && args[0].equals("idea"));
         char choix = 'h';
         String temp;
         while (choix != '0'){
@@ -68,16 +87,15 @@ public class Hub{
                 System.out.println("[2] Knucklebones");
                 System.out.println("[3] " + RED + "Puissance 4" + RESET);
                 System.out.println("[4] " + RED + "2048" + RESET);
-                if ((!System.getProperty("user.name").equals("maxime.blot.etu")) || (args.length != 0 && args[0] != "debug")){
-                    System.out.println("[/] " + GREEN + "Proposer une idée de jeu" + RESET);
-                } else {
+                if (idea){
                     System.out.println("[/] " + GREEN + "Voir idées" + RESET);
+                } else {
+                    System.out.println("[/] " + GREEN + "Proposer une idée de jeu" + RESET);
                 }
-                System.out.println("[.] " + GREEN + "Voir le Changelog" + RESET);
                 System.out.println("[0] Quitter");
                 System.out.println(BLUE + "---------------" + RESET);
             }
-            while (choix < '.' || choix > '4'){
+            while (choix < '/' || choix > '4'){
                 System.out.print("> ");
                 temp = sc.next();
                 if (temp.length() == 1){
@@ -86,30 +104,25 @@ public class Hub{
                     choix = '#';
                 }
             } if (choix == '/'){
-                if ((!System.getProperty("user.name").equals("maxime.blot.etu")) || (args.length != 0 && args[0] != "debug")){
+                if (idea){
+                    see("./.users_idea");
+                } else {
                     System.out.print("Idée de jeu à proposer: ");
                     String idee = sc.next();
-                    write("/home/infoetu/maxime.blot.etu/dev/JeuxNuls/Hub/.users_idea", idee);
+                    write("./.users_idea", idee);
                     System.out.println("Merci! Ton idée sera prise en compte et sera (probablement) développée plus tard");
-                } else {
-                    see("/home/infoetu/maxime.blot.etu/dev/JeuxNuls/Hub/.users_idea");
                 }
                 choix = 'h';
-            } else if (choix == '.'){
-                see("/home/infoetu/maxime.blot.etu/dev/JeuxNuls/changelog");
-                choix = 'h';
             } else if (choix == '1'){
-                Demineur.main(null);
-                choix = retour();
+                choix = jouer(Demineur.class);
             } else if (choix == '2'){
-                Knucklebones.main(null);
-                choix = retour();
+                choix = jouer(Knucklebones.class);
             } else if (choix == '3'){
-                //Puissance4.main(null);
+                //choix = jouer(Puissance4.class);
                 System.out.println("Puissance 4 en cours de construction");
                 choix = '#';
             } else if (choix == '4'){
-                //DZQH.main(null);
+                //choix = jouer(DZQH.class);
                 System.out.println("2048 en cours de construction");
                 choix = '#';
             }

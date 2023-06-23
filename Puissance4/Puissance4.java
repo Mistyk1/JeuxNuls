@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 public class Puissance4{
     private static final Scanner sc = new Scanner(System.in);
+
+    Puissance4(){
+        Puissance4.main(null);
+    }
     
     public static void regles(){
         System.out.println("--- Règles ---");

@@ -6,6 +6,10 @@ public class Knucklebones{
     public static final String ANSI_RESET = "\u001B[0m";
     private static final Scanner sc = new Scanner(System.in);
 
+    Knucklebones(){
+        Knucklebones.main(null);
+    }
+
     public static void regles(){
         System.out.println("--- Règles ---");
         System.out.println("Chaque joueurs possède un tableau en 3x3. à chaque tour, un joueur lance un dé et peut le placer sur une de ses colonne.");

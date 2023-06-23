@@ -6,6 +6,10 @@ public class DZQH {
     private static final Scanner sc = new Scanner(System.in);
     private static final Random r = new Random();
 
+    DZQH(){
+        DZQH.main(null);
+    }
+
     public static void regles(){
         System.out.println("--- Règles ---");
         System.out.println("[Insérer règles]");
