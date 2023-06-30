@@ -16,6 +16,9 @@ public class Demineur{
     }
 
 
+
+
+
     //---- Classe Plateau ----
     private static class Plateau{
         private int largeur;
@@ -33,18 +36,6 @@ public class Demineur{
 
             this.placerMines();
             this.calculerProxi();
-        }
-
-        public int getLargeur(){
-            return largeur;
-        }
-
-        public int getLongueur(){
-            return longueur;
-        }
-
-        public int[][] getMines(){
-            return mines;
         }
 
         public boolean[][] getTrouve(){
@@ -78,8 +69,101 @@ public class Demineur{
                 }
             }
         }
+
+        public String stringTab(){
+            String str = "   ";
+            for (int i = 0; i < longueur; i += 1){
+                if (i < 9){
+                    str += i + 1 + " ";
+                } else {
+                    str += i + 1 + "";
+                }
+            }
+            str += "\n\n";
+            for (int i = 0; i < largeur; i += 1){
+                if (i < 9){
+                    str += i + 1 + "  ";
+                } else {
+                    str += i + 1 + " ";
+                }
+                for (int j = 0; j < longueur; j += 1){
+                    if (trouve[i][j]){
+                        if (mines[i][j] > 0){
+                            str += ANSI_GREEN + mines[i][j] + " " + ANSI_RESET;
+                        } else if (mines[i][j] == 0){
+                            str += ANSI_WHITE + mines[i][j] + " " + ANSI_RESET;
+                        } else {
+                            str += ANSI_RED + "@ " + ANSI_RESET;
+                        }
+                    } else {
+                        str += ANSI_CYAN + "# " + ANSI_RESET;
+                    }
+                }
+                str += "\n";
+            }
+            return str;
+        }
+
+        public boolean estBombe(int x, int y){
+            return (mines[x][y] == -1);
+        }
+
+        public void devoilerMines(int x, int y){
+            for (int i = 0; i < x; i += 1){
+                for (int j = 0; j < y; j += 1){
+                    if (mines[i][j] == -1){
+                        trouve[i][j] = true;
+                    }
+                }
+            }
+        }
+
+        public void voisinVide(int x, int y, int[] coo, int fonct){
+            if (mines[coo[0]][coo[1]] == 0 && trouve[coo[0]][coo[1]] != true){
+                trouve[coo[0]][coo[1]] = true;
+                if (fonct != 1){
+                    if (coo[0] < x-1){
+                        voisinVide(x, y, new int[]{coo[0]+1, coo[1]}, -1);
+                    }
+                }
+                if (fonct != -1){
+                    if (coo[0] > 0){
+                        voisinVide(x, y, new int[]{coo[0]-1, coo[1]}, 1);
+                    }
+                }
+                if (fonct != 2){
+                    if (coo[1] < y-1){
+                        voisinVide(x, y, new int[]{coo[0], coo[1]+1}, -2);
+                    }
+                }
+                if (fonct != -2){
+                    if (coo[1] > 0){
+                        voisinVide(x, y, new int[]{coo[0], coo[1]-1}, 2);
+                    }
+                }
+            } else if (mines[coo[0]][coo[1]] > 0 && trouve[coo[0]][coo[1]] != true){
+                trouve[coo[0]][coo[1]] = true;
+            }
+        }
+
+        public boolean finPartie(int x, int y){
+            int verif = 0;
+            for (int i = 0; i < x; i += 1){
+                for (int j = 0; j < y; j += 1){
+                    if ((mines[i][j] != -1 && trouve[i][j] == true) || (mines[i][j] == -1 && trouve[i][j] == false)){
+                        verif += 1;
+                    }
+                }
+            }
+            return (verif+1 == x * y);
+        }
     }
     //------------------------
+
+
+
+
+    
     public static void regles(){
         System.out.println("--- Règles ---");
         System.out.println("Vous disposez d'un plateau contenant des mines cachées");
@@ -90,93 +174,6 @@ public class Demineur{
         System.out.println("--------------");
         System.out.println("(Entrez une touche pour continuer)");
         sc.next();
-    }
-
-    public static void printTab(Plateau p){
-        System.out.print("   ");
-        for (int i = 0; i < p.getLongueur(); i += 1){
-            if (i < 9){
-                System.out.print(i + 1 + " ");
-            } else {
-                System.out.print(i + 1 + "");
-            }
-        }
-        System.out.println("\n");
-        for (int i = 0; i < p.getLargeur(); i += 1){
-            if (i < 9){
-                System.out.print(i + 1 + "  ");
-            } else {
-                System.out.print(i + 1 + " ");
-            }
-            for (int j = 0; j < p.getLongueur(); j += 1){
-                if (p.getTrouve()[i][j]){
-                    if (p.getMines()[i][j] > 0){
-                        System.out.print(ANSI_GREEN + p.getMines()[i][j] + " " + ANSI_RESET);
-                    } else if (p.getMines()[i][j] == 0){
-                        System.out.print(ANSI_WHITE + p.getMines()[i][j] + " " + ANSI_RESET);
-                    } else {
-                        System.out.print(ANSI_RED + "@ " + ANSI_RESET);
-                    }
-                } else {
-                    System.out.print(ANSI_CYAN + "# " + ANSI_RESET);
-                }
-            }
-            System.out.println();
-        }
-    }
-
-    public static boolean estBombe(Plateau p, int x, int y){
-        return (p.getMines()[x][y] == -1);
-    }
-
-    public static void devoilerMines(Plateau p, int x, int y){
-        for (int i = 0; i < x; i += 1){
-            for (int j = 0; j < y; j += 1){
-                if (p.getMines()[i][j] == -1){
-                    p.getTrouve()[i][j] = true;
-                }
-            }
-        }
-    }
-
-    public static void voisinVide(Plateau p, int x, int y, int[] coo, int fonct){
-        if (p.getMines()[coo[0]][coo[1]] == 0 && p.getTrouve()[coo[0]][coo[1]] != true){
-            p.getTrouve()[coo[0]][coo[1]] = true;
-            if (fonct != 1){
-                if (coo[0] < x-1){
-                    voisinVide(p, x, y, new int[]{coo[0]+1, coo[1]}, -1);
-                }
-            }
-            if (fonct != -1){
-                if (coo[0] > 0){
-                    voisinVide(p, x, y, new int[]{coo[0]-1, coo[1]}, 1);
-                }
-            }
-            if (fonct != 2){
-                if (coo[1] < y-1){
-                    voisinVide(p, x, y, new int[]{coo[0], coo[1]+1}, -2);
-                }
-            }
-            if (fonct != -2){
-                if (coo[1] > 0){
-                    voisinVide(p, x, y, new int[]{coo[0], coo[1]-1}, 2);
-                }
-            }
-        } else if (p.getMines()[coo[0]][coo[1]] > 0 && p.getTrouve()[coo[0]][coo[1]] != true){
-            p.getTrouve()[coo[0]][coo[1]] = true;
-        }
-    }
-
-    public static boolean finPartie(Plateau p, int x, int y){
-        int verif = 0;
-        for (int i = 0; i < x; i += 1){
-            for (int j = 0; j < y; j += 1){
-                if ((p.getMines()[i][j] != -1 && p.getTrouve()[i][j] == true) || (p.getMines()[i][j] == -1 && p.getTrouve()[i][j] == false)){
-                    verif += 1;
-                }
-            }
-        }
-        return (verif+1 == x * y);
     }
 
     public static void main(String[] args){
@@ -210,7 +207,7 @@ public class Demineur{
         boolean verifAlt = false;
         int[] coo = new int[2];
         while (!fin && !bombe){
-            printTab(p);
+            System.out.println(p.stringTab());
             while (!verifAlt){
                 System.out.print("Choisissez une ligne ");
                 while (!verif){
@@ -238,22 +235,22 @@ public class Demineur{
                 }
             }
             verifAlt = false;
-            bombe = estBombe(p, coo[0], coo[1]);
-            fin = finPartie(p, largeur, longueur);
+            bombe = p.estBombe(coo[0], coo[1]);
+            fin = p.finPartie(largeur, longueur);
             if (!bombe){
-                voisinVide(p, largeur, longueur, coo, 0);
+                p.voisinVide(largeur, longueur, coo, 0);
             } else {
                 p.getTrouve()[coo[0]][coo[1]] = true;
             }
         }
-        printTab(p);
+        System.out.println(p.stringTab());
         if (bombe){
             System.out.println(ANSI_RED + "BOOM!" + ANSI_RESET);
             System.out.print("Souhaitez vous voir l'emplacement de toute les mines? (y/n) > ");
             rep = sc.next().charAt(0);
             if (rep == 'y' || rep == 'Y'){
-                devoilerMines(p, largeur, longueur);
-                printTab(p);
+                p.devoilerMines(largeur, longueur);
+                System.out.println(p.stringTab());
             }
         } else if (fin){
             System.out.println(ANSI_GREEN + "Félicitation!" + ANSI_RESET);
