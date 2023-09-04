@@ -3,12 +3,9 @@ package jeux;
 import java.util.Random;
 import java.util.Scanner;
 
+import hub.Color;
+
 public class Demineur{
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
     private static final Scanner sc = new Scanner(System.in);
 
     public Demineur(){
@@ -89,14 +86,14 @@ public class Demineur{
                 for (int j = 0; j < longueur; j += 1){
                     if (trouve[i][j]){
                         if (mines[i][j] > 0){
-                            str += ANSI_GREEN + mines[i][j] + " " + ANSI_RESET;
+                            str += Color.GREEN + "" + mines[i][j] + " " + Color.RESET;
                         } else if (mines[i][j] == 0){
-                            str += ANSI_WHITE + mines[i][j] + " " + ANSI_RESET;
+                            str += Color.WHITE + "" + mines[i][j] + " " + Color.RESET;
                         } else {
-                            str += ANSI_RED + "@ " + ANSI_RESET;
+                            str += Color.RED + "@ " + Color.RESET;
                         }
                     } else {
-                        str += ANSI_CYAN + "# " + ANSI_RESET;
+                        str += Color.CYAN + "# " + Color.RESET;
                     }
                 }
                 str += "\n";
@@ -215,7 +212,7 @@ public class Demineur{
                     coo[0] = sc.nextInt()-1;
                     verif = ((coo[0] >= 0 && coo[0] < largeur));
                     if (!verif){
-                        System.out.print(ANSI_RED + "Hors limite " + ANSI_RESET);
+                        System.out.print(Color.RED + "Hors limite " + Color.RESET);
                     }
                 }
                 verif = false;
@@ -225,13 +222,13 @@ public class Demineur{
                     coo[1] = sc.nextInt()-1;
                     verif = ((coo[1] >= 0 && coo[1] < longueur));
                     if (!verif){
-                        System.out.print(ANSI_RED + "Hors limite " + ANSI_RESET);
+                        System.out.print(Color.RED + "Hors limite " + Color.RESET);
                     }
                 }
                 verif = false;
                 verifAlt = !p.getTrouve()[coo[0]][coo[1]];
                 if (!verifAlt){
-                    System.out.println(ANSI_RED + "Case déjà vérifiée" + ANSI_RESET);
+                    System.out.println(Color.RED + "Case déjà vérifiée" + Color.RESET);
                 }
             }
             verifAlt = false;
@@ -245,7 +242,7 @@ public class Demineur{
         }
         System.out.println(p.stringTab());
         if (bombe){
-            System.out.println(ANSI_RED + "BOOM!" + ANSI_RESET);
+            System.out.println(Color.RED + "BOOM!" + Color.RESET);
             System.out.print("Souhaitez vous voir l'emplacement de toute les mines? (y/n) > ");
             rep = sc.next().charAt(0);
             if (rep == 'y' || rep == 'Y'){
@@ -253,7 +250,7 @@ public class Demineur{
                 System.out.println(p.stringTab());
             }
         } else if (fin){
-            System.out.println(ANSI_GREEN + "Félicitation!" + ANSI_RESET);
+            System.out.println(Color.GREEN + "Félicitation!" + Color.RESET);
         }
     }
 }

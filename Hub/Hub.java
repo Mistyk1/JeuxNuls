@@ -10,13 +10,6 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Hub{
     private static Scanner sc = new Scanner(System.in);
-    private static final String RESET = "\u001B[0m";
-    private static final String RED = "\u001B[31m";
-    private static final String GREEN = "\u001B[32m";
-    private static final String YELLOW = "\u001B[33m";
-    private static final String BLUE = "\u001B[34m";
-    //private static final String PURPLE = "\u001B[35m";
-    //private static final String CYAN = "\u001B[36m";
 
     private static void write(String path, String str){
         try{
@@ -51,9 +44,9 @@ public class Hub{
     }
 
     private static void error(Exception e, String msg){
-        System.out.println(RED + msg + YELLOW);
+        System.out.println(Color.RED + msg + Color.YELLOW);
         e.printStackTrace();
-        System.out.print(RESET);
+        System.out.print(Color.RESET);
     }
 
     public static char jouer(Class<?> cls){
@@ -70,7 +63,7 @@ public class Hub{
             } catch (InvocationTargetException e) {
                 error(e, "Erreur de ciblage d'invocation de classe");
             }
-            System.out.println(BLUE + "\nActions du hub:\n- H|h: Hub\n- R|r: Recommencer\n- 0: Quitter" + RESET);
+            System.out.println(Color.BLUE + "\nActions du hub:\n- H|h: Hub\n- R|r: Recommencer\n- 0: Quitter" + Color.RESET);
             while (c != '0' && c != 'h' && c != 'H' && c != 'r' && c != 'R'){
                 System.out.print("> ");
                 c = sc.next().charAt(0);
@@ -86,20 +79,21 @@ public class Hub{
         String temp;
         while (choix != '0'){
             if (choix == 'h' || choix == 'H'){
-                System.out.println(BLUE + "----- Hub -----" + RESET);
+                System.out.println(Color.BLUE + "----- Hub -----" + Color.RESET);
                 System.out.println("[1] Démineur");
                 System.out.println("[2] Knucklebones");
-                System.out.println("[3] " + RED + "Puissance 4" + RESET);
-                System.out.println("[4] " + RED + "2048" + RESET);
+                System.out.println("[3] " + Color.RED + "Puissance 4" + Color.RESET);
+                System.out.println("[4] " + Color.RED + "2048" + Color.RESET);
+                System.out.println("[4] " + Color.RED + "Tetros" + Color.RESET);
                 if (idea){
-                    System.out.println("[/] " + GREEN + "Voir idées" + RESET);
+                    System.out.println("[/] " + Color.GREEN + "Voir idées" + Color.RESET);
                 } else {
-                    System.out.println("[/] " + GREEN + "Proposer une idée de jeu" + RESET);
+                    System.out.println("[/] " + Color.GREEN + "Proposer une idée de jeu" + Color.RESET);
                 }
                 System.out.println("[0] Quitter");
-                System.out.println(BLUE + "---------------" + RESET);
+                System.out.println(Color.BLUE + "---------------" + Color.RESET);
             }
-            while (choix < '/' || choix > '4'){
+            while (choix < '/' || choix > '5'){
                 System.out.print("> ");
                 temp = sc.next();
                 if (temp.length() == 1){
@@ -128,6 +122,10 @@ public class Hub{
             } else if (choix == '4'){
                 //choix = jouer(DZQH.class);
                 System.out.println("2048 en cours de construction");
+                choix = '#';
+            } else if (choix == '5'){
+                //choix = jouer(Tetros.class);
+                System.out.println("Tetros en cours de construction");
                 choix = '#';
             }
         }
