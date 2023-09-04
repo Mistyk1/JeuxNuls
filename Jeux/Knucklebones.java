@@ -3,9 +3,10 @@ package jeux;
 import java.util.Random;
 import java.util.Scanner;
 
+import hub.Color;
+
 public class Knucklebones{
 
-    public static final String ANSI_RESET = "\u001B[0m";
     private static final Scanner sc = new Scanner(System.in);
 
     public Knucklebones(){
@@ -31,8 +32,7 @@ public class Knucklebones{
         }
 
         public static int lancerDe(){
-            Random de = new Random();
-            return (de.nextInt(6) + 1);
+            return (new Random().nextInt(6) + 1);
         }
 
         public static String stringPlateaux(Joueur j1, Joueur j2){
@@ -45,9 +45,9 @@ public class Knucklebones{
                 for (int i = 0; i < 3; i += 1){
                     for (int j = 0; j < 3; j += 1){
                         if (k == 0){
-                            str += ("\u001B[3" + (7-j1.tab[i][j]) + "m") + j1.tab[i][j] + " " + ANSI_RESET;
+                            str += ("\u001B[3" + (7-j1.tab[i][j]) + "m") + j1.tab[i][j] + " " + Color.RESET;
                         } else if (k == 1){
-                            str += ("\u001B[3" + (7-j2.tab[i][j]) + "m") + j2.tab[i][j] + " " + ANSI_RESET;
+                            str += ("\u001B[3" + (7-j2.tab[i][j]) + "m") + j2.tab[i][j] + " " + Color.RESET;
                         }
                     }
                     if (k == 0 && i == 0){
@@ -253,12 +253,12 @@ public class Knucklebones{
             System.out.println(Joueur.stringPlateaux(j1, j2));
             de = Joueur.lancerDe();
             if (joueur){
-                System.out.println(j1.nom + " a fait un " + ("\u001B[3" + (7-de) + "m") + de + ANSI_RESET);
+                System.out.println(j1.nom + " a fait un " + ("\u001B[3" + (7-de) + "m") + de + Color.RESET);
                 Joueur.placerDe(joueur, j1, j2, de);
                 Joueur.calculerScore(j1, j2);
                 joueur = false;
             } else {
-                System.out.println(j2.nom + " a fait un " + ("\u001B[3" + (7-de) + "m") + de + ANSI_RESET);
+                System.out.println(j2.nom + " a fait un " + ("\u001B[3" + (7-de) + "m") + de + Color.RESET);
                 Joueur.placerDe(joueur, j1, j2, de);
                 Joueur.calculerScore(j1, j2);
                 joueur = true;
