@@ -84,7 +84,8 @@ public class Hub{
                 System.out.println("[2] Knucklebones");
                 System.out.println("[3] " + Color.RED + "Puissance 4" + Color.RESET);
                 System.out.println("[4] " + Color.RED + "2048" + Color.RESET);
-                System.out.println("[4] " + Color.RED + "Tetros" + Color.RESET);
+                System.out.println("[5] " + Color.RED + "Tetros" + Color.RESET);
+                System.out.println("[6] " + Color.RED + "Question pour un Carton" + Color.RESET);
                 if (idea){
                     System.out.println("[/] " + Color.GREEN + "Voir idées" + Color.RESET);
                 } else {
@@ -93,7 +94,7 @@ public class Hub{
                 System.out.println("[0] Quitter");
                 System.out.println(Color.BLUE + "---------------" + Color.RESET);
             }
-            while (choix < '/' || choix > '5'){
+            while (choix < '/' || choix > '6'){
                 System.out.print("> ");
                 temp = sc.next();
                 if (temp.length() == 1){
@@ -126,6 +127,10 @@ public class Hub{
             } else if (choix == '5'){
                 //choix = jouer(Tetros.class);
                 System.out.println("Tetros en cours de construction");
+                choix = '#';
+            } else if (choix == '6'){
+                //choix = jouer(QuestionPourUnCarton.class);
+                System.out.println("Question pour un Carton en cours de construction");
                 choix = '#';
             }
         }
