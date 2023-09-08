@@ -129,9 +129,16 @@ public class Hub{
                 System.out.println("Tetros en cours de construction");
                 choix = '#';
             } else if (choix == '6'){
-                //choix = jouer(QuestionPourUnCarton.class);
-                System.out.println("Question pour un Carton en cours de construction");
-                choix = '#';
+                try {
+                    if (javafx.util.Builder.class != null){
+                        //choix = jouer(QuestionPourUnCarton.class);
+                        System.out.println("Question pour un Carton en cours de construction");
+                        choix = '#';
+                    }
+                } catch (Exception e){
+                    System.out.println(Color.RED + "Javafx est nécessaire pour jouer à Question pour un Carton" + Color.RESET);
+                    choix = '#';
+                }
             }
         }
     }
