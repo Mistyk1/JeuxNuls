@@ -34,6 +34,6 @@ En 2010, Tetris compte plus de 170 millions d'exemplaires vendus dans le monde d
 
 Tetris est ancré dans la culture populaire et sa notoriété dépasse celle de la sphère vidéoludique, avec des imitations du jeu sur des bâtiments, de nombreuses reprises du thème original ou encore des costumes de tétrominos. Le jeu fait également l'objet de différents travaux de recherches : plusieurs universitaires ont analysé sa complexité théorique, alors que d'autres ont montré les effets sur le cerveau après une session de jeu, notamment l'effet Tetris.
 
-### Questio pour un Carton
+### Question pour un Carton
 
 euh je euh je euh euh je je
