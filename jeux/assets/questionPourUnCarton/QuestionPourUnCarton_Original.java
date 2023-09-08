@@ -238,7 +238,7 @@ public class QuestionPourUnCarton_Original{
 		System.out.println("Présentateur: Et vous " + nom + ", vous avez faim?");
 		sc.next();
 		System.out.print(nom + ": ");
-		String reponseFaim = sc.next();
+		sc.next();
 		System.out.println("\nPrésentateur: Très bien. La vérité est que je ne vous ait pas écouté.");
 		sc.next();
 		System.out.println("Présentateur: Sur ce, je vais aller me chercher un Twix. *Se lève de sa chaise et va chercher un Twix*");
