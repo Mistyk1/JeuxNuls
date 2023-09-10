@@ -8,7 +8,7 @@ public class QuestionPourUnCarton_Original{
     public static void main(String[] args) {
 		System.out.print("Entrez votre nom svp: ");
 		String nom = sc.next();
-		int vies = 3;
+		int vies = 100;
 
 		//Explications
 
@@ -112,7 +112,7 @@ public class QuestionPourUnCarton_Original{
 
 		
 		System.out.print("\nQuestion 2 - Combien font 1 + 1?\n1. 1\n2. 7\n3. Présentateur\n4. 2\n> ");
-		reponse = sc.next().charAt(0);
+		reponse = sc.nextInt();
 		System.out.println("\nBrigitte: 2");
 		System.out.println("\nNicolas: 2, non?");
 		System.out.println("\nAlbert: 2!");
@@ -189,7 +189,7 @@ public class QuestionPourUnCarton_Original{
 
 		
 		System.out.print("\nQuestion 3 - Quel est le composant principal du fer?\n1. L'élément atomique n°26\n2. De la mystérieuse poudre blanche (de la farine)\n3. Votre mère\n4. N'importe quoi sauf du fer\n> ");
-		reponse = sc.next().charAt(0);
+		reponse = sc.nextInt();
 		System.out.println("\nBrigitte n'a pas rouvé la réponse.");
 		System.out.println("\nNicolas: Du fer.");
 		System.out.println("\nAlbert: L'élément atomique n°26!");
@@ -275,7 +275,7 @@ public class QuestionPourUnCarton_Original{
 
 		
 		System.out.print("\nQuestion 4 - Pourquoi le chocolat est-il marron?\n1. Car le chocolat était blanc originalement mais la rouille du chocolat l'a rendu marron\n2. Car c'est comme ça.\n3. Car le chocolat est fait de cacao (de mauvaise qualité)\n4. Car le chocolat absorbe certaine parties de la lumière\n> ");
-		reponse = sc.next().charAt(0);
+		reponse = sc.nextInt();
 		System.out.println("\nBrigitte: Car c'est comme ça?");
 		System.out.println("\nNicolas: Car le chocolat absorbe certaine parties de la lumière.");
 		System.out.println("\nAlbert: Euuuuuuh... Car le chocolat rouille!");
@@ -367,7 +367,7 @@ public class QuestionPourUnCarton_Original{
 
 		
 		System.out.print("\nQuestion 5 - Pourquoi ma femme m'a quitté?\n1. Car je suis parti acheté du lait\n2. Car je suis un mari extrêmement infidèle\n3. Car j'ai jeté le chat par la fenêtre\n4. Toute les réponses du dessus\n> ");
-		reponse = sc.next().charAt(0);
+		reponse = sc.nextInt();
 		System.out.println("\nBrigitte n'a pas trouvé la réponse");
 		System.out.println("\nNicolas n'a pas trouvé la réponse");
 		System.out.println("\nAlbert: Vous êtes parti acheter du lait?");
@@ -438,7 +438,7 @@ public class QuestionPourUnCarton_Original{
 
 		
 		System.out.print("\nQuestion 6 - Nous savons tous que les polynômes de Tchebychev de seconde espèce sont définis par cette relation de récurrence:\nU[n+1] = 2XU[n] - U[n-1], Pour tout n >= 1 avec U[0] = 1 et U[1] = 2X\nQuel polynôme de Tchebychev de seconde espèce correspond à la 7ème occurence?\n1. U[7] = 16X⁴-12X²+1\n2. U[7] = 128X⁷-192X⁵+80X³-8X\n3. U[7] = 64X⁷-112X⁵+56X³-7X\n4. U[7] = 256X⁸-448X⁶+240X⁴-40X²+1\n> ");
-		reponse = sc.next().charAt(0);
+		reponse = sc.nextInt();
 		System.out.println("\nBrigitte: U[7] = 128X⁷-192X⁵+80X³-8X");
 		System.out.println("\nAlbert n'a pas trouvé la réponse");
 		if (reponse == 1){
@@ -509,7 +509,7 @@ public class QuestionPourUnCarton_Original{
 
 		
 		System.out.print("\nQuestion 7 - Quelle est est la meilleure blague du monde?\n1. C'est l'histoire d'un zoophile qui prend son élan\n2. Tu connais la blague du mec qui nettoie son clavier? xugfjudfgdfhjdfgdkifsllfjkih;:mkflhdjdvghdbi\n3. C'est l'histoire de 2 putes qui se disputent\n4. Quelle est la partie de la voiture la plus dangereuse? La conductrice\n> ");
-		reponse = sc.next().charAt(0);
+		reponse = sc.nextInt();
 		System.out.println("\nBrigitte: C'est l'histoire de 2 putes qui se disputent.");
 		System.out.println("\nAlbert: Alors, c'est l'histoire d'un zoophile qui prend son élan.");
 		if (reponse == 1){

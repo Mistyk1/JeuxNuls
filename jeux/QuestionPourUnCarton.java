@@ -40,35 +40,72 @@ public class QuestionPourUnCarton {
 
     //---- Énumération Question ----
     private static enum Question{
-        Placeholder1("Placeholder1", 
-                  "1", "2", "3", "4", "5",
-                  "Br", "G", "N", "J", "V", "M", "Bu", "A",
-                  "J1", "J2", "J3", "J4", "J5", 
-                  "Presentateur", 3),
-        Placeholder2("Placeholder2", 
-                  "1", "2", "3", "4", "5",
-                  "Br", "G", "N", "J", "V", "M", "Bu", "A",
-                  "J1", "J2", "J3", "J4", "J5", 
-                  "Presentateur", 3);
+        PrenomPresentateur("Comment est ce que je m'appelle?", 
+                  "Bernard", "Pr\u00E9sentateur", "Nicolas", "Gilgamesh le destructeur de réalités", "Je n'ai pas de pr\u00E9nom",
+                  "Pr\\u00E9sentateur!", "C'est simple, pr\\u00E9sentateur.", "Pr\\u00E9sentateur?", "euuuuh bernard", "RÉPONSE N°3", "Je ne sais pas?", "ooga", "Gilgamesh le destructeur de r\u00E9alit\u00E9s",
+                  "Bernard!", "Pr\\u00E9sentateur!", "Nicolas!", "Gilgamesh le destructeur de r\u00E9alit\u00E9s!", "Vous n'avez pas de pr\\u00E9nom!", 
+                  "Il se trouve que je m'appelle bel et bien Présentateur! (merci papa et maman pour ce magnifique prénom)", 
+                  "Il se trouve que je m'appelle bel et bien Présentateur! (merci papa et maman pour ce magnifique prénom)", 
+                  "Il se trouve que je m'appelle bel et bien Présentateur! (merci papa et maman pour ce magnifique prénom)", 
+                  "Il se trouve que je m'appelle bel et bien Présentateur! (merci papa et maman pour ce magnifique prénom)", 
+                  "Il se trouve que je m'appelle bel et bien Présentateur! (merci papa et maman pour ce magnifique prénom)", 2),
+        TroisPlusTrois("Combien font 3 + 3?", 
+                  "6", "12", "-493,45", "Pr\u00E9sentateur", "Les mathématiques sont un mensonge",
+                  "6", "12", "-493,45! Non non non attendez-", "euuuuuuuuuuh", Color.WHITE_BOLD + "*bruit forts de calculs*" + Color.RESET, "6?", Color.WHITE_BOLD + "*est confus*" + Color.RESET, "Pr\\u00E9sentateur",
+                  "6", "12", "-493,45", "Pr\\u00E9sentateur", "Les math\u00E9matiques ne sont pas réelles et sont un concept imaginé par notre cerveau pour contextualiser et rationnaliser l'univers nous environant.", 
+                  "Oui, c'est 6!", 
+                  "12?", 
+                  "-493,45?! Comment en êtes vous venu à ce résultat?!", 
+                  "Quoi, mais... C'est la r\u00E9ponse \u00E0 la question pr\u00E9c\u00E9dente...", 
+                  "Vous venez littéralement de répondre avec un nombre", 1),
+        ComposantFer("Quel est le composant principal du fer?", 
+                  "L'élément atomique n°26", "De la mystérieuse poudre blanche (de la farine)", "Votre m\u00E8re", "Le néant absolu", "N'importe quoi sauf du fer",
+                  "Oulah...", "Mais aucune de ces réponses ne font sens!", "Du fer.", "eh ta daronne mdr", "ÉLÉMENT ATOMIQUE N°26", "Le néant", "Votre progénitrice.", "DE LA COCAÏNE" + Color.WHITE_BOLD + "*sniffe un maximum de drogues dures*" + Color.RESET,
+                  "L'\\u00E9l\\u00E9ment atomique n\\u00B026", "De la farine?", "Votre mère! >:D", "Rien.", "Absolument tout sauf du fer.", 
+                  "Nicolas, c'est si dur à dire \"Élément atomique n°26\"?!", 
+                  Color.WHITE_BOLD + "*le présentateur vous regarde suspicieusement*" + Color.RESET, 
+                  "Si vous continuez comme ça vous allez vite dégager.", 
+                  "Comment ça rien?!", 
+                  "Il n'y a pas de fer dans du fer? Est-ce que vous r\u00E9fl\u00E9chissez?", 1),
+        Femme("Pourquoi ma femme m'a quitt\u00E9?", 
+                  "Car je suis parti achet\u00E9 du lait", "Car je suis un mari extr\u00EAmement infid\u00E8le", "Car je ne fesais rien pour faire avancer le mariage", "Car j'ai jet\u00E9 le chat par la fen\u00EAtre", "Toute les r\u00E9ponses du dessus",
+                  "...", "???", "Vous êtes infidèle?", "t'es juste un enculé toi en fait", Color.WHITE_BOLD + "*de la fumée commence à sortir de V-43.7*" + Color.RESET, "Vous...", "", "...",
+                  "Vous êtes... parti acheter du lait?", "Vous \u00EAtes... infidèle?", "Vous \u00EAtes... un paresseux?", "Vous \u00EAtes... un homme extrêmement cruel?", "Vous \u00EAtes... la pire ordure n'ayant jamais existé?", 
+                  "Personne n'a bon.", 
+                  "Personne n'a bon.", 
+                  "Personne n'a bon.", 
+                  "Personne n'a bon.", 
+                  "o)_o)'", 5),
+        Polynome("Nous savons tous que les polyn\u00F4mes de Tchebychev de seconde esp\u00E8ce sont d\u00E9finis par cette relation de r\u00E9currence:\n" + //
+                "U[n+1] = 2XU[n] - U[n-1], Pour tout n >= 1 avec U[0] = 1 et U[1] = 2X\n" + //
+                "Quel polyn\u00F4me de Tchebychev de seconde esp\u00E8ce correspond \u00E0 la 7\u00E8me occurence?", 
+                  "U[7] = 16X\u2074-12X\u00B2+1", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 64X\u2077-112X\u2075+56X\u00B3-7X", "U[7] = 256X\u2078-448X\u2076+240X\u2074-40X\u00B2+1", "Aucune des r\u00E9ponses du dessus",
+                  "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "PARDON?????", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X",
+                  "U[7] = 16X\u2074-12X\u00B2+1", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 64X\u2077-112X\u2075+56X\u00B3-7X", "U[7] = 256X\u2078-448X\u2076+240X\u2074-40X\u00B2+1", "Aucune de ces réponses ne sont bonnes", 
+                  "C'est simple pourtant...", 
+                  "Eeeet il se trouve que seul Albert n'a pas trouvé la réponse, bien que ce soit une connaissance basique.", 
+                  "C'est simple pourtant...", 
+                  "C'est simple pourtant...", 
+                  "C'est simple pourtant...", 2);
 
         private String intitule;
         private String[] choix;
         private String[] reponses;
         private String[] reponsesJoueur;
-        private String reponsePresentateur;
+        private String[] reponsesPresentateur;
         private int correct;
         private static String[] noms = new String[]{"Brigitte", "Gabriel", "Nicolas", "Jules", "V-43.7", "Mathéo", null, "bumba", "Albert"};
 
         private Question(String intitule,
                         String choix1, String choix2, String choix3, String choix4, String choix5,
-                        String reponseBr, String reponseG, String reponseN, String reponseJ, String reponseV, String reponseM, String reponseBu, String reponseA,
+                        String reponseBrigitte, String reponseGabriel, String reponseNicolas, String reponseJules, String reponseV437, String reponseMatheo, String reponseBumba, String reponseAlbert,
                         String reponseJ1, String reponseJ2, String reponseJ3, String reponseJ4, String reponseJ5,
-                        String reponsePresentateur, int correct){
+                        String reponseP1, String reponseP2, String reponseP3, String reponseP4, String reponseP5, int correct){
             this.intitule = intitule;
             this.choix = new String[]{choix1, choix2, choix3, choix4, choix5};
-            this.reponses = new String[]{reponseBr, reponseG, reponseN, reponseJ, reponseV, reponseM, randomText(), reponseBu, reponseA};
+            this.reponses = new String[]{reponseBrigitte, reponseGabriel, reponseNicolas, reponseJules, reponseV437, reponseMatheo, randomText(), reponseBumba, reponseAlbert};
             this.reponsesJoueur = new String[]{reponseJ1, reponseJ2, reponseJ3, reponseJ4, reponseJ5};
-            this.reponsePresentateur = reponsePresentateur;
+            this.reponsesPresentateur = new String[]{reponseP1, reponseP2, reponseP3, reponseP4, reponseP5};
             this.correct = correct;
         }
 
@@ -97,8 +134,8 @@ public class QuestionPourUnCarton {
             return reponsesJoueur[xugfjudfgdfhjdfgdkifsllfjkih];
         }
 
-        public String getReponsePresentateur(){
-            return reponsePresentateur;
+        public String[] getReponsesPresentateur(){
+            return reponsesPresentateur;
         }
 
         public int getCorrect(){
@@ -345,7 +382,7 @@ public class QuestionPourUnCarton {
                 ecrireNoEnter(Question.noms[i-1], q.getReponse(i-1), 0.5);
             }
         }
-        ecrire(presentateur, q.getReponsePresentateur());
+        ecrire(presentateur, q.getReponsesPresentateur()[choix]);
         return vies;
     }
 
@@ -445,7 +482,7 @@ public class QuestionPourUnCarton {
         ecrire("Albert", "Je ne peut m'imaginer sans ce carton. Je dois le gagner, ou alors mon existance ne serait qu'un ab\u00EEme sans sens. Ce carton est pour moi l'objectif de ma vie, le sens m\u00EAme de ma destin\u00E9e, le fil rouge de mon existence. J'ai r\u00EAv\u00E9 jours et nuits de ce carton depuis mes 2 ans. Je ne fait qu'envoyer des lettres d'inscriptions \u00E0 ce show depuis mes 3 ans dans l'unique but de pouvoir vivre avec ce carton. J'ai pass\u00E9 30 ans de ma vie \u00E0 m'entrainer, de minuit \u00E0 23 heures 50, chaque jours de chaque semaines de chaque mois de chaque ann\u00E9es. Ma vie tourne autour de ce carton, je me dois donc aujourd'hui de marquer une nouvelle phase de ma vie et de gagner ce carton.");
 
 
-        ecrire(presentateur, "Mais voici donc des participants motivés!");
+        ecrire(presentateur, "Que de magnifiques présentations! \u00C7a devrait impressioner les spectateur tout en donnant de la prestance au participants! (sauf Nicolas)");
         ecrire(presentateur, "Ne tardons donc pas avec notre première question!");
 
 
@@ -462,7 +499,7 @@ public class QuestionPourUnCarton {
         // Transition 1
 
 
-        ecrire(presentateur, "Ne tardons donc pas avec notre première question!");
+        ecrire(presentateur, "Voici donc cette première étape de passé...");
     }
 
     public static void cheminPresentateur(){
