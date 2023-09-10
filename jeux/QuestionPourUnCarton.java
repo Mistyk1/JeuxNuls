@@ -5,13 +5,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.function.Consumer;
 
 import hub.Color;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 
 public class QuestionPourUnCarton {
     private static final Random rand = new Random();
@@ -95,6 +106,83 @@ public class QuestionPourUnCarton {
         }
     }
     //-----------------------
+
+
+
+
+
+    //---- Classe MultiThreading -----
+    public static class MultiThreading{
+        public static void execute(Consumer<?>... methods){
+            ExecutorService executor = Executors.newCachedThreadPool();
+            try{
+                for (Consumer<?> m : methods){
+                    executor.execute(() -> m.accept(null));
+                }
+                executor.shutdown();
+            } catch (Exception e){
+                System.out.println(Color.RED + "Erreur du multithreading (" + e.getMessage() + ")" + Color.RESET);
+                executor.shutdown();
+            }
+        }
+    }
+    //---- Utilisation de MultiThreading ----
+    //MultiThreading.execute(e -> methode1(), e -> methode2());
+    //MultiThreading.execute(e -> methode3());
+    //---------------------------------------
+    
+
+
+
+
+    //---- Classe Window ----- (à spécialiser)
+    public static class Window extends Application{
+        @Override
+        public void start(final Stage primaryStage) {
+            Label label = new Label("120.0");
+
+            Button button = new Button();
+            button.setText("Open a New Window");
+
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+
+                    Label secondLabel = new Label("I'm a Label on new Window");
+
+                    StackPane secondaryLayout = new StackPane();
+                    secondaryLayout.getChildren().add(secondLabel);
+
+                    Scene secondScene = new Scene(secondaryLayout, 230, 100);
+
+                    // New window (Stage)
+                    Stage newWindow = new Stage();
+                    newWindow.setTitle("Second Stage");
+                    newWindow.setScene(secondScene);
+
+                    // Set position of second window, related to primary window.
+                    newWindow.setX(primaryStage.getX() + 200);
+                    newWindow.setY(primaryStage.getY() + 100);
+
+                    newWindow.show();
+                }
+            });
+
+            StackPane root = new StackPane();
+            root.getChildren().add(label);
+
+            Scene scene = new Scene(root, 450, 250);
+
+            primaryStage.setTitle("JavaFX Open a new Window (o7planning.org)");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }
+
+        public static void main() {
+            launch();
+        }
+    }
+    //---------------------------------
 
 
 
@@ -281,7 +369,7 @@ public class QuestionPourUnCarton {
         return true;
     }
 
-    public static void finalSpeed(String nom){
+    public static void finalSpeech(String nom){
         ecrire(presentateur, "Il se trouve que " + nom + " n'a plus de vies, il va donc devoir nous quitter...");
         ecrire(presentateur, "Dites lui tous adieu!");
         ecrire("Toute la scène", "ADIEUUUU!");
@@ -293,6 +381,8 @@ public class QuestionPourUnCarton {
         com.sun.javafx.application.PlatformImpl.startup(() -> {});
 
         clearScreen();
+
+        MultiThreading.execute(e -> Window.main());
 
         System.out.print("Entrez votre nom svp: ");
         String nom = sc.nextLine();
@@ -334,6 +424,8 @@ public class QuestionPourUnCarton {
 
         // Présentations
 
+        MultiThreading.execute(e -> Window.main());
+
 
         String randomName = "";
         for (int i = 0; i < rand.nextInt(20)+10; i += 1){
@@ -363,7 +455,7 @@ public class QuestionPourUnCarton {
         vies = poserQuestion(questions, vies, nom);
 
         if (isFinished(vies)){
-            finalSpeed(nom);
+            finalSpeech(nom);
             return ;
         }
 
