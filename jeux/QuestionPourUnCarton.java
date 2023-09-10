@@ -1,7 +1,11 @@
 package jeux;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.InputMismatchException;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,49 +27,59 @@ public class QuestionPourUnCarton {
 
 
 
-    //---- Classe Question ----
-    private static class Question{
+    //---- Énumération Question ----
+    private static enum Question{
+        Placeholder1("Placeholder1", 
+                  "1", "2", "3", "4", "5",
+                  "Br", "G", "N", "J", "V", "M", "Bu", "A",
+                  "J1", "J2", "J3", "J4", "J5", 
+                  "Presentateur", 3),
+        Placeholder2("Placeholder2", 
+                  "1", "2", "3", "4", "5",
+                  "Br", "G", "N", "J", "V", "M", "Bu", "A",
+                  "J1", "J2", "J3", "J4", "J5", 
+                  "Presentateur", 3);
+
         private String intitule;
         private String[] choix;
         private String[] reponses;
         private String[] reponsesJoueur;
         private String reponsePresentateur;
+        private int correct;
         private static String[] noms = new String[]{"Brigitte", "Gabriel", "Nicolas", "Jules", "V-43.7", "Mathéo", null, "bumba", "Albert"};
 
-        public Question(String intitule,
+        private Question(String intitule,
                         String choix1, String choix2, String choix3, String choix4, String choix5,
                         String reponseBr, String reponseG, String reponseN, String reponseJ, String reponseV, String reponseM, String reponseBu, String reponseA,
                         String reponseJ1, String reponseJ2, String reponseJ3, String reponseJ4, String reponseJ5,
-                        String reponsePresentateur){
+                        String reponsePresentateur, int correct){
             this.intitule = intitule;
             this.choix = new String[]{choix1, choix2, choix3, choix4, choix5};
             this.reponses = new String[]{reponseBr, reponseG, reponseN, reponseJ, reponseV, reponseM, randomText(), reponseBu, reponseA};
             this.reponsesJoueur = new String[]{reponseJ1, reponseJ2, reponseJ3, reponseJ4, reponseJ5};
             this.reponsePresentateur = reponsePresentateur;
+            this.correct = correct;
+        }
+
+        public static List<Question> listeQuestions(){
+            List<Question> liste = new ArrayList<>();
+            for (Question q : Question.values()){
+                liste.add(q);
+            }
+            Collections.shuffle(liste);
+            return liste;
         }
 
         public String getIntitule(){
             return intitule;
         }
 
-        public String[] getChoix(){
-            return choix;
-        }
-
         public String getChoix(int xugfjudfgdfhjdfgdkifsllfjkih){
             return choix[xugfjudfgdfhjdfgdkifsllfjkih];
         }
 
-        public String[] getReponse(){
-            return reponses;
-        }
-
         public String getReponse(int xugfjudfgdfhjdfgdkifsllfjkih){
             return reponses[xugfjudfgdfhjdfgdkifsllfjkih];
-        }
-
-        public String[] getReponseJoueur(){
-            return reponsesJoueur;
         }
 
         public String getReponseJoueur(int xugfjudfgdfhjdfgdkifsllfjkih){
@@ -74,6 +88,10 @@ public class QuestionPourUnCarton {
 
         public String getReponsePresentateur(){
             return reponsePresentateur;
+        }
+
+        public int getCorrect(){
+            return correct;
         }
     }
     //-----------------------
@@ -145,6 +163,24 @@ public class QuestionPourUnCarton {
         sc.nextLine();
     }
 
+    public static void ecrireNoEnter(String txt, double sleepTime){
+        for (int i = 0; i < txt.length(); i += 1){
+            System.out.print(txt.charAt(i));
+            sleep(0.02);
+        }
+        System.out.println();
+        sleep(sleepTime);
+    }
+
+    public static void ecrireNoEnter(String personnage, String txt, double sleepTime){
+        personnage += ": ";
+        for (int i = 0; i < personnage.length(); i += 1){
+            System.out.print(personnage.charAt(i));
+            sleep(0.02);
+        }
+        ecrireNoEnter(txt, sleepTime);
+    }
+
     public static String randomText(){
         String randomText = Color.WHITE_BOLD.toString();
         for (int i = 0; i < (rand.nextInt(150)+50); i += 1){
@@ -193,6 +229,66 @@ public class QuestionPourUnCarton {
         }
     }
 
+    public static int poserQuestion(List<Question> questions, int vies, String nom){
+        Question q = questions.remove(0);
+        ecrireNoEnter(presentateur, q.getIntitule(), 0.5);
+        for (int i = 0; i < 5; i += 1){
+            ecrireNoEnter("["+(i+1)+"] "+q.getChoix(i), 0);
+        }
+        int choix;
+        System.out.println();
+        do {
+            System.out.print("> ");
+            try {
+                choix = sc.nextInt();
+            } catch (InputMismatchException e){
+                choix = 0;
+            }
+        } while (!(choix >= 1 && choix <= 5));
+        if (!(q.getCorrect() == choix)){
+            vies -= 1;
+        }
+        for (int i = 0; i < 10; i += 1){
+            if (i < 8){
+                ecrireNoEnter(Question.noms[i], q.getReponse(i), 0.5);
+            } else if (i == 8){
+                ecrireNoEnter(nom, q.getReponseJoueur(choix), 0.5);
+            } else {
+                ecrireNoEnter(Question.noms[i-1], q.getReponse(i-1), 0.5);
+            }
+        }
+        ecrire(presentateur, q.getReponsePresentateur());
+        return vies;
+    }
+
+    public static void rappelVies(int vies){
+        String v = "" + vies;
+        if (vies == 5 || vies == 4){
+            v = Color.GREEN_BOLD + v + Color.RESET;
+        } else if (vies == 3 || vies == 2){
+            v = Color.YELLOW_BOLD + v + Color.RESET;
+        } else if (vies == 1){
+            v = Color.RED_BOLD + v + Color.RESET;
+        }
+        ecrire(Color.WHITE_BOLD + "[Il vous reste " + v + " vies]" + Color.RESET);
+    }
+
+    public static boolean isFinished(int vies){
+        if (vies > 0){
+            rappelVies(vies);
+            return false;
+        }
+        return true;
+    }
+
+    public static void finalSpeed(String nom){
+        ecrire(presentateur, "Il se trouve que " + nom + " n'a plus de vies, il va donc devoir nous quitter...");
+        ecrire(presentateur, "Dites lui tous adieu!");
+        ecrire("Toute la scène", "ADIEUUUU!");
+        ecrire(Color.WHITE_BOLD + "Alors que vous quitter le plateau de tournage, vous sentez le désespoir et la misère s'abattre immédiatement sur vous. Cet incroyable carton de 3 mètres cube vous est désormais inaccessible à jamais." + Color.RESET);
+        ecrire(Color.RED_BOLD + "\nMAUVAISE FIN" + Color.RESET, 1);
+    }
+
     public static void main(String[] args) {
         com.sun.javafx.application.PlatformImpl.startup(() -> {});
 
@@ -218,13 +314,12 @@ public class QuestionPourUnCarton {
         }
         
         int vies = 5;
+        List<Question> questions = Question.listeQuestions();
 
         clearScreen();
 
 
         // Introduction
-
-        System.out.println(nom);
 
 
         ecrire(Color.WHITE_BOLD + "Alors que vous vous approchez de la scène de tournage, vous entendez toute la scène parler entre eux, comme si ils était tous excités." + Color.RESET);
@@ -258,10 +353,24 @@ public class QuestionPourUnCarton {
         ecrire("Albert", "Je ne peut m'imaginer sans ce carton. Je dois le gagner, ou alors mon existance ne serait qu'un ab\u00EEme sans sens. Ce carton est pour moi l'objectif de ma vie, le sens m\u00EAme de ma destin\u00E9e, le fil rouge de mon existence. J'ai r\u00EAv\u00E9 jours et nuits de ce carton depuis mes 2 ans. Je ne fait qu'envoyer des lettres d'inscriptions \u00E0 ce show depuis mes 3 ans dans l'unique but de pouvoir vivre avec ce carton. J'ai pass\u00E9 30 ans de ma vie \u00E0 m'entrainer, de minuit \u00E0 23 heures 50, chaque jours de chaque semaines de chaque mois de chaque ann\u00E9es. Ma vie tourne autour de ce carton, je me dois donc aujourd'hui de marquer une nouvelle phase de ma vie et de gagner ce carton.");
 
 
-        // Trucs
+        ecrire(presentateur, "Mais voici donc des participants motivés!");
+        ecrire(presentateur, "Ne tardons donc pas avec notre première question!");
 
 
-        //
+        // Question 1
+
+        ecrireNoEnter(Color.WHITE_BOLD + "Question 1\n" + Color.RESET, 0.5);
+        vies = poserQuestion(questions, vies, nom);
+
+        if (isFinished(vies)){
+            finalSpeed(nom);
+            return ;
+        }
+
+        // Transition 1
+
+
+        ecrire(presentateur, "Ne tardons donc pas avec notre première question!");
     }
 
     public static void cheminPresentateur(){
