@@ -7,7 +7,7 @@ else
     #javac exclude jeux/QuestionPourUnCarton.java -d classes */*.java
     for i in */*.java; do
         if [ $i != "jeux/QuestionPourUnCarton.java" ]; then
-            echo $i | tr "*/" ""
+            echo $i | tr "*/" "X"
             javac -d classes $i
         fi
     done
