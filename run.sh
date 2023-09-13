@@ -4,7 +4,7 @@ if [ -e $JAVA_HOME/jre/lib/javafx.properties ]; then
     javac -d classes */*.java
     java -cp classes Hub
 else
-    javac -d classes */*.java excludesfile jeux/QuestionPourUnCarton.java
+    javac --excludesfile jeux/QuestionPourUnCarton.java -d classes */*.java
     java -cp classes Hub noJavaFx
 fi
 
