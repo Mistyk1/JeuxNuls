@@ -5,9 +5,9 @@ if [ -e $JAVA_HOME/jre/lib/javafx.properties ]; then
     java -cp classes Hub
 else
     #javac exclude jeux/QuestionPourUnCarton.java -d classes */*.java
-    for i in *.java; do
+    for i in */*.java; do
         if [ $i != "jeux/QuestionPourUnCarton.java" ]; then
-            javac -d classes $i
+            javac -d classes "$i"
         fi
     done
     java -cp classes Hub noJavaFx
