@@ -6,12 +6,12 @@ if [ -e $JAVA_HOME/jre/lib/javafx.properties ]; then
 else
     #javac exclude jeux/QuestionPourUnCarton.java -d classes */*.java
     for i in */*.java; do
-        if [ $i != "jeux/QuestionPourUnCarton.java" ]; then
+        if [ $i != jeux/QuestionPourUnCarton.java ]; then
             echo $i
             javac -d classes $i
         fi
     done
-    java -cp classes hub/Hub noJavaFx
+    java -cp classes Hub noJavaFx
 fi
 
 read -p 'Clear? (y/n) ' cl
