@@ -7,7 +7,8 @@ else
     #javac exclude jeux/QuestionPourUnCarton.java -d classes */*.java
     for i in */*.java; do
         if [ $i != "jeux/QuestionPourUnCarton.java" ]; then
-            javac -d classes "$i"
+            echo $i
+            javac -d classes $i
         fi
     done
     java -cp classes Hub noJavaFx
