@@ -4,8 +4,8 @@ if [ -e $JAVA_HOME/jre/lib/javafx.properties ]; then
     javac -d classes */*.java
     java -cp classes Hub
 else
-    javac -d classes */*.java excludesfile QuestionPourUnCarton.java
-    java -cp classes exclude noJavaFx Hub
+    javac -d classes */*.java excludesfile jeux/QuestionPourUnCarton.java
+    java -cp classes Hub noJavaFx
 fi
 
 read -p 'Clear? (y/n) ' cl
