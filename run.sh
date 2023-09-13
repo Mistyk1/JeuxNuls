@@ -11,7 +11,7 @@ else
             javac -d classes $i
         fi
     done
-    java -cp classes Hub noJavaFx
+    java -cp classes hub/Hub noJavaFx
 fi
 
 read -p 'Clear? (y/n) ' cl
