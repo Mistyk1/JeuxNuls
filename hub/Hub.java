@@ -3,6 +3,9 @@ package hub;
 import jeux.*;
 import util.Color;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.File;
@@ -75,6 +78,7 @@ public class Hub{
     }
 
     public static void main(String[] args){
+        List<String> arguments = Arrays.asList(args);
         boolean idea = (System.getProperty("user.name").equals("maxime.blot.etu") || System.getProperty("user.name").equals("blotm")) && (args.length != 0 && args[0].equals("idea"));
         char choix = 'h';
         String temp;
@@ -86,7 +90,11 @@ public class Hub{
                 System.out.println("[3] " + Color.RED + "Puissance 4" + Color.RESET);
                 System.out.println("[4] " + Color.RED + "2048" + Color.RESET);
                 System.out.println("[5] " + Color.RED + "Tetros" + Color.RESET);
-                System.out.println("[6] " + Color.RED + "Question pour un Carton" + Color.RESET);
+                if (arguments.contains("noJavaFx")){
+                    System.out.println("[6] " + Color.RED + "Question pour un Carton" + Color.RESET);
+                } else {
+                    System.out.println("[6] Question pour un Carton");
+                }
                 if (idea){
                     System.out.println("[/] " + Color.GREEN + "Voir idées" + Color.RESET);
                 } else {
@@ -130,15 +138,14 @@ public class Hub{
                 System.out.println("Tetros en cours de construction");
                 choix = '#';
             } else if (choix == '6'){
-                try {
-                    if (javafx.util.Builder.class != null){
-                        //choix = jouer(QuestionPourUnCarton.class);
-                        System.out.println("Question pour un Carton en cours de construction");
-                    }
-                } catch (Exception e){
+                if (arguments.contains("noJavaFx")){
                     System.out.println(Color.RED + "Javafx est nécessaire pour jouer à Question pour un Carton" + Color.RESET);
+                    choix = '#';
+                } else {
+                    //choix = jouer(QuestionPourUnCarton.class);
+                    System.out.println("Question pour un Carton en cours de construction");
+                    choix = '#';
                 }
-                choix = '#';
             }
         }
     }
