@@ -1,9 +1,10 @@
 package jeux;
 
-import hub.Color;
-
 import java.util.Random;
 import java.util.Scanner;
+
+import util.Color;
+
 import java.util.ArrayList;
 
 public class DZQH {

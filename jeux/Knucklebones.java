@@ -3,7 +3,7 @@ package jeux;
 import java.util.Random;
 import java.util.Scanner;
 
-import hub.Color;
+import util.Color;
 
 public class Knucklebones{
 

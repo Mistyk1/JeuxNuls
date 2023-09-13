@@ -1,6 +1,7 @@
 package hub;
 
 import jeux.*;
+import util.Color;
 
 import java.util.Scanner;
 import java.io.FileWriter;

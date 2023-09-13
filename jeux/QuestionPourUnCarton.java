@@ -11,8 +11,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
-import hub.Color;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,12 +21,15 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import util.Color;
+import util.MultiThreading;
 
 public class QuestionPourUnCarton {
     private static final Random rand = new Random();
     private static final Scanner sc = new Scanner(System.in, "UTF-8");
     private static final String os = System.getProperty("os.name");
     private static final String presentateur = Color.YELLOW + "Présentateur" + Color.RESET;
+    private static String nom;
 
     public QuestionPourUnCarton(){
         QuestionPourUnCarton.main(null);
@@ -82,11 +83,11 @@ public class QuestionPourUnCarton {
                   "U[7] = 16X\u2074-12X\u00B2+1", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 64X\u2077-112X\u2075+56X\u00B3-7X", "U[7] = 256X\u2078-448X\u2076+240X\u2074-40X\u00B2+1", "Aucune des r\u00E9ponses du dessus",
                   "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "PARDON?????", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X",
                   "U[7] = 16X\u2074-12X\u00B2+1", "U[7] = 128X\u2077-192X\u2075+80X\u00B3-8X", "U[7] = 64X\u2077-112X\u2075+56X\u00B3-7X", "U[7] = 256X\u2078-448X\u2076+240X\u2074-40X\u00B2+1", "Aucune de ces réponses ne sont bonnes", 
-                  "C'est simple pourtant...", 
+                  "Eeeet il se trouve que seul Albert et " + nom + " n'a pas trouvé la réponse, bien que ce soit une connaissance basique.", 
                   "Eeeet il se trouve que seul Albert n'a pas trouvé la réponse, bien que ce soit une connaissance basique.", 
-                  "C'est simple pourtant...", 
-                  "C'est simple pourtant...", 
-                  "C'est simple pourtant...", 2);
+                  "Eeeet il se trouve que seul Albert et " + nom + " n'a pas trouvé la réponse, bien que ce soit une connaissance basique.", 
+                  "Eeeet il se trouve que seul Albert et " + nom + " n'a pas trouvé la réponse, bien que ce soit une connaissance basique.", 
+                  "Eeeet il se trouve que seul Albert et " + nom + " n'a pas trouvé la réponse, bien que ce soit une connaissance basique.", 2);
 
         private String intitule;
         private String[] choix;
@@ -144,30 +145,6 @@ public class QuestionPourUnCarton {
     }
     //-----------------------
 
-
-
-
-
-    //---- Classe MultiThreading -----
-    public static class MultiThreading{
-        public static void execute(Consumer<?>... methods){
-            ExecutorService executor = Executors.newCachedThreadPool();
-            try{
-                for (Consumer<?> m : methods){
-                    executor.execute(() -> m.accept(null));
-                }
-                executor.shutdown();
-            } catch (Exception e){
-                System.out.println(Color.RED + "Erreur du multithreading (" + e.getMessage() + ")" + Color.RESET);
-                executor.shutdown();
-            }
-        }
-    }
-    //---- Utilisation de MultiThreading ----
-    //MultiThreading.execute(e -> methode1(), e -> methode2());
-    //MultiThreading.execute(e -> methode3());
-    //---------------------------------------
-    
 
 
 
@@ -422,7 +399,7 @@ public class QuestionPourUnCarton {
         MultiThreading.execute(e -> Window.main());
 
         System.out.print("Entrez votre nom svp: ");
-        String nom = sc.nextLine();
+        nom = sc.nextLine();
 
         clearScreen();
 
@@ -434,9 +411,12 @@ public class QuestionPourUnCarton {
             sleep(5);
             ecrire("ratio");
             sleep(1);
-            nom = "Connard";
+            nom = "Catin";
         } else if (nom.equals("Presentateur")){
             cheminPresentateur();
+            return ;
+        } else if (nom.equals("amogus") || nom.equals("among us")){
+            cheminSus();
             return ;
         }
         
@@ -460,8 +440,6 @@ public class QuestionPourUnCarton {
 
 
         // Présentations
-
-        MultiThreading.execute(e -> Window.main());
 
 
         String randomName = "";
@@ -488,6 +466,7 @@ public class QuestionPourUnCarton {
 
         // Question 1
 
+
         ecrireNoEnter(Color.WHITE_BOLD + "Question 1\n" + Color.RESET, 0.5);
         vies = poserQuestion(questions, vies, nom);
 
@@ -495,6 +474,7 @@ public class QuestionPourUnCarton {
             finalSpeech(nom);
             return ;
         }
+
 
         // Transition 1
 
@@ -574,5 +554,15 @@ public class QuestionPourUnCarton {
                     break;
             }
         }
+    }
+
+    public static void cheminSus(){
+        clearScreen();
+
+        ecrire(presentateur, "SUS");
+        ecrire(presentateur, "SUS SUS AMONGUS");
+        ecrire(presentateur, "SUSSY SUS AMONG US");
+
+        return ;
     }
 }

@@ -1,4 +1,4 @@
-package hub;
+package util;
 
 public enum Color {
     //Suppression de couleurs
