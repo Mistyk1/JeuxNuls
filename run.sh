@@ -4,7 +4,8 @@ if [ -e $JAVA_HOME/jre/lib/javafx.properties ]; then
     javac -d classes */*.java
     java -cp classes Hub
 else
-    javac --excludesfile jeux/QuestionPourUnCarton.java -d classes */*.java
+    #javac exclude jeux/QuestionPourUnCarton.java -d classes */*.java
+    for %%i in (*.java) do if /i not "%%~i" == "QuestionPourUnCarton.java" javac "%%~i"
     java -cp classes Hub noJavaFx
 fi
 
