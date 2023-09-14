@@ -54,7 +54,7 @@ public class QuestionPourUnCarton {
                   "Oui, c'est 6!", 
                   "12?", 
                   "-493,45?! Comment en êtes vous venu à ce résultat?!", 
-                  "Quoi, mais... C'est la r\u00E9ponse \u00E0 la question pr\u00E9c\u00E9dente...", 
+                  "Quoi, mais... C'est la r\u00E9ponse \u00E0 la une autre question...", 
                   "Vous venez littéralement de répondre avec un nombre", 1),
         ComposantFer("Quel est le composant principal du fer?", 
                   "L'élément atomique n°26", "De la mystérieuse poudre blanche (de la farine)", "Votre m\u00E8re", "Le néant absolu", "N'importe quoi sauf du fer",
@@ -74,42 +74,42 @@ public class QuestionPourUnCarton {
                   "Personne n'a bon.", 
                   "Personne n'a bon.", 
                   "o)_o)'", 5),
-        Truc1("#", 
-                  "#", "#", "#", "#", "#",
-                  "#", "#", "#", "#", "#", "#", "#", "#",
-                  "#", "#", "#", "#", "#", 
-                  "#", 
-                  "#", 
-                  "#", 
-                  "#", 
-                  "#", 5),
-        Truc2("#", 
-                  "#", "#", "#", "#", "#",
-                  "#", "#", "#", "#", "#", "#", "#", "#",
-                  "#", "#", "#", "#", "#", 
-                  "#", 
-                  "#", 
-                  "#", 
-                  "#", 
-                  "#", 5),
-        Truc3("#", 
-                  "#", "#", "#", "#", "#",
-                  "#", "#", "#", "#", "#", "#", "#", "#",
-                  "#", "#", "#", "#", "#", 
-                  "#", 
-                  "#", 
-                  "#", 
-                  "#", 
-                  "#", 5),
-        Truc4("#", 
-                  "#", "#", "#", "#", "#",
-                  "#", "#", "#", "#", "#", "#", "#", "#",
-                  "#", "#", "#", "#", "#", 
-                  "#", 
-                  "#", 
-                  "#", 
-                  "#", 
-                  "#", 5),
+        Cheval("Quelle est la couleur du cheval blanc d'Henry IV?", 
+                  "Vert", "Blanc", "Marron-Rouge-Bleu", "Gris", "Transparent",
+                  "Gris?", "Il doit forcément être blanc.", "Bah blanc", "euuuuuuu gri", Color.WHITE_BOLD + "*bruits incompréhensibles de robot*" + Color.RESET, "Transparent!", "ooga ooga", "Vert.",
+                  "Vert", "Blanc", "Marron-Rouge-Bleu", "Gris", "Transparent", 
+                  "Il est radioactif ce cheval?", 
+                  "Non :)", 
+                  "C'est quel genre de couleur ça?", 
+                  "Non, il n'y a pas de poussière sur le cheval.", 
+                  "Il est vrai que j'aime bien faire des chevaux en verre lors de mes heures perdues...", 5),
+        Oui("Oui?", 
+                  "je sais pas haha", "stiti", "fi", "Oui", "Non",
+                  "De quoi oui?", "Bien évidemment.", "Mais ce n'est même pas une question...", "tg", "TRUE", "-STITI HAHAHAHA CHUI TROP DROLE", "booga", "Non. Pas le moins du monde. Aucunement. Absolument pas. Que nenni. 0%. Jamais.",
+                  "je euh je je euh je je je euh je euh euh", "-stiti haha :)", "-fi haha :)", "Oui.", "Non.", 
+                  "-_-", 
+                  ":|", 
+                  ":|", 
+                  ":)", 
+                  "-bril", 4),
+        Robot("Suis-je un robot?", 
+                  "Probablement", "Oui", "Non", "Je ne sais pas", "Ananas",
+                  "Oui?", "Machine?", "Vous? Un robot? C'est trop complexe à faire un robot de votre envergure.", "euuhh jsp", Color.WHITE_BOLD + "*émet des bruits étranges*" + Color.RESET, "Un robot? Non?", "ooga booga", "Les robots n'existent pas.",
+                  "Probablement je pense", "J'en suis sûr.", "Impossible.", "Alors là, bonne question", "Un ananas", 
+                  "Comment ", 
+                  "Vous êtes vraiment sûr?", 
+                  "Ah, c'est probable.", 
+                  "Je ne sais pas du tout si j'en suis un! :D", 
+                  "mmmmh miam", 4),
+        PommeMasseSoleil("Pierre a 6 pommes. Il en donne 2 à Quentin et 3 à Marc. Quelle est la masse du soleil?", 
+                  "1,98892×10^30 kilogrammes", "1 pomme", "2,98468×10^29 kilogrammes", "1,98892×10^33 kilogrammes", "6 grammes",
+                  "Euuuh...", "Pardon? Vous insinuez que la Terre tourne autour du soleil?", "1,98892×10^30 kilogrammes", "euuuuh chépa 6 grames?", "ERREUR DE CALCUL", "O_O", "ooga oog booga", "Pierre a 1 pomme.",
+                  "1,98892×10^30 kilogrammes évidemment!", "Pierre a 1 pomme.", "2,98468×10^29 kilogrammes évidemment!", "1,98892×10^33 kilogrammes évidemment!", "6 grammes évidemment!", 
+                  "Eeet " + nom + ", Nicolas et bumba ont raison!", 
+                  "En effet Pierre a 1 pomme à la fin mais ce n'est pas la question posée.", 
+                  "Eeet Nicolas et bumba ont raison!", 
+                  "Eeet Nicolas et bumba ont raison!", 
+                  "Vous vous rendez compte du danger dans lequel nous serions si le soleil fesait 6 grammes?!", 1),
         Truc5("#", 
                   "#", "#", "#", "#", "#",
                   "#", "#", "#", "#", "#", "#", "#", "#",
@@ -396,12 +396,12 @@ public class QuestionPourUnCarton {
             if (i < 8){
                 ecrireNoEnter(Question.noms[i], q.getReponse(i), 0.5);
             } else if (i == 8){
-                ecrireNoEnter(nom, q.getReponseJoueur(choix), 0.5);
+                ecrireNoEnter(nom, q.getReponseJoueur(choix-1), 0.5);
             } else {
                 ecrireNoEnter(Question.noms[i-1], q.getReponse(i-1), 0.5);
             }
         }
-        ecrire(presentateur, q.getReponsesPresentateur()[choix]);
+        ecrire(presentateur, q.getReponsesPresentateur()[choix-1]);
         return vies;
     }
 
@@ -511,17 +511,33 @@ public class QuestionPourUnCarton {
 
         ecrireNoEnter(Color.WHITE_BOLD + "Question 1\n" + Color.RESET, 0.5);
         vies = poserQuestion(questions, vies, nom);
-
         if (isFinished(vies)){
             finalSpeech(nom);
             return ;
         }
 
 
-        // Transition 1
+        // Transition
 
 
-        ecrire(presentateur, "Voici donc cette première étape de passé...");
+        ecrire(presentateur, "Que d'engouement de la part du public pour cette première question! Je peut sentir leur exitation à travers leurs cris!");
+		ecrire(presentateur, "Alalah, je sens que ce show va vraiment être incroy-");
+		ecrire("Nicolas", "Excusez moi monsieur Présentateur? Je me demandais pourquoi-");
+		ecrire(presentateur, "Selon le contrat d'inscription que vous avez signé mon cher Nicolas, vous n'êtes pas autorisé à poser de question. Ici c'est moi qui les pose.");
+		ecrire("Nicolas", "Autant pour moi...");
+		ecrire(presentateur, "Je suis même autorisé à retirer une vie dans ce cas précis, ce que je vais faire de suite :)");
+		ecrire("Nicolas", ":(");
+		ecrire(presentateur, "Bref, passons de suite à la question suivante!");
+
+        // Question 2
+
+
+        ecrireNoEnter(Color.WHITE_BOLD + "Question 2\n" + Color.RESET, 0.5);
+        vies = poserQuestion(questions, vies, nom);
+        if (isFinished(vies)){
+            finalSpeech(nom);
+            return ;
+        }
     }
 
     public static void cheminPresentateur(){
