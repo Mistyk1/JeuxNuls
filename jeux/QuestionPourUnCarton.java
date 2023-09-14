@@ -529,6 +529,7 @@ public class QuestionPourUnCarton {
 		ecrire("Nicolas", ":(");
 		ecrire(presentateur, "Bref, passons de suite à la question suivante!");
 
+
         // Question 2
 
 
@@ -538,7 +539,129 @@ public class QuestionPourUnCarton {
             finalSpeech(nom);
             return ;
         }
+
+
+        // Transition
+
+
+        ecrire(presentateur, "Après cette question d'une complexité exceptionnellement grande, laissez moi vous raconter une anecdote de ma vie.");
+        ecrire(presentateur, "C'était il y a 35 ans, j'était à l'école primaire avec mon meilleur ami: Chanteur.");
+
+
+        // Flashback 1
+
+
+		ecrireNoEnter(Color.WHITE_BOLD + "Il y a 35 ans..." + Color.RESET, 0.5);
+        ecrire(Color.YELLOW + "Présentateur (enfant)" + Color.RESET, "Bonjour toi. Tu fait quoi?");
+        ecrire("Chanteur (enfant)", "Je donne un super concert à tout ces cailloux!");
+        ecrire(Color.YELLOW + "Présentateur (enfant)" + Color.RESET, "Waaa, c'est trop bien! Je peux jouer avec toi?");
+        ecrire("Chanteur (enfant)", "Désolé, mais tout les tickets sont pris. Tu peut te mettre dans la poubelle si tu veut.");
+        ecrire(Color.YELLOW + "Présentateur (enfant)" + Color.RESET, "Trop bien! " + Color.WHITE_BOLD + "*plonge dans la poubelle et regarde Chanteur donner un concert*" + Color.RESET);
+        ecrireNoEnter(Color.WHITE_BOLD + "15 minutes plus tard..." + Color.RESET, 0.75);
+        ecrire("Chanteur (enfant)", "Alors, qu'est ce que tu en dit?");
+        ecrire(Color.YELLOW + "Présentateur (enfant)" + Color.RESET, "Tu a chanté les deux mêmes notes en boucle pendant 15 minutes mais sinon j'ai adoré! :D");
+        ecrire("Chanteur (enfant)", "Dit, tu veut devenir mon copain?");
+        ecrire(Color.YELLOW + "Présentateur (enfant)" + Color.RESET, "OUIIIIIIIIIII *O*");
+        ecrireNoEnter(Color.WHITE_BOLD + "Et nous sommes de retour au présent." + Color.RESET, 0.5);
+
+
+        // Fin du flashback
+
+
+        ecrire(presentateur, "Et c'est ainsi que je suis fait mon tout premier ami.");
+        ecrire(presentateur, "J'espère que vous avez aimés cette anecdote, car elle n'a strictement rien à voir avec le show.");
+        ecrire(presentateur, "Sur toute cette émotion, la troisième question!");
+
+
+        // Question 3
+
+
+        ecrireNoEnter(Color.WHITE_BOLD + "Question 3\n" + Color.RESET, 0.5);
+        vies = poserQuestion(questions, vies, nom);
+        if (isFinished(vies)){
+            finalSpeech(nom);
+            return ;
+        }
+
+
+        // Transition
+
+
+        ecrire(presentateur, "Passons. J'ai une petite faim d'un coup, pas vous?");
+        ecrireNoEnter("Nicolas", "Ah tiens, moi au-", 0);
+        ecrire(presentateur, "Non.");
+        ecrire(presentateur, "Et vous " + nom + ", vous avez faim?");
+		System.out.print(nom + ": "); sc.next(); System.out.println();
+        ecrire(presentateur, "Il faut que je vous avoue quelque chose " + nom + ". La vérité est que je ne vous ait pas écouté.");
+        ecrire(presentateur, "Sur ce, je vais aller me chercher un Twix™. " + Color.WHITE_BOLD + "*Se lève de sa chaise et va chercher un Twix*" + Color.RESET);
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrire(presentateur, "Mmmh, ce Twix fut étonnamment bon.");
+        ecrire(presentateur, "Alors, la quatrième question...");
+        ecrire(presentateur, "Oh zut, j'ai fait tomber mon deuxième Twix™ dessus!");
+        ecrire(presentateur, "Tant pis, je vais faire ma propre quatrième question.");
+        ecrire(presentateur, "Donc...");
+
+
+        // Question 4
+
+
+        ecrireNoEnter(Color.WHITE_BOLD + "Question 4\n" + Color.RESET, 0.5);
+        vies = poserQuestion(questions, vies, nom);
+        if (isFinished(vies)){
+            finalSpeech(nom);
+            return ;
+        }
+
+
+        // Transition
+
+
+        ecrire(presentateur, "Oh regardez, une superbe INTERLUDE SPÉCIALE!");
+
+		
+		// Interlude spéciale
+
+		
+		ecrireNoEnter(Color.WHITE_BOLD + "INTERLUDE SPÉCIALE" + Color.RESET, 0.5);
+        ecrire(presentateur, "Durant cette interlude spéciale vous avez tous une chance de regagner une vie!");
+        ecrire(presentateur, "Mais pour cela vous devez répondre à une question...");
+        ecrire(presentateur, "De quelle couleur est ma cravate?\n> ");
+        ecrire("Brigitte", "Bleu?");
+        ecrire("Gabriel", "");
+        ecrire("Nicolas n'a pas trouvé la réponse.");
+        ecrire("Jules", "");
+        ecrire("V-43.7", "");
+        System.out.print(nom + ": "); sc.next(); System.out.println();
+        ecrire("Mathéo", "");
+        ecrire(randomName, "");
+        ecrire("bumba", "");
+        ecrire("Albert", "Toute les couleurs du spectre en même temps!");
+        ecrire(presentateur, "Et bien il se trouve que vous avez tous faux. Je n'ai pas de cravate.");
+        ecrireNoEnter(Color.WHITE_BOLD + "FIN DE L'INTERLUDE SPÉCIALE" + Color.RESET, 0.5);
+
+
+        // Fin de l'interlude spéciale
+
+        
+        ecrire(presentateur, "Quel dommage que personne n'ait réussi à regagner de vies!");
     }
+
+
+
+
+
+    //----------------------------------------------------------------------------------------------------------
+
+
+
+
 
     public static void cheminPresentateur(){
         clearScreen();
