@@ -1,14 +1,12 @@
 #!/bin/bash
 
+if [ ! -d ./classes ]; then
+    source ./.maj.sh
+fi
+
 if [ -e $JAVA_HOME/jre/lib/javafx.properties ]; then
-    javac -d classes */*.java
     java -cp classes Hub
 else
-    for i in */*.java; do
-        if [ $i != "jeux/QuestionPourUnCarton.java" ]; then
-            javac -d classes $i
-        fi
-    done
     java -cp classes hub/Hub noJavaFx
 fi
 

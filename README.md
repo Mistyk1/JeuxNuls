@@ -1,6 +1,6 @@
 # JeuxNuls
 
-Ceci est une collection de mes jeux tout pétés développés en Java durant mon temps libre (il y a aussi un fichier en bash mdr)
+Ceci est une collection de mes jeux tout pétés développés en Java durant mon temps libre (il y a aussi deux fichiers en bash mdr)
 
 J'ai tout fait sous Linux donc si vous êtes dessus ça devrait fonctionner, sinon si vous êtes sous Windows je ne sais pas du tout si ça fonctionne (les utilisateurs de Mac peuvent aller brûler en enfer)
 
