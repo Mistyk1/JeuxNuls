@@ -7,9 +7,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.function.Consumer;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -77,6 +74,51 @@ public class QuestionPourUnCarton {
                   "Personne n'a bon.", 
                   "Personne n'a bon.", 
                   "o)_o)'", 5),
+        Truc1("#", 
+                  "#", "#", "#", "#", "#",
+                  "#", "#", "#", "#", "#", "#", "#", "#",
+                  "#", "#", "#", "#", "#", 
+                  "#", 
+                  "#", 
+                  "#", 
+                  "#", 
+                  "#", 5),
+        Truc2("#", 
+                  "#", "#", "#", "#", "#",
+                  "#", "#", "#", "#", "#", "#", "#", "#",
+                  "#", "#", "#", "#", "#", 
+                  "#", 
+                  "#", 
+                  "#", 
+                  "#", 
+                  "#", 5),
+        Truc3("#", 
+                  "#", "#", "#", "#", "#",
+                  "#", "#", "#", "#", "#", "#", "#", "#",
+                  "#", "#", "#", "#", "#", 
+                  "#", 
+                  "#", 
+                  "#", 
+                  "#", 
+                  "#", 5),
+        Truc4("#", 
+                  "#", "#", "#", "#", "#",
+                  "#", "#", "#", "#", "#", "#", "#", "#",
+                  "#", "#", "#", "#", "#", 
+                  "#", 
+                  "#", 
+                  "#", 
+                  "#", 
+                  "#", 5),
+        Truc5("#", 
+                  "#", "#", "#", "#", "#",
+                  "#", "#", "#", "#", "#", "#", "#", "#",
+                  "#", "#", "#", "#", "#", 
+                  "#", 
+                  "#", 
+                  "#", 
+                  "#", 
+                  "#", 5),
         Polynome("Nous savons tous que les polyn\u00F4mes de Tchebychev de seconde esp\u00E8ce sont d\u00E9finis par cette relation de r\u00E9currence:\n" + //
                 "U[n+1] = 2XU[n] - U[n-1], Pour tout n >= 1 avec U[0] = 1 et U[1] = 2X\n" + //
                 "Quel polyn\u00F4me de Tchebychev de seconde esp\u00E8ce correspond \u00E0 la 7\u00E8me occurence?", 
