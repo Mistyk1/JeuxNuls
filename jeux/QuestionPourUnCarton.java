@@ -433,6 +433,16 @@ public class QuestionPourUnCarton {
         ecrire(Color.RED_BOLD + "\nMAUVAISE FIN" + Color.RESET, 1);
     }
 
+
+
+
+
+    //----------------------------------------------------------------------------------------------------------
+
+
+
+
+
     public static void main(String[] args) {
         com.sun.javafx.application.PlatformImpl.startup(() -> {});
 
@@ -626,7 +636,7 @@ public class QuestionPourUnCarton {
         ecrire(presentateur, "Oh regardez, une superbe INTERLUDE SPÉCIALE!");
 
 		
-		// Interlude spéciale
+		// Interlude spéciale 1
 
 		
 		ecrireNoEnter(Color.WHITE_BOLD + "INTERLUDE SPÉCIALE" + Color.RESET, 0.5);
@@ -634,23 +644,77 @@ public class QuestionPourUnCarton {
         ecrire(presentateur, "Mais pour cela vous devez répondre à une question...");
         ecrire(presentateur, "De quelle couleur est ma cravate?\n> ");
         ecrire("Brigitte", "Bleu?");
-        ecrire("Gabriel", "");
+        ecrire("Gabriel", "Vert!");
         ecrire("Nicolas n'a pas trouvé la réponse.");
-        ecrire("Jules", "");
-        ecrire("V-43.7", "");
+        ecrire("Jules", "rouj");
+        ecrire("V-43.7", "#AO37DF");
         System.out.print(nom + ": "); sc.next(); System.out.println();
-        ecrire("Mathéo", "");
-        ecrire(randomName, "");
-        ecrire("bumba", "");
+        ecrire("Mathéo", "Mathéo n'a pas trouvé la réponse.");
+        ecrire(randomName, randomText());
+        ecrire("bumba", "ooga ooga");
         ecrire("Albert", "Toute les couleurs du spectre en même temps!");
         ecrire(presentateur, "Et bien il se trouve que vous avez tous faux. Je n'ai pas de cravate.");
         ecrireNoEnter(Color.WHITE_BOLD + "FIN DE L'INTERLUDE SPÉCIALE" + Color.RESET, 0.5);
 
 
-        // Fin de l'interlude spéciale
+        // Transition
 
         
         ecrire(presentateur, "Quel dommage que personne n'ait réussi à regagner de vies!");
+        ecrireNoEnter(presentateur, "...", 1);
+        ecrire(presentateur, "Quelque chose ne va pas...");
+        ecrire(presentateur, Color.WHITE_BOLD + "*regarde sa montre*" + Color.RESET);
+        ecrire(presentateur, "Oh non!");
+        ecrire(presentateur, "Le jour est arrivé!");
+        ecrireNoEnter(presentateur, "Je vais mourir d'un arrêt cardiaque d'ici 3...", 1);
+        ecrireNoEnter(presentateur, "2...", 1);
+        ecrireNoEnter(presentateur, "1...", 1);
+        ecrire(presentateur, Color.WHITE_BOLD + "*attend*" + Color.RESET);
+        ecrire(presentateur, Color.WHITE_BOLD + "*attend à nouveau*" + Color.RESET);
+        ecrire(presentateur, Color.WHITE_BOLD + "*sort un calendrier et le regarde*" + Color.RESET);
+        ecrire(presentateur, "Autant pour moi, ce jour arrivera la semaine prochaine.");
+        ecrire(presentateur, "Désormais, la question 5!");
+
+
+        // Question 5
+
+
+        ecrireNoEnter(Color.WHITE_BOLD + "Question 5\n" + Color.RESET, 0.5);
+        vies = poserQuestion(questions, vies, nom);
+        if (isFinished(vies)){
+            finalSpeech(nom);
+            return ;
+        }
+
+
+        // Transition
+
+
+        ecrire(presentateur, "");
+
+
+        // Question 6
+
+
+        ecrireNoEnter(Color.WHITE_BOLD + "Question 6\n" + Color.RESET, 0.5);
+        vies = poserQuestion(questions, vies, nom);
+        if (isFinished(vies)){
+            finalSpeech(nom);
+            return ;
+        }
+
+
+        // Transition
+
+
+        ecrire(presentateur, "");
+
+        if (choixChemin("Rester sur le plateau", "Sortir du plateau") == 1){
+            cheminDehors();
+            return ;
+        }
+        
+        ecrire(presentateur, "");
     }
 
 
@@ -666,22 +730,22 @@ public class QuestionPourUnCarton {
     public static void cheminPresentateur(){
         clearScreen();
 
-        ecrire(presentateur, "...");
-        ecrire(presentateur, "...");
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
         ecrire(presentateur, Color.WHITE_BOLD + "*regarde l'heure*" + Color.RESET);
-        ecrire(presentateur, "...");
-        ecrire(presentateur, "...");
-        ecrire(presentateur, "...");
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
         ecrire(presentateur, Color.WHITE_BOLD + "*regarde à nouveau l'heure*" + Color.RESET);
-        ecrire(presentateur, "...");
-        ecrire(presentateur, "...");
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
         ecrire(presentateur, "Mais ou est-il?");
         ecrire(presentateur, "Il est sensé être là, et le show aurait même déjà commencé!");
         ecrire(presentateur, Color.WHITE_BOLD + "*regarde encore l'heure*" + Color.RESET);
-        ecrire(presentateur, "...");
-        ecrire(presentateur, "...");
-        ecrire(presentateur, "...");
-        ecrire(presentateur, "...");
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
         ecrire(presentateur, Color.WHITE_BOLD + "*regarde une dernière fois l'heure*" + Color.RESET);
         ecrire(presentateur, "Bon, je vais essayer quelque chose.\n", 2);
         System.out.print(Color.RED + "DEBUG MODE INITIALISED\n\n" + Color.RESET);
@@ -745,5 +809,9 @@ public class QuestionPourUnCarton {
         ecrire(presentateur, "SUSSY SUS AMONG US");
 
         return ;
+    }
+    
+    public static void cheminDehors(){
+        //
     }
 }
