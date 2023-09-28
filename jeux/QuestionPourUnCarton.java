@@ -67,7 +67,7 @@ public class QuestionPourUnCarton {
                   "Il n'y a pas de fer dans du fer? Est-ce que vous r\u00E9fl\u00E9chissez?", 1),
         Femme("Pourquoi ma femme m'a quitt\u00E9?", 
                   "Car je suis parti achet\u00E9 du lait", "Car je suis un mari extr\u00EAmement infid\u00E8le", "Car je ne fesais rien pour faire avancer le mariage", "Car j'ai jet\u00E9 le chat par la fen\u00EAtre", "Toute les r\u00E9ponses du dessus",
-                  "...", "???", "Vous êtes infidèle?", "t'es juste un enculé toi en fait", Color.WHITE_BOLD + "*de la fumée commence à sortir de V-43.7*" + Color.RESET, "Vous...", "", "...",
+                  "...", "???", "Vous êtes infidèle?", "t'es juste un ▉▉▉▉▉▉ toi en fait", Color.WHITE_BOLD + "*de la fumée commence à sortir de V-43.7*" + Color.RESET, "Vous...", "", "...",
                   "Vous êtes... parti acheter du lait?", "Vous \u00EAtes... infidèle?", "Vous \u00EAtes... un paresseux?", "Vous \u00EAtes... un homme extrêmement cruel?", "Vous \u00EAtes... la pire ordure n'ayant jamais existé?", 
                   "Personne n'a bon.", 
                   "Personne n'a bon.", 
@@ -477,6 +477,10 @@ public class QuestionPourUnCarton {
 
         clearScreen();
 
+        ecrireNoEnter("Pour des raisons qui devrait se comprendrent, les gros mots sont censuré ▉▉▉▉▉▉ SA MÈRE LA GROSSE ▉▉▉▉ SA RACE DE ▉▉▉▉▉ ok ça fonctionne", 3);
+
+        clearScreen();
+
 
         // Introduction
 
@@ -670,7 +674,7 @@ public class QuestionPourUnCarton {
         ecrireNoEnter(presentateur, "2...", 1);
         ecrireNoEnter(presentateur, "1...", 1);
         ecrire(presentateur, Color.WHITE_BOLD + "*attend*" + Color.RESET);
-        ecrire(presentateur, Color.WHITE_BOLD + "*attend à nouveau*" + Color.RESET);
+        ecrire(presentateur, Color.WHITE_BOLD + "*se questionne*" + Color.RESET);
         ecrire(presentateur, Color.WHITE_BOLD + "*sort un calendrier et le regarde*" + Color.RESET);
         ecrire(presentateur, "Autant pour moi, ce jour arrivera la semaine prochaine.");
         ecrire(presentateur, "Désormais, la question 5!");
@@ -690,7 +694,30 @@ public class QuestionPourUnCarton {
         // Transition
 
 
-        ecrire(presentateur, "");
+        ecrire(presentateur, "ATTENDEZ UNE MINUTE!");
+        ecrireNoEnter("...", 1);
+        ecrireNoEnter("...", 1);
+        ecrire(presentateur, "Quelqu'un arrive...");
+        ecrire("Chanteur", "BONSOIR TOUT LE MONDE!!!");
+        ecrire(presentateur, "Chanteur!");
+        ecrire(Color.WHITE_BOLD + "*Toute la foule se met à crier*" + Color.RESET);
+        ecrire("Chanteur", Color.WHITE_BOLD + "*Prend une guitare*" + Color.RESET);
+        ecrire(Color.WHITE_BOLD + "*Toute la foule se tait*" + Color.RESET);
+        ecrireNoEnter("...", 1);
+        //MediaPlayer soloEpique = sound("assets/questionPourUnCarton/solo_épique.wav", 20);
+        //soloEpique.play()
+        ecrireNoEnter("Chanteur", Color.WHITE_BOLD + "*SOLO DE GUITARE EPIQUE*" + Color.RESET, 5);
+        ecrire(presentateur, "Viens ici espèce de ▉▉▉▉▉▉▉▉!");
+        ecrire(Color.WHITE_BOLD + "*Grosse poignée de main bien virile*" + Color.RESET);
+        ecrire("Chanteur", "Alors tu devient quoi vieux ▉▉▉▉▉▉?");
+        ecrire(presentateur, "Pas grand chose, j'ai percé à la télé et maintenant je fait un show télévisé.");
+        ecrire("Chanteur", "▉▉▉▉▉▉, pas mal.");
+        ecrire(presentateur, "Par contre fait gaffe aux ▉▉▉▉▉▉ que tu dit, ce show est Family Friendly.");
+        ecrire("Chanteur", "▉▉▉▉▉ désolé.");
+        ecrire(presentateur, "Bon on a peut être pas le temps pour les retrouvailles, il faut continuer le show.");
+        ecrire("Chanteur", "Ok pas de soucis.");
+        ecrire(presentateur, "Du coup euuuuuh... On en était ou déjà...");
+        ecrire(presentateur, "Oui c'est vrai question 6!");
 
 
         // Question 6
