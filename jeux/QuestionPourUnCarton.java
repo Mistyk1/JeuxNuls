@@ -734,7 +734,10 @@ public class QuestionPourUnCarton {
         // Transition
 
 
-        ecrire(presentateur, "");
+        ecrire(presentateur, "Aaaaaaah, ce fut une bien bonne question :D");
+        ecrire("Chanteur", "Dit moi, j'aurais une question Présentateur.");
+        ecrire("Chanteur", "Serais-ce possible d'emporter avec moi celui-là?" + Color.WHITE_BOLD + "*pointe " + nom + " du doigt*" + Color.RESET);
+        ecrire(presentateur, "Bonne question, c'est à lui qu'il faut demander (même si techniquement je peux toujours choisir car selon le contrat d'inscription il m'appartient)");
 
         if (choixChemin("Rester sur le plateau", "Sortir du plateau") == 1){
             cheminDehors();
