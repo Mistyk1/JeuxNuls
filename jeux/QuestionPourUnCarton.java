@@ -1,6 +1,7 @@
 package jeux;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
@@ -448,7 +449,7 @@ public class QuestionPourUnCarton {
 
         clearScreen();
 
-        MultiThreading.execute(e -> Window.main());
+        //MultiThreading.execute(e -> Window.main());
 
         System.out.print("Entrez votre nom svp: ");
         nom = sc.nextLine();
@@ -477,7 +478,7 @@ public class QuestionPourUnCarton {
 
         clearScreen();
 
-        ecrireNoEnter("Pour des raisons qui devrait se comprendrent, les gros mots sont censuré ▉▉▉▉▉▉ SA MÈRE LA GROSSE ▉▉▉▉ SA RACE DE ▉▉▉▉▉ ok ça fonctionne", 3);
+        ecrireNoEnter("Pour des raisons qui devrait se comprendrent, les gros mots sont censuré ██████ SA MÈRE LA GROSSE ████ SA RACE DE █████ ok ça fonctionne", 3);
 
         clearScreen();
 
@@ -707,13 +708,13 @@ public class QuestionPourUnCarton {
         //MediaPlayer soloEpique = sound("assets/questionPourUnCarton/solo_épique.wav", 20);
         //soloEpique.play()
         ecrireNoEnter("Chanteur", Color.WHITE_BOLD + "*SOLO DE GUITARE EPIQUE*" + Color.RESET, 5);
-        ecrire(presentateur, "Viens ici espèce de ▉▉▉▉▉▉▉▉!");
+        ecrire(presentateur, "Viens ici espèce de ████████!");
         ecrire(Color.WHITE_BOLD + "*Grosse poignée de main bien virile*" + Color.RESET);
-        ecrire("Chanteur", "Alors tu devient quoi vieux ▉▉▉▉▉▉?");
+        ecrire("Chanteur", "Alors tu devient quoi vieux ██████?");
         ecrire(presentateur, "Pas grand chose, j'ai percé à la télé et maintenant je fait un show télévisé.");
-        ecrire("Chanteur", "▉▉▉▉▉▉, pas mal.");
-        ecrire(presentateur, "Par contre fait gaffe aux ▉▉▉▉▉▉ que tu dit, ce show est Family Friendly.");
-        ecrire("Chanteur", "▉▉▉▉▉ désolé.");
+        ecrire("Chanteur", "██████, pas mal.");
+        ecrire(presentateur, "Par contre fait gaffe aux ██████ que tu dit, ce show est Family Friendly.");
+        ecrire("Chanteur", "█████ désolé.");
         ecrire(presentateur, "Bon on a peut être pas le temps pour les retrouvailles, il faut continuer le show.");
         ecrire("Chanteur", "Ok pas de soucis.");
         ecrire(presentateur, "Du coup euuuuuh... On en était ou déjà...");
@@ -825,8 +826,7 @@ public class QuestionPourUnCarton {
                         }
                         sc.nextLine();
                     }
-                default:
-                    break;
+                default: break;
             }
         }
     }
@@ -837,11 +837,73 @@ public class QuestionPourUnCarton {
         ecrire(presentateur, "SUS");
         ecrire(presentateur, "SUS SUS AMONGUS");
         ecrire(presentateur, "SUSSY SUS AMONG US");
-
-        return ;
     }
     
     public static void cheminDehors(){
-        //
+        ecrire(presentateur, nom + " veux sortir du plateau? Alors ça c'est inatendu!");
+        ecrire("Chanteur", "Comment lui en vouloir? Avec moi la gloire l'attend forcément!");
+        ecrire(nom, "La gloire?!");
+        ecrire("Chanteur", "Et oui " + nom + ", tu vas devenir célèbre.");
+        ecrire("Chanteur", "Allez, viens.");
+        ecrire(Color.WHITE_BOLD + "Et vous voici hors du plateau de tournage, dans la limousine de Chanteur." + Color.RESET);
+        ecrire(Color.WHITE_BOLD + "\"Cette limousine est extraordinaire...\" vous vous dites, alors que vous contemplez ce manignifique véhicule d'environ 42 mètres de long." + Color.RESET);
+        ecrire("Chanteur", "Alors dit moi, que fesait-tu sur ce plateau télé?");
+
+        switch (choixChemin("Je voulais gagner un grand carton", "Je souhaitait m'inscrire dans l'histoire de n'importe quelle manière", "J'avais juste envie de participer à quelque chose pour une fois dans ma vie :')", "¯\\_(ツ)_/¯")) {
+            case 0:
+                ecrire("Chanteur", "Juste un grand carton? Tu as des attentes simples, j'aime ça.");
+                ecrire(nom, "Ce carton me tentait vraiment, mais une carrière dans la musique? Comment je peux refuser ça?");
+            case 1:
+                ecrire("Chanteur", "Alors tu vas être servi sur un plateau d'argent.");
+                switch (new Random().nextInt(3)) {
+                    case 0:
+                        ecrire("Chanteur", "Tu va probablement devenir un batteur de légende...");
+                    case 1:
+                        ecrire("Chanteur", "Tu va probablement devenir un guitariste de légende...");
+                    case 2:
+                        ecrire("Chanteur", "Tu va probablement devenir un pianiste de légende...");
+                    default:
+                        break;
+                }
+            case 2:
+                ecrire("Chanteur", "Et voici donc que ta vie pris un tournant aussi immédiat qu'innatendu, bouleversant toute tes émotions...");
+                ecrire("Chanteur", "Tu va cartonner, crois moi.");
+            case 3:
+                ecrire("Chanteur", "Tu ne sais pas?" + Color.WHITE_BOLD + "*rigole*" + Color.RESET);
+                ecrire("Chanteur", "Elle est bonne celle-là! En plus d'un musicien tu vas être comédien?!");
+                ecrire("Chanteur", "Mais quel génie!");
+            default:
+                ecrire("Chanteur", "Juste un grand carton? Tu as des attentes simples, j'aime ça.");
+                ecrire(nom, "Ce carton me tentait vraiment, mais une carrière dans la musique? Comment je peux refuser ça?");
+        }
+
+        clearScreen();
+
+        ecrire(Color.WHITE_BOLD + "Après 40 minutes de discussion sur des sujets aussi divers que variées..." + Color.RESET);
+        ecrire("Chanteur", "Tu va te plaire ici.");
+        ecrire(Color.WHITE_BOLD + "*Vous sortez tout les deux de la limousine*" + Color.RESET);
+        ecrire("Chanteur", "Bienvenue dans mon manoir!");
+        ecrire(nom, "Wow, mais c'est énorme! Est-ce qu'un bâtiment aussi grand est légal?");
+        ecrire("Chanteur", "Techniquement non mais tout le terrain m'appartient et je suis riche donc oui!");
+        ecrire("Chanteur", "Allez, ne reste pas dehors! Je vais te faire visiter.");
+        ecrire(Color.WHITE_BOLD + "*Vous entre tout les deux dans le manoir de Chanteur*" + Color.RESET);
+        ecrire(Color.WHITE_BOLD + "*Vous avez l'impression que le manoir est plus grand à l'intérieur qu'à l'extérieur*" + Color.RESET);
+        ecrire("Chanteur", "Prépare toi à une visite d'enfer!");
+        ecrire("Chanteur", "On commence avec le salon, qui possède 2 télés, une énorme baie vitrée (6 mètres de haut quand même) et plusieurs canapés.");
+        ecrire("Chanteur", "Sur la gauche on a le couloir qui mène aux 4 chambres, 2 salles de bain, 3 pièces de jeux et les quelques autres pièces.");
+        ecrire("Chanteur", "Devant nous on a la cuisine, divisée en 3 parties: là ou on cuisine des trucs, là ou on mange des trucs et l'autre partie.");
+        ecrire("Chanteur", "Sur la droite on a l'escalier qui mêne du 2ème au 8ème étage, mais si tu veux il y a un ascenceur qui lui va jusqu'au 16ème si tu n'est pas assez courageux.");
+        ecrire("Chanteur", "Après il y a-", 0);
+        ecrire(nom, "Ok ok je pense avoir compris la maison est grande c'est nickel");
+        ecrire("Chanteur", "Exactement! Mon manoir possède 33 étages, fait environ 7km de superficie, possède nombre de piscines, cuisines, chambres et tout autres pièces dont tu peux rêver, et tout ça à l'intérieur du bâtiment principal seulement!");
+        ecrire(nom, "Dit moi, tu fait des fêtes souvent?");
+        ecrire("Chanteur", "Tout les soirs.");
+        ecrire(nom, "Combien de personnes environ?");
+        ecrire("Chanteur", Color.WHITE_BOLD + "*Compte sur ses doigts*" + Color.RESET);
+        ecrire("Chanteur", "6... 7... 8...");
+        ecrire("Chanteur", "Ouais environ 8 millions de personnes.");
+        ecrire(nom, "ah ouais quand même");
+
+        //à finir
     }
 }

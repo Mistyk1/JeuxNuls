@@ -4,8 +4,8 @@ if [ ! -d ./classes ]; then
     source ./.maj.sh
 fi
 
-if [ -e $JAVA_HOME/jre/lib/javafx.properties ]; then
-    java -cp classes Hub
+if [ !-e $JAVA_HOME/jre/lib/javafx.properties ]; then
+    java -cp classes hub/Hub
 else
     java -cp classes hub/Hub noJavaFx
 fi
