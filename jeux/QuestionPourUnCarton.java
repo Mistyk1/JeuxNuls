@@ -1,7 +1,6 @@
 package jeux;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
@@ -26,7 +25,7 @@ public class QuestionPourUnCarton {
     private static final Random rand = new Random();
     private static final Scanner sc = new Scanner(System.in, "UTF-8");
     private static final String os = System.getProperty("os.name");
-    private static final String presentateur = Color.YELLOW + "Présentateur" + Color.RESET;
+    private static final String presentateur = Color.color("présentateur", Color.YELLOW);
     private static String nom;
 
     public QuestionPourUnCarton(){
@@ -50,7 +49,7 @@ public class QuestionPourUnCarton {
                   "Il se trouve que je m'appelle bel et bien Présentateur! (merci papa et maman pour ce magnifique prénom)", 2),
         TroisPlusTrois("Combien font 3 + 3?", 
                   "6", "12", "-493,45", "Pr\u00E9sentateur", "Les mathématiques sont un mensonge",
-                  "6", "12", "-493,45! Non non non attendez-", "euuuuuuuuuuh", Color.WHITE_BOLD + "*bruit forts de calculs*" + Color.RESET, "6?", Color.WHITE_BOLD + "*est confus*" + Color.RESET, "Pr\\u00E9sentateur",
+                  "6", "12", "-493,45! Non non non attendez-", "euuuuuuuuuuh", Color.bold("*bruit forts de calculs*"), "6?", Color.bold("*est confus*"), "Pr\\u00E9sentateur",
                   "6", "12", "-493,45", "Pr\\u00E9sentateur", "Les math\u00E9matiques ne sont pas réelles et sont un concept imaginé par notre cerveau pour contextualiser et rationnaliser l'univers nous environant.", 
                   "Oui, c'est 6!", 
                   "12?", 
@@ -59,16 +58,16 @@ public class QuestionPourUnCarton {
                   "Vous venez littéralement de répondre avec un nombre", 1),
         ComposantFer("Quel est le composant principal du fer?", 
                   "L'élément atomique n°26", "De la mystérieuse poudre blanche (de la farine)", "Votre m\u00E8re", "Le néant absolu", "N'importe quoi sauf du fer",
-                  "Oulah...", "Mais aucune de ces réponses ne font sens!", "Du fer.", "eh ta daronne mdr", "ÉLÉMENT ATOMIQUE N°26", "Le néant", "Votre progénitrice.", "DE LA COCAÏNE" + Color.WHITE_BOLD + "*sniffe un maximum de drogues dures*" + Color.RESET,
+                  "Oulah...", "Mais aucune de ces réponses ne font sens!", "Du fer.", "eh ta daronne mdr", "ÉLÉMENT ATOMIQUE N°26", "Le néant", "Votre progénitrice.", "DE LA COCAÏNE" + Color.bold("*sniffe un maximum de drogues dures*"),
                   "L'\\u00E9l\\u00E9ment atomique n\\u00B026", "De la farine?", "Votre mère! >:D", "Rien.", "Absolument tout sauf du fer.", 
                   "Nicolas, c'est si dur à dire \"Élément atomique n°26\"?!", 
-                  Color.WHITE_BOLD + "*le présentateur vous regarde suspicieusement*" + Color.RESET, 
+                  Color.bold("*le présentateur vous regarde suspicieusement*"), 
                   "Si vous continuez comme ça vous allez vite dégager.", 
                   "Comment ça rien?!", 
                   "Il n'y a pas de fer dans du fer? Est-ce que vous r\u00E9fl\u00E9chissez?", 1),
         Femme("Pourquoi ma femme m'a quitt\u00E9?", 
                   "Car je suis parti achet\u00E9 du lait", "Car je suis un mari extr\u00EAmement infid\u00E8le", "Car je ne fesais rien pour faire avancer le mariage", "Car j'ai jet\u00E9 le chat par la fen\u00EAtre", "Toute les r\u00E9ponses du dessus",
-                  "...", "???", "Vous êtes infidèle?", "t'es juste un ▉▉▉▉▉▉ toi en fait", Color.WHITE_BOLD + "*de la fumée commence à sortir de V-43.7*" + Color.RESET, "Vous...", "", "...",
+                  "...", "???", "Vous êtes infidèle?", "t'es juste un ▉▉▉▉▉▉ toi en fait", Color.bold("*de la fumée commence à sortir de V-43.7*"), "Vous...", "", "...",
                   "Vous êtes... parti acheter du lait?", "Vous \u00EAtes... infidèle?", "Vous \u00EAtes... un paresseux?", "Vous \u00EAtes... un homme extrêmement cruel?", "Vous \u00EAtes... la pire ordure n'ayant jamais existé?", 
                   "Personne n'a bon.", 
                   "Personne n'a bon.", 
@@ -77,7 +76,7 @@ public class QuestionPourUnCarton {
                   "o)_o)'", 5),
         Cheval("Quelle est la couleur du cheval blanc d'Henry IV?", 
                   "Vert", "Blanc", "Marron-Rouge-Bleu", "Gris", "Transparent",
-                  "Gris?", "Il doit forcément être blanc.", "Bah blanc", "euuuuuuu gri", Color.WHITE_BOLD + "*bruits incompréhensibles de robot*" + Color.RESET, "Transparent!", "ooga ooga", "Vert.",
+                  "Gris?", "Il doit forcément être blanc.", "Bah blanc", "euuuuuuu gri", Color.bold("*bruits incompréhensibles de robot*"), "Transparent!", "ooga ooga", "Vert.",
                   "Vert", "Blanc", "Marron-Rouge-Bleu", "Gris", "Transparent", 
                   "Il est radioactif ce cheval?", 
                   "Non :)", 
@@ -95,7 +94,7 @@ public class QuestionPourUnCarton {
                   "-bril", 4),
         Robot("Suis-je un robot?", 
                   "Probablement", "Oui", "Non", "Je ne sais pas", "Ananas",
-                  "Oui?", "Machine?", "Vous? Un robot? C'est trop complexe à faire un robot de votre envergure.", "euuhh jsp", Color.WHITE_BOLD + "*émet des bruits étranges*" + Color.RESET, "Un robot? Non?", "ooga booga", "Les robots n'existent pas.",
+                  "Oui?", "Machine?", "Vous? Un robot? C'est trop complexe à faire un robot de votre envergure.", "euuhh jsp", Color.bold("*émet des bruits étranges*"), "Un robot? Non?", "ooga booga", "Les robots n'existent pas.",
                   "Probablement je pense", "J'en suis sûr.", "Impossible.", "Alors là, bonne question", "Un ananas", 
                   "Comment ", 
                   "Vous êtes vraiment sûr?", 
@@ -253,7 +252,7 @@ public class QuestionPourUnCarton {
                 System.out.print("\033[H\033[2J");
             }
         } catch (IOException | InterruptedException  e) {  
-            System.out.println(Color.RED + "Problème de rafraichissement du terminal :/" + Color.RESET);
+            System.out.println(Color.color("Problème de rafraichissement du terminal :/", Color.RED));
         }
     }
 
@@ -263,7 +262,7 @@ public class QuestionPourUnCarton {
             mp = new MediaPlayer(new Media(QuestionPourUnCarton.class.getResource(filePath).toExternalForm()));
             mp.setVolume(volume / 100.0);
         } catch (Exception e) {
-            System.out.println(Color.RED + "Erreur de lecture du fichier audio (" + e.getMessage() + ")" + Color.RESET);
+            System.out.println(Color.color("Erreur de lecture du fichier audio (" + e.getMessage() + ")", Color.RED));
         }
         return mp;
     }
@@ -327,11 +326,11 @@ public class QuestionPourUnCarton {
     }
 
     public static String randomText(){
-        String randomText = Color.WHITE_BOLD.toString();
+        String randomText = "";
         for (int i = 0; i < (rand.nextInt(150)+50); i += 1){
             randomText += (char)(rand.nextInt(167)+33);
         }
-        return randomText + Color.RESET;
+        return Color.bold(randomText);
     }
 
     public static void terminal(String txt, int waitCycle){
@@ -409,13 +408,13 @@ public class QuestionPourUnCarton {
     public static void rappelVies(int vies){
         String v = "" + vies;
         if (vies == 5 || vies == 4){
-            v = Color.GREEN_BOLD + v + Color.RESET;
+            v = Color.color(v, Color.GREEN_BOLD);
         } else if (vies == 3 || vies == 2){
-            v = Color.YELLOW_BOLD + v + Color.RESET;
+            v = Color.color(v, Color.YELLOW_BOLD);
         } else if (vies == 1){
-            v = Color.RED_BOLD + v + Color.RESET;
+            v = Color.color(v, Color.RED_BOLD);
         }
-        ecrire(Color.WHITE_BOLD + "[Il vous reste " + v + " vies]" + Color.RESET);
+        ecrire(Color.bold("[Il vous reste " + v + " vies]"));
     }
 
     public static boolean isFinished(int vies){
@@ -430,8 +429,8 @@ public class QuestionPourUnCarton {
         ecrire(presentateur, "Il se trouve que " + nom + " n'a plus de vies, il va donc devoir nous quitter...");
         ecrire(presentateur, "Dites lui tous adieu!");
         ecrire("Toute la scène", "ADIEUUUU!");
-        ecrire(Color.WHITE_BOLD + "Alors que vous quitter le plateau de tournage, vous sentez le désespoir et la misère s'abattre immédiatement sur vous. Cet incroyable carton de 3 mètres cube vous est désormais inaccessible à jamais." + Color.RESET);
-        ecrire(Color.RED_BOLD + "\nMAUVAISE FIN" + Color.RESET, 1);
+        ecrire(Color.bold("Alors que vous quitter le plateau de tournage, vous sentez le désespoir et la misère s'abattre immédiatement sur vous. Cet incroyable carton de 3 mètres cube vous est désormais inaccessible à jamais."));
+        ecrire(Color.color("\nMAUVAISE FIN", Color.RED_BOLD), 1);
     }
 
 
@@ -486,10 +485,10 @@ public class QuestionPourUnCarton {
         // Introduction
 
 
-        ecrire(Color.WHITE_BOLD + "Alors que vous vous approchez de la scène de tournage, vous entendez toute la scène parler entre eux, comme si ils était tous excités." + Color.RESET);
-        ecrire(Color.WHITE_BOLD + "En même temps c'est normal, vous n'êtes pas sur n'importe quel plateau de tournage." + Color.RESET);
-        ecrire(Color.WHITE_BOLD + "Bienvenue dans l'expérience qui aura probablement le moins de sens dans votre vie..." + Color.RESET, 0.5);
-        ecrire("\n" + presentateur, Color.BLUE_BOLD + "Question pour un Carton!" + Color.RESET);
+        ecrire(Color.bold("Alors que vous vous approchez de la scène de tournage, vous entendez toute la scène parler entre eux, comme si ils était tous excités."));
+        ecrire(Color.bold("En même temps c'est normal, vous n'êtes pas sur n'importe quel plateau de tournage."));
+        ecrire(Color.bold("Bienvenue dans l'expérience qui aura probablement le moins de sens dans votre vie...\n"), 0.5);
+        ecrire(presentateur, Color.color("Question pour un Carton!", Color.BLUE_BOLD));
         ecrire(presentateur, "Bienvenue tout le monde dans ce show aussi chaotique qu'imprévisible!");
         ecrire(presentateur, "Je vous en prie, asseyez vous. Tout nos participants sont présents!");
         ecrire(presentateur, "Ils sont au grand nombre de 10, sont aussi divers que variés et répondrons à de nombreuses questions sans intérêts ou logique thématique particulière afin de gagner ce magnifique carton de 3 mètres cube!");
@@ -509,11 +508,11 @@ public class QuestionPourUnCarton {
         ecrire("Gabriel", "Mes frères, mes soeurs. Nous sommes réunis en ce lieu afin de me faire gagner en intellect et, bien évidemment, me faire gagner cette boite cartonnée.");
 		ecrire("Nicolas", "Bonjour, Nicolas, 26 ans, étudiant en infor-\n", 0);
         ecrire("Jules", "oe euuuuuuh moi jai bsoin de cet boit pour la mettr dan mon appart");
-        ecrire("V-43.7", Color.WHITE_BOLD + "*bruits incompréhensibles de robot*" + Color.RESET);
+        ecrire("V-43.7", Color.bold("*bruits incompréhensibles de robot*"));
         System.out.print(nom + ": "); sc.next(); System.out.println();
-        ecrire("Mathéo", Color.WHITE_BOLD + "*est confus par rapport aux autres participants*" + Color.RESET); sc.nextLine();
+        ecrire("Mathéo", Color.bold("*est confus par rapport aux autres participants*")); sc.nextLine();
 		ecrire(randomName, randomText());
-        ecrire("bumba", "ooga booga" + Color.WHITE_BOLD + " *se cogne plusieurs fois la tête avec une masse en bois*" + Color.RESET);
+        ecrire("bumba", "ooga booga" + Color.bold(" *se cogne plusieurs fois la tête avec une masse en bois*"));
         ecrire("Albert", "Je ne peut m'imaginer sans ce carton. Je dois le gagner, ou alors mon existance ne serait qu'un ab\u00EEme sans sens. Ce carton est pour moi l'objectif de ma vie, le sens m\u00EAme de ma destin\u00E9e, le fil rouge de mon existence. J'ai r\u00EAv\u00E9 jours et nuits de ce carton depuis mes 2 ans. Je ne fait qu'envoyer des lettres d'inscriptions \u00E0 ce show depuis mes 3 ans dans l'unique but de pouvoir vivre avec ce carton. J'ai pass\u00E9 30 ans de ma vie \u00E0 m'entrainer, de minuit \u00E0 23 heures 50, chaque jours de chaque semaines de chaque mois de chaque ann\u00E9es. Ma vie tourne autour de ce carton, je me dois donc aujourd'hui de marquer une nouvelle phase de ma vie et de gagner ce carton.");
 
 
@@ -524,7 +523,7 @@ public class QuestionPourUnCarton {
         // Question 1
 
 
-        ecrireNoEnter(Color.WHITE_BOLD + "Question 1\n" + Color.RESET, 0.5);
+        ecrireNoEnter(Color.bold("Question 1\n"), 0.5);
         vies = poserQuestion(questions, vies, nom);
         if (isFinished(vies)){
             finalSpeech(nom);
@@ -548,7 +547,7 @@ public class QuestionPourUnCarton {
         // Question 2
 
 
-        ecrireNoEnter(Color.WHITE_BOLD + "Question 2\n" + Color.RESET, 0.5);
+        ecrireNoEnter(Color.bold("Question 2\n"), 0.5);
         vies = poserQuestion(questions, vies, nom);
         if (isFinished(vies)){
             finalSpeech(nom);
@@ -566,18 +565,18 @@ public class QuestionPourUnCarton {
         // Flashback 1
 
 
-		ecrireNoEnter(Color.WHITE_BOLD + "Il y a 35 ans..." + Color.RESET, 0.5);
-        ecrire(Color.YELLOW + "Présentateur (enfant)" + Color.RESET, "Bonjour toi. Tu fait quoi?");
+		ecrireNoEnter(Color.bold("Il y a 35 ans..."), 0.5);
+        ecrire(Color.color("Présentateur (enfant)", Color.YELLOW), "Bonjour toi. Tu fait quoi?");
         ecrire("Chanteur (enfant)", "Je donne un super concert à tout ces cailloux!");
-        ecrire(Color.YELLOW + "Présentateur (enfant)" + Color.RESET, "Waaa, c'est trop bien! Je peux jouer avec toi?");
+        ecrire(Color.color("Présentateur (enfant)", Color.YELLOW), "Waaa, c'est trop bien! Je peux jouer avec toi?");
         ecrire("Chanteur (enfant)", "Désolé, mais tout les tickets sont pris. Tu peut te mettre dans la poubelle si tu veut.");
-        ecrire(Color.YELLOW + "Présentateur (enfant)" + Color.RESET, "Trop bien! " + Color.WHITE_BOLD + "*plonge dans la poubelle et regarde Chanteur donner un concert*" + Color.RESET);
-        ecrireNoEnter(Color.WHITE_BOLD + "15 minutes plus tard..." + Color.RESET, 0.75);
+        ecrire(Color.color("Présentateur (enfant)", Color.YELLOW), "Trop bien! " + Color.bold("*plonge dans la poubelle et regarde Chanteur donner un concert*"));
+        ecrireNoEnter(Color.bold("15 minutes plus tard..."), 0.75);
         ecrire("Chanteur (enfant)", "Alors, qu'est ce que tu en dit?");
-        ecrire(Color.YELLOW + "Présentateur (enfant)" + Color.RESET, "Tu a chanté les deux mêmes notes en boucle pendant 15 minutes mais sinon j'ai adoré! :D");
+        ecrire(Color.color("Présentateur (enfant)", Color.YELLOW), "Tu a chanté les deux mêmes notes en boucle pendant 15 minutes mais sinon j'ai adoré! :D");
         ecrire("Chanteur (enfant)", "Dit, tu veut devenir mon copain?");
-        ecrire(Color.YELLOW + "Présentateur (enfant)" + Color.RESET, "OUIIIIIIIIIII *O*");
-        ecrireNoEnter(Color.WHITE_BOLD + "Et nous sommes de retour au présent." + Color.RESET, 0.5);
+        ecrire(Color.color("Présentateur (enfant)", Color.YELLOW), "OUIIIIIIIIIII *O*");
+        ecrireNoEnter(Color.bold("Et nous sommes de retour au présent."), 0.5);
 
 
         // Fin du flashback
@@ -591,7 +590,7 @@ public class QuestionPourUnCarton {
         // Question 3
 
 
-        ecrireNoEnter(Color.WHITE_BOLD + "Question 3\n" + Color.RESET, 0.5);
+        ecrireNoEnter(Color.bold("Question 3\n"), 0.5);
         vies = poserQuestion(questions, vies, nom);
         if (isFinished(vies)){
             finalSpeech(nom);
@@ -608,7 +607,7 @@ public class QuestionPourUnCarton {
         ecrire(presentateur, "Et vous " + nom + ", vous avez faim?");
 		System.out.print(nom + ": "); sc.next(); System.out.println();
         ecrire(presentateur, "Il faut que je vous avoue quelque chose " + nom + ". La vérité est que je ne vous ait pas écouté.");
-        ecrire(presentateur, "Sur ce, je vais aller me chercher un Twix™. " + Color.WHITE_BOLD + "*Se lève de sa chaise et va chercher un Twix*" + Color.RESET);
+        ecrire(presentateur, "Sur ce, je vais aller me chercher un Twix™. " + Color.bold("*Se lève de sa chaise et va chercher un Twix*"));
         ecrireNoEnter("...", 1);
         ecrireNoEnter("...", 1);
         ecrireNoEnter("...", 1);
@@ -627,7 +626,7 @@ public class QuestionPourUnCarton {
         // Question 4
 
 
-        ecrireNoEnter(Color.WHITE_BOLD + "Question 4\n" + Color.RESET, 0.5);
+        ecrireNoEnter(Color.bold("Question 4\n"), 0.5);
         vies = poserQuestion(questions, vies, nom);
         if (isFinished(vies)){
             finalSpeech(nom);
@@ -644,7 +643,7 @@ public class QuestionPourUnCarton {
 		// Interlude spéciale 1
 
 		
-		ecrireNoEnter(Color.WHITE_BOLD + "INTERLUDE SPÉCIALE" + Color.RESET, 0.5);
+		ecrireNoEnter(Color.bold("INTERLUDE SPÉCIALE"), 0.5);
         ecrire(presentateur, "Durant cette interlude spéciale vous avez tous une chance de regagner une vie!");
         ecrire(presentateur, "Mais pour cela vous devez répondre à une question...");
         ecrire(presentateur, "De quelle couleur est ma cravate?\n> ");
@@ -659,7 +658,7 @@ public class QuestionPourUnCarton {
         ecrire("bumba", "ooga ooga");
         ecrire("Albert", "Toute les couleurs du spectre en même temps!");
         ecrire(presentateur, "Et bien il se trouve que vous avez tous faux. Je n'ai pas de cravate.");
-        ecrireNoEnter(Color.WHITE_BOLD + "FIN DE L'INTERLUDE SPÉCIALE" + Color.RESET, 0.5);
+        ecrireNoEnter(Color.bold("FIN DE L'INTERLUDE SPÉCIALE"), 0.5);
 
 
         // Transition
@@ -668,15 +667,15 @@ public class QuestionPourUnCarton {
         ecrire(presentateur, "Quel dommage que personne n'ait réussi à regagner de vies!");
         ecrireNoEnter(presentateur, "...", 1);
         ecrire(presentateur, "Quelque chose ne va pas...");
-        ecrire(presentateur, Color.WHITE_BOLD + "*regarde sa montre*" + Color.RESET);
+        ecrire(presentateur, Color.bold("*regarde sa montre*"));
         ecrire(presentateur, "Oh non!");
         ecrire(presentateur, "Le jour est arrivé!");
         ecrireNoEnter(presentateur, "Je vais mourir d'un arrêt cardiaque d'ici 3...", 1);
         ecrireNoEnter(presentateur, "2...", 1);
         ecrireNoEnter(presentateur, "1...", 1);
-        ecrire(presentateur, Color.WHITE_BOLD + "*attend*" + Color.RESET);
-        ecrire(presentateur, Color.WHITE_BOLD + "*se questionne*" + Color.RESET);
-        ecrire(presentateur, Color.WHITE_BOLD + "*sort un calendrier et le regarde*" + Color.RESET);
+        ecrire(presentateur, Color.bold("*attend*"));
+        ecrire(presentateur, Color.bold("*se questionne*"));
+        ecrire(presentateur, Color.bold("*sort un calendrier et le regarde*"));
         ecrire(presentateur, "Autant pour moi, ce jour arrivera la semaine prochaine.");
         ecrire(presentateur, "Désormais, la question 5!");
 
@@ -684,7 +683,7 @@ public class QuestionPourUnCarton {
         // Question 5
 
 
-        ecrireNoEnter(Color.WHITE_BOLD + "Question 5\n" + Color.RESET, 0.5);
+        ecrireNoEnter(Color.bold("Question 5\n"), 0.5);
         vies = poserQuestion(questions, vies, nom);
         if (isFinished(vies)){
             finalSpeech(nom);
@@ -701,15 +700,15 @@ public class QuestionPourUnCarton {
         ecrire(presentateur, "Quelqu'un arrive...");
         ecrire("Chanteur", "BONSOIR TOUT LE MONDE!!!");
         ecrire(presentateur, "Chanteur!");
-        ecrire(Color.WHITE_BOLD + "*Toute la foule se met à crier*" + Color.RESET);
-        ecrire("Chanteur", Color.WHITE_BOLD + "*Prend une guitare*" + Color.RESET);
-        ecrire(Color.WHITE_BOLD + "*Toute la foule se tait*" + Color.RESET);
+        ecrire(Color.bold("*Toute la foule se met à crier*"));
+        ecrire("Chanteur", Color.bold("*Prend une guitare*"));
+        ecrire(Color.bold("*Toute la foule se tait*"));
         ecrireNoEnter("...", 1);
         //MediaPlayer soloEpique = sound("assets/questionPourUnCarton/solo_épique.wav", 20);
         //soloEpique.play()
-        ecrireNoEnter("Chanteur", Color.WHITE_BOLD + "*SOLO DE GUITARE EPIQUE*" + Color.RESET, 5);
+        ecrireNoEnter("Chanteur", Color.bold("*SOLO DE GUITARE EPIQUE*"), 5);
         ecrire(presentateur, "Viens ici espèce de ████████!");
-        ecrire(Color.WHITE_BOLD + "*Grosse poignée de main bien virile*" + Color.RESET);
+        ecrire(Color.bold("*Grosse poignée de main bien virile*"));
         ecrire("Chanteur", "Alors tu devient quoi vieux ██████?");
         ecrire(presentateur, "Pas grand chose, j'ai percé à la télé et maintenant je fait un show télévisé.");
         ecrire("Chanteur", "██████, pas mal.");
@@ -724,7 +723,7 @@ public class QuestionPourUnCarton {
         // Question 6
 
 
-        ecrireNoEnter(Color.WHITE_BOLD + "Question 6\n" + Color.RESET, 0.5);
+        ecrireNoEnter(Color.bold("Question 6\n"), 0.5);
         vies = poserQuestion(questions, vies, nom);
         if (isFinished(vies)){
             finalSpeech(nom);
@@ -737,7 +736,7 @@ public class QuestionPourUnCarton {
 
         ecrire(presentateur, "Aaaaaaah, ce fut une bien bonne question :D");
         ecrire("Chanteur", "Dit moi, j'aurais une question Présentateur.");
-        ecrire("Chanteur", "Serais-ce possible d'emporter avec moi celui-là?" + Color.WHITE_BOLD + "*pointe " + nom + " du doigt*" + Color.RESET);
+        ecrire("Chanteur", "Serais-ce possible d'emporter avec moi celui-là?" + Color.bold("*pointe " + nom + " du doigt*"));
         ecrire(presentateur, "Bonne question, c'est à lui qu'il faut demander (même si techniquement je peux toujours choisir car selon le contrat d'inscription il m'appartient)");
 
         if (choixChemin("Rester sur le plateau", "Sortir du plateau") == 1){
@@ -763,28 +762,28 @@ public class QuestionPourUnCarton {
 
         ecrireNoEnter("...", 1);
         ecrireNoEnter("...", 1);
-        ecrire(presentateur, Color.WHITE_BOLD + "*regarde l'heure*" + Color.RESET);
+        ecrire(presentateur, Color.bold("*regarde l'heure*"));
         ecrireNoEnter("...", 1);
         ecrireNoEnter("...", 1);
         ecrireNoEnter("...", 1);
-        ecrire(presentateur, Color.WHITE_BOLD + "*regarde à nouveau l'heure*" + Color.RESET);
+        ecrire(presentateur, Color.bold("*regarde à nouveau l'heure*"));
         ecrireNoEnter("...", 1);
         ecrireNoEnter("...", 1);
         ecrire(presentateur, "Mais ou est-il?");
         ecrire(presentateur, "Il est sensé être là, et le show aurait même déjà commencé!");
-        ecrire(presentateur, Color.WHITE_BOLD + "*regarde encore l'heure*" + Color.RESET);
+        ecrire(presentateur, Color.bold("*regarde encore l'heure*"));
         ecrireNoEnter("...", 1);
         ecrireNoEnter("...", 1);
         ecrireNoEnter("...", 1);
         ecrireNoEnter("...", 1);
-        ecrire(presentateur, Color.WHITE_BOLD + "*regarde une dernière fois l'heure*" + Color.RESET);
+        ecrire(presentateur, Color.bold("*regarde une dernière fois l'heure*"));
         ecrire(presentateur, "Bon, je vais essayer quelque chose.\n", 2);
-        System.out.print(Color.RED + "DEBUG MODE INITIALISED\n\n" + Color.RESET);
+        System.out.print(Color.color("DEBUG MODE INITIALISED\n\n", Color.RED));
         terminal("public class CheckJoueur{\n\tpublic static void main(String[] args){\n\t\tJoueur j = QuestionPourUnCarton.getJoueur();\n\t\tif (j == null){\n\t\t\tSystem.out.println(\"Il n'y a aucun joueur\");\n\t\t} else {\n\t\t\tSystem.out.println(\"IL Y A UN JOUEUR! YIPPEEEEEEE\");\n\t\t}\n\t}\n}", 2);
         sleep(1);
         System.out.print("\nPS C:\\Users\\presentateur\\Desktop\\QuestionPourUnCarton> ");
         sleep(1.5);
-        System.out.println(Color.CYAN + "c:; cd 'c:\\Users\\presentateur\\Desktop\\QuestionPourUnCarton'; " + Color.RESET + "&" + Color.CYAN + " 'C:\\Program Files\\Java\\jdk1.8.0_321\\bin\\java.exe' '-cp' 'C:\\Users\\presentateur\\AppData\\Roaming\\Code\\User\\workspaceStorage\\4c1f9d31f4b103fa083ee66fd6b94ca1\\redhat.java\\jdt_ws\\CheckJoueur_9d1e0b84\\bin' 'CheckJoueur' " + Color.RESET);
+        System.out.println(Color.color("c:; cd 'c:\\Users\\presentateur\\Desktop\\QuestionPourUnCarton'; ", Color.CYAN) + "&" + Color.color(" 'C:\\Program Files\\Java\\jdk1.8.0_321\\bin\\java.exe' '-cp' 'C:\\Users\\presentateur\\AppData\\Roaming\\Code\\User\\workspaceStorage\\4c1f9d31f4b103fa083ee66fd6b94ca1\\redhat.java\\jdt_ws\\CheckJoueur_9d1e0b84\\bin' 'CheckJoueur' ", Color.CYAN));
         sleep(0.2);
         clearScreen();
         System.out.println("Il n'y a aucun joueur\n");
@@ -798,13 +797,13 @@ public class QuestionPourUnCarton {
                 case 0:
                     correct = true;
                     ecrire(presentateur, "Ok je pourrais essayer de créer un nouveau joueur.");
-                    ecrire(presentateur, Color.WHITE_BOLD + "*met des lunettes de soleil*" + Color.RESET);
+                    ecrire(presentateur, Color.bold("*met des lunettes de soleil*"));
                     ecrire(presentateur, "C'est parti.");
                     terminal("public class CreateJoueur extends QuestionPourUnCarton{\n\tpublic static Joueur createNewJoueur(){\n\t\tJoueur j = new Joueur();\n\t\tj.name(\"Joueur\");\n\t\tj.setVies(5);\n\t\treturn j;\n\t}\n\n\tpublic static void main(String[] args){\n\t\tJoueur j = createNewJoueur();\n\t\tsuper.main(new String[j.toString()]);\n\t}\n}", 1);
                     sleep(1);
                     System.out.print("\nPS C:\\Users\\presentateur\\Desktop\\QuestionPourUnCarton> ");
                     sleep(1.5);
-                    System.out.println(Color.CYAN + "c:; cd 'c:\\Users\\presentateur\\Desktop\\QuestionPourUnCarton'; " + Color.RESET + "&" + Color.CYAN + " 'C:\\Program Files\\Java\\jdk1.8.0_321\\bin\\java.exe' '-cp' 'C:\\Users\\presentateur\\AppData\\Roaming\\Code\\User\\workspaceStorage\\4c1f9d31f4b103fa083ee66fd6b94ca1\\redhat.java\\jdt_ws\\CreateJoueur_9d1e0b84\\bin' 'CreateJoueur' " + Color.RESET);
+                    System.out.println(Color.color("c:; cd 'c:\\Users\\presentateur\\Desktop\\QuestionPourUnCarton'; ", Color.CYAN) + "&" + Color.color(" 'C:\\Program Files\\Java\\jdk1.8.0_321\\bin\\java.exe' '-cp' 'C:\\Users\\presentateur\\AppData\\Roaming\\Code\\User\\workspaceStorage\\4c1f9d31f4b103fa083ee66fd6b94ca1\\redhat.java\\jdt_ws\\CreateJoueur_9d1e0b84\\bin' 'CreateJoueur' ", Color.CYAN));
                     sleep(0.2);
                     clearScreen();
                     sleep(1.5);
@@ -845,8 +844,8 @@ public class QuestionPourUnCarton {
         ecrire(nom, "La gloire?!");
         ecrire("Chanteur", "Et oui " + nom + ", tu vas devenir célèbre.");
         ecrire("Chanteur", "Allez, viens.");
-        ecrire(Color.WHITE_BOLD + "Et vous voici hors du plateau de tournage, dans la limousine de Chanteur." + Color.RESET);
-        ecrire(Color.WHITE_BOLD + "\"Cette limousine est extraordinaire...\" vous vous dites, alors que vous contemplez ce manignifique véhicule d'environ 42 mètres de long." + Color.RESET);
+        ecrire(Color.bold("Et vous voici hors du plateau de tournage, dans la limousine de Chanteur."));
+        ecrire(Color.bold("\"Cette limousine est extraordinaire...\" vous vous dites, alors que vous contemplez ce manignifique véhicule d'environ 42 mètres de long."));
         ecrire("Chanteur", "Alors dit moi, que fesait-tu sur ce plateau télé?");
 
         switch (choixChemin("Je voulais gagner un grand carton", "Je souhaitait m'inscrire dans l'histoire de n'importe quelle manière", "J'avais juste envie de participer à quelque chose pour une fois dans ma vie :')", "¯\\_(ツ)_/¯")) {
@@ -869,7 +868,7 @@ public class QuestionPourUnCarton {
                 ecrire("Chanteur", "Et voici donc que ta vie pris un tournant aussi immédiat qu'innatendu, bouleversant toute tes émotions...");
                 ecrire("Chanteur", "Tu va cartonner, crois moi.");
             case 3:
-                ecrire("Chanteur", "Tu ne sais pas?" + Color.WHITE_BOLD + "*rigole*" + Color.RESET);
+                ecrire("Chanteur", "Tu ne sais pas?" + Color.bold("*rigole*"));
                 ecrire("Chanteur", "Elle est bonne celle-là! En plus d'un musicien tu vas être comédien?!");
                 ecrire("Chanteur", "Mais quel génie!");
             default:
@@ -879,15 +878,15 @@ public class QuestionPourUnCarton {
 
         clearScreen();
 
-        ecrire(Color.WHITE_BOLD + "Après 40 minutes de discussion sur des sujets aussi divers que variées..." + Color.RESET);
+        ecrire(Color.bold("Après 40 minutes de discussion sur des sujets aussi divers que variées..."));
         ecrire("Chanteur", "Tu va te plaire ici.");
-        ecrire(Color.WHITE_BOLD + "*Vous sortez tout les deux de la limousine*" + Color.RESET);
+        ecrire(Color.bold("*Vous sortez tout les deux de la limousine*"));
         ecrire("Chanteur", "Bienvenue dans mon manoir!");
         ecrire(nom, "Wow, mais c'est énorme! Est-ce qu'un bâtiment aussi grand est légal?");
         ecrire("Chanteur", "Techniquement non mais tout le terrain m'appartient et je suis riche donc oui!");
         ecrire("Chanteur", "Allez, ne reste pas dehors! Je vais te faire visiter.");
-        ecrire(Color.WHITE_BOLD + "*Vous entre tout les deux dans le manoir de Chanteur*" + Color.RESET);
-        ecrire(Color.WHITE_BOLD + "*Vous avez l'impression que le manoir est plus grand à l'intérieur qu'à l'extérieur*" + Color.RESET);
+        ecrire(Color.bold("*Vous entre tout les deux dans le manoir de Chanteur*"));
+        ecrire(Color.bold("*Vous avez l'impression que le manoir est plus grand à l'intérieur qu'à l'extérieur*"));
         ecrire("Chanteur", "Prépare toi à une visite d'enfer!");
         ecrire("Chanteur", "On commence avec le salon, qui possède 2 télés, une énorme baie vitrée (6 mètres de haut quand même) et plusieurs canapés.");
         ecrire("Chanteur", "Sur la gauche on a le couloir qui mène aux 4 chambres, 2 salles de bain, 3 pièces de jeux et les quelques autres pièces.");
@@ -899,7 +898,7 @@ public class QuestionPourUnCarton {
         ecrire(nom, "Dit moi, tu fait des fêtes souvent?");
         ecrire("Chanteur", "Tout les soirs.");
         ecrire(nom, "Combien de personnes environ?");
-        ecrire("Chanteur", Color.WHITE_BOLD + "*Compte sur ses doigts*" + Color.RESET);
+        ecrire("Chanteur", Color.bold("*Compte sur ses doigts*"));
         ecrire("Chanteur", "6... 7... 8...");
         ecrire("Chanteur", "Ouais environ 8 millions de personnes.");
         ecrire(nom, "ah ouais quand même");

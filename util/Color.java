@@ -80,6 +80,14 @@ public enum Color {
         this.code = code;
     }
 
+    public static String color(String str, Color c){
+        return c + str + RESET;
+    }
+
+    public static String bold(String str){
+        return color(str, WHITE_BOLD);
+    }
+
     @Override
     public String toString() {
         return code;
