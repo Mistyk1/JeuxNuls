@@ -852,28 +852,35 @@ public class QuestionPourUnCarton {
             case 0:
                 ecrire("Chanteur", "Juste un grand carton? Tu as des attentes simples, j'aime ça.");
                 ecrire(nom, "Ce carton me tentait vraiment, mais une carrière dans la musique? Comment je peux refuser ça?");
+                break;
             case 1:
                 ecrire("Chanteur", "Alors tu vas être servi sur un plateau d'argent.");
                 switch (new Random().nextInt(3)) {
                     case 0:
                         ecrire("Chanteur", "Tu va probablement devenir un batteur de légende...");
+                        break;
                     case 1:
                         ecrire("Chanteur", "Tu va probablement devenir un guitariste de légende...");
+                        break;
                     case 2:
                         ecrire("Chanteur", "Tu va probablement devenir un pianiste de légende...");
+                        break;
                     default:
                         break;
                 }
             case 2:
                 ecrire("Chanteur", "Et voici donc que ta vie pris un tournant aussi immédiat qu'innatendu, bouleversant toute tes émotions...");
                 ecrire("Chanteur", "Tu va cartonner, crois moi.");
+                break;
             case 3:
                 ecrire("Chanteur", "Tu ne sais pas?" + Color.bold("*rigole*"));
                 ecrire("Chanteur", "Elle est bonne celle-là! En plus d'un musicien tu vas être comédien?!");
                 ecrire("Chanteur", "Mais quel génie!");
+                break;
             default:
                 ecrire("Chanteur", "Juste un grand carton? Tu as des attentes simples, j'aime ça.");
                 ecrire(nom, "Ce carton me tentait vraiment, mais une carrière dans la musique? Comment je peux refuser ça?");
+                break;
         }
 
         clearScreen();
