@@ -8,18 +8,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
+
 import util.Color;
 import util.MultiThreading;
+import util.Window;
 
 public class QuestionPourUnCarton {
     private static final Random rand = new Random();
@@ -186,59 +180,6 @@ public class QuestionPourUnCarton {
         }
     }
     //-----------------------
-
-
-
-
-
-    //---- Classe Window ----- (à spécialiser)
-    public static class Window extends Application{
-        @Override
-        public void start(final Stage primaryStage) {
-            Label label = new Label("120.0");
-
-            Button button = new Button();
-            button.setText("Open a New Window");
-
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-
-                    Label secondLabel = new Label("I'm a Label on new Window");
-
-                    StackPane secondaryLayout = new StackPane();
-                    secondaryLayout.getChildren().add(secondLabel);
-
-                    Scene secondScene = new Scene(secondaryLayout, 230, 100);
-
-                    // New window (Stage)
-                    Stage newWindow = new Stage();
-                    newWindow.setTitle("Second Stage");
-                    newWindow.setScene(secondScene);
-
-                    // Set position of second window, related to primary window.
-                    newWindow.setX(primaryStage.getX() + 200);
-                    newWindow.setY(primaryStage.getY() + 100);
-
-                    newWindow.show();
-                }
-            });
-
-            StackPane root = new StackPane();
-            root.getChildren().add(label);
-
-            Scene scene = new Scene(root, 450, 250);
-
-            primaryStage.setTitle("JavaFX Open a new Window (o7planning.org)");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        }
-
-        public static void main() {
-            launch();
-        }
-    }
-    //---------------------------------
 
 
 
@@ -448,7 +389,7 @@ public class QuestionPourUnCarton {
 
         clearScreen();
 
-        //MultiThreading.execute(e -> Window.main());
+        //MultiThreading.execute(e -> Window.main(new String[]{"qpuc"}));
 
         System.out.print("Entrez votre nom svp: ");
         nom = sc.nextLine();
@@ -457,12 +398,10 @@ public class QuestionPourUnCarton {
 
         if (nom.equals("votre nom svp")){
             sleep(2);
-            ecrire("Putain mais t'est super drôle toi");
-            sleep(2);
+            ecrireNoEnter("Putain mais t'est super drôle toi", 2);
             clearScreen();
             sleep(5);
-            ecrire("ratio");
-            sleep(1);
+            ecrireNoEnter("ratio", 1);
             nom = "Catin";
         } else if (nom.equals("Presentateur")){
             cheminPresentateur();
@@ -470,16 +409,14 @@ public class QuestionPourUnCarton {
         } else if (nom.equals("amogus") || nom.equals("among us")){
             cheminSus();
             return ;
+        } else {
+            ecrireNoEnter("Pour des raisons qui devrait se comprendrent, les gros mots sont censuré ██████ SA MÈRE LA GROSSE ████ SA RACE DE █████ ok ça fonctionne", 3);
         }
+
+        clearScreen();
         
         int vies = 5;
         List<Question> questions = Question.listeQuestions();
-
-        clearScreen();
-
-        ecrireNoEnter("Pour des raisons qui devrait se comprendrent, les gros mots sont censuré ██████ SA MÈRE LA GROSSE ████ SA RACE DE █████ ok ça fonctionne", 3);
-
-        clearScreen();
 
 
         // Introduction

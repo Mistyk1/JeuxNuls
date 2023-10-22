@@ -192,5 +192,6 @@ public class Tetros{
         if (rep == 'y' || rep == 'Y'){
             regles();
         }
+        Plateau p = new Plateau();
     }
 }

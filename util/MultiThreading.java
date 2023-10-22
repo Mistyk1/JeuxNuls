@@ -11,9 +11,9 @@ public class MultiThreading{
             for (Consumer<?> m : methods){
                 executor.execute(() -> m.accept(null));
             }
-            executor.shutdown();
         } catch (Exception e){
-            System.out.println(Color.RED + "Erreur du multithreading (" + e.getMessage() + ")" + Color.RESET);
+            System.out.println(Color.RED + "Erreur de multithreading (" + e.getMessage() + ")" + Color.RESET);
+        } finally {
             executor.shutdown();
         }
     }
