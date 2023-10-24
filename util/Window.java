@@ -18,12 +18,12 @@ public class Window extends Application{
 
 
     //---------- Question pour un Carton ----------
-    public static class WindowQPUC{
-        public static void start(Stage primaryStage){
+    public static class WindowQPUC extends Stage{
+        public WindowQPUC(){
             List<Stage> stages = new ArrayList<Stage>();
-            stages.add(primaryStage);
+            stages.add(this);
 
-            primaryStage.setOnCloseRequest(e -> {
+            setOnCloseRequest(e -> {
                 for (Stage stage : stages){
                     stage.close();
                 }
@@ -49,8 +49,8 @@ public class Window extends Application{
                     newWindow.setScene(secondScene);
 
                     // Set position of second window, related to primary window.
-                    newWindow.setX(primaryStage.getX() + 200);
-                    newWindow.setY(primaryStage.getY() + 100);
+                    newWindow.setX(stages.get(0).getX() + 200);
+                    newWindow.setY(stages.get(0).getY() + 100);
 
                     newWindow.setOnCloseRequest(e -> {
                         int idx = stages.indexOf(newWindow);
@@ -72,9 +72,9 @@ public class Window extends Application{
 
             Scene scene = new Scene(root, 450, 250);
 
-            primaryStage.setTitle("Question pour un Carton");
-            primaryStage.setScene(scene);
-            primaryStage.show();
+            setTitle("Question pour un Carton");
+            setScene(scene);
+            show();
         }
     }
     //---------------------------------------------
@@ -82,8 +82,8 @@ public class Window extends Application{
 
 
     //---------- Jeu de Cartes PubertRP ----------
-    public static class WindowCartes{
-        public static void start(Stage primaryStage){
+    public static class WindowCartes extends Stage{
+        public WindowCartes(){
             Label label = new Label("Faire genre qu'il y a des trucs haha");
 
             StackPane root = new StackPane();
@@ -91,9 +91,9 @@ public class Window extends Application{
 
             Scene scene = new Scene(root, 450, 250);
 
-            primaryStage.setTitle("Jeu de cartes");
-            primaryStage.setScene(scene);
-            primaryStage.show();
+            setTitle("Jeu de cartes");
+            setScene(scene);
+            show();
         }
     }
     //---------------------------------------------
@@ -103,9 +103,9 @@ public class Window extends Application{
     @Override
     public void start(final Stage primaryStage) {
         if (arguments[0].equals("qpuc")){
-            WindowQPUC.start(primaryStage);
+            new WindowQPUC();
         } else if (arguments[0].equals("cartes")){
-            WindowCartes.start(primaryStage);
+            new WindowCartes();
         }
     }
 
