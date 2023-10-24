@@ -84,7 +84,7 @@ public class Window extends Application{
     //---------- Jeu de Cartes PubertRP ----------
     public static class WindowCartes extends Stage{
         public WindowCartes(){
-            Label label = new Label("Faire genre qu'il y a des trucs haha");
+            Label label = new Label("Faite genre qu'il y a des trucs haha");
 
             StackPane root = new StackPane();
             root.getChildren().add(label);
