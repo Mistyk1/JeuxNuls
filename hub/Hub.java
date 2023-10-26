@@ -102,7 +102,7 @@ public class Hub{
                 System.out.println("[0] Quitter");
                 System.out.println(Color.BLUE + "---------------" + Color.RESET);
             }
-            while (choix < '/' || choix > '6'){
+            while (choix < '/' || choix > '7'){
                 System.out.print("> ");
                 temp = sc.next();
                 if (temp.length() == 1){
@@ -143,6 +143,15 @@ public class Hub{
                 } else {
                     //choix = jouer(QuestionPourUnCarton.class);
                     System.out.println("Question pour un Carton en cours de construction");
+                    choix = '#';
+                }
+            } else if (choix == '7'){
+                if (arguments.constains("noJavaFx"){
+                    System.out.println(Color.color("noJavaFx", Color.RED));
+                    choix = '#';
+                } else {
+                    //choix = jouer(GameOfLife.class);
+                    System.out.println("truc");
                     choix = '#';
                 }
             }
