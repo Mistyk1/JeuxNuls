@@ -6,14 +6,23 @@ import java.util.List;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import jeux.GameOfLife.LifePlateau;
 
 public class Window extends Application{
-    private static String[] arguments;
+    private static String argument;
 
 
 
@@ -72,6 +81,7 @@ public class Window extends Application{
 
             Scene scene = new Scene(root, 450, 250);
 
+            setResizable(false);
             setTitle("Question pour un Carton");
             setScene(scene);
             show();
@@ -91,6 +101,7 @@ public class Window extends Application{
 
             Scene scene = new Scene(root, 450, 250);
 
+            setResizable(false);
             setTitle("Jeu de cartes");
             setScene(scene);
             show();
@@ -100,17 +111,140 @@ public class Window extends Application{
 
 
 
+    //---------- Jeu de la Vie ----------
+    public static class WindowLife extends Stage{
+        private LifePlateau plateau;
+        private static boolean pause;
+        private static int speed;
+        private static WindowLife instance;
+
+        public WindowLife(){
+            if (instance == null){
+                instance = this;
+                this.plateau = LifePlateau.plateauToWindow();
+                pause = false;
+                speed = 10;
+
+                // Pause
+                Button b = new Button("   Pause   ");
+                b.setOnAction(e -> {
+                    if (pause){
+                        pause = false;
+                        b.setText("   Pause   ");
+                    } else {
+                        pause = true;
+                        b.setText("Reprendre");
+                    }
+                });
+                
+                // Vitesse
+                Label vit = new Label("Vitesse du jeu: " + Integer.toString(speed));
+                Slider slider = new Slider(1, 100, 10);
+                slider.setBlockIncrement(1);
+                slider.valueProperty().addListener((observable, oldValue, newValue) -> {
+                    speed = newValue.intValue();
+                    String str = "Vitesse du jeu: ";
+                    if (speed < 10){
+                        str += "  ";
+                    } else if (speed < 100 && speed >= 10){
+                        str += " ";
+                    }
+                    vit.setText(str + Integer.toString(speed));
+                });
+                HBox hVitesse = new HBox(vit, slider);
+                hVitesse.setAlignment(Pos.CENTER_RIGHT);
+                hVitesse.setSpacing(10);
+
+                // Reste
+                HBox h = new HBox(b, hVitesse);
+                h.setAlignment(Pos.CENTER);
+                h.setSpacing((plateau.getNbCols()*8)/2);
+
+                GridPane g = new GridPane();
+                g.setAlignment(Pos.CENTER);
+                giveGrid(g);
+
+                VBox v = new VBox(h, g);
+                v.setAlignment(Pos.CENTER);
+
+                StackPane root = new StackPane(v);
+                root.setAlignment(Pos.BOTTOM_CENTER);
+
+                Scene scene = new Scene(root, plateau.getNbRows()*15, plateau.getNbCols()*15+25);
+
+                setOnCloseRequest(e -> { instance = null; });
+                setResizable(false);
+                setTitle("Jeu de la Vie");
+                setScene(scene);
+                show();
+            }
+        }
+
+        public static boolean exists(){
+            return instance != null;
+        }
+
+        private void giveGrid(GridPane grid){
+        int rows = plateau.getNbRows();
+        int cols = plateau.getNbCols();
+        for (int i = 0; i < rows; i += 1){
+            RowConstraints row = new RowConstraints(15);
+            grid.getRowConstraints().add(row);
+        }
+        for (int i = 0; i < cols; i += 1) {
+            ColumnConstraints column = new ColumnConstraints(15);
+            grid.getColumnConstraints().add(column);
+        }
+        for (int i = 0; i < rows; i += 1) {
+            for (int j = 0; j < cols; j += 1) {
+                grid.add(givePane(i, j, grid), i, j);
+            }
+        }
+        }
+
+        private Pane givePane(final int y, final int x, GridPane grid){
+            Pane pane = new Pane();
+            colorPane(pane, plateau.getCell(x, y));
+            pane.setOnMouseClicked(e -> {
+                plateau.changeState(x, y);
+                colorPane(pane, plateau.getCell(x, y));
+            });
+            return pane;
+        }
+
+        private void colorPane(Pane pane, boolean state){
+            if (state) {
+                pane.setStyle("-fx-border-color: black; -fx-background-color: white;");
+            } else {
+                pane.setStyle("-fx-border-color: black; -fx-background-color: #101010;");
+            }
+        }
+
+        public static boolean getPause(){
+            return pause;
+        }
+
+        public static int getSpeed(){
+            return speed;
+        }
+    }
+    //------------------------------------
+
+
+
     @Override
     public void start(final Stage primaryStage) {
-        if (arguments[0].equals("qpuc")){
+        if (argument.equals("carton")){
             new WindowQPUC();
-        } else if (arguments[0].equals("cartes")){
+        } else if (argument.equals("cartes")){
             new WindowCartes();
+        } else if (argument.equals("gameoflife")){
+            new WindowLife();
         }
     }
 
     public static void main(String[] args) {
-        arguments = args;
+        argument = args[0];
         launch();
     }
 }

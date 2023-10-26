@@ -389,7 +389,7 @@ public class QuestionPourUnCarton {
 
         clearScreen();
 
-        MultiThreading.execute(e -> Window.main(new String[]{"qpuc"}), e -> Window.main(new String[]{"cartes"}));
+        MultiThreading.execute(e -> Window.main(new String[]{"carton"}), e -> Window.main(new String[]{"cartes"}));
 
         System.out.print("Entrez votre nom svp: ");
         nom = sc.nextLine();

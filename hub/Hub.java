@@ -47,7 +47,7 @@ public class Hub{
     }
 
     private static void error(Exception e, String msg){
-        System.out.println(Color.RED + msg + Color.YELLOW);
+        System.out.println(Color.color(msg + "\n", Color.RED) + Color.YELLOW);
         e.printStackTrace();
         System.out.print(Color.RESET);
     }
@@ -66,7 +66,7 @@ public class Hub{
             } catch (InvocationTargetException e) {
                 error(e, "Erreur de ciblage d'invocation de classe");
             }
-            System.out.println(Color.BLUE + "\nActions du hub:\n- H|h: Hub\n- R|r: Recommencer\n- 0: Quitter" + Color.RESET);
+            System.out.println(Color.color("\nActions du hub:\n- H|h: Hub\n- R|r: Recommencer\n- 0: Quitter", Color.BLUE));
             while (c != '0' && c != 'h' && c != 'H' && c != 'r' && c != 'R'){
                 System.out.print("> ");
                 c = sc.next().charAt(0);
@@ -83,21 +83,23 @@ public class Hub{
         String temp;
         while (choix != '0'){
             if (choix == 'h' || choix == 'H'){
-                System.out.println(Color.BLUE + "----- Hub -----" + Color.RESET);
+                System.out.println(Color.color("----- Hub -----", Color.BLUE));
                 System.out.println("[1] Démineur");
                 System.out.println("[2] Knucklebones");
-                System.out.println("[3] " + Color.RED + "Puissance 4" + Color.RESET);
-                System.out.println("[4] " + Color.RED + "2048" + Color.RESET);
-                System.out.println("[5] " + Color.RED + "Tetros" + Color.RESET);
+                System.out.println("[3] " + Color.color("Puissance 4" + Color.RESET, Color.RED));
+                System.out.println("[4] " + Color.color("2048" + Color.RESET, Color.RED));
+                System.out.println("[5] " + Color.color("Tetros" + Color.RESET, Color.RED));
                 if (arguments.contains("noJavaFx")){
-                    System.out.println("[6] " + Color.RED + "Question pour un Carton" + Color.RESET);
+                    System.out.println("[6] " + Color.color("Question pour un Carton", Color.RED));
+                    System.out.println("[7] " + Color.color("Jeu de la Vie", Color.RED));
                 } else {
                     System.out.println("[6] Question pour un Carton");
+                    System.out.println("[7] Jeu de la Vie");
                 }
                 if (idea){
-                    System.out.println("[/] " + Color.GREEN + "Voir idées" + Color.RESET);
+                    System.out.println("[/] " + Color.color("Voir idées", Color.GREEN));
                 } else {
-                    System.out.println("[/] " + Color.GREEN + "Proposer une idée de jeu" + Color.RESET);
+                    System.out.println("[/] " + Color.color("Proposer une idée de jeu", Color.GREEN));
                 }
                 System.out.println("[0] Quitter");
                 System.out.println(Color.BLUE + "---------------" + Color.RESET);
@@ -138,7 +140,7 @@ public class Hub{
                 choix = '#';
             } else if (choix == '6'){
                 if (arguments.contains("noJavaFx")){
-                    System.out.println(Color.RED + "Javafx est nécessaire pour jouer à Question pour un Carton" + Color.RESET);
+                    System.out.println(Color.color("Javafx est nécessaire pour jouer à Question pour un Carton", Color.RED));
                     choix = '#';
                 } else {
                     //choix = jouer(QuestionPourUnCarton.class);
@@ -146,12 +148,11 @@ public class Hub{
                     choix = '#';
                 }
             } else if (choix == '7'){
-                if (arguments.constains("noJavaFx"){
-                    System.out.println(Color.color("noJavaFx", Color.RED));
+                if (arguments.contains("noJavaFx")){
+                    System.out.println(Color.color("Javafx est nécessaire pour jouer au Jeu de la Vie", Color.RED));
                     choix = '#';
                 } else {
-                    //choix = jouer(GameOfLife.class);
-                    System.out.println("truc");
+                    choix = jouer(GameOfLife.class);
                     choix = '#';
                 }
             }
