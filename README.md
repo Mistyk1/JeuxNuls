@@ -37,3 +37,7 @@ Tetris est ancré dans la culture populaire et sa notoriété dépasse celle de 
 ### Question pour un Carton
 
 euh je euh je euh euh je je
+
+### Jeu de la Vie
+
+Je m'ennuyais du coup j'ai fait ça (c'est pas vraiment un jeu mais honnêtement je m'en fout un peu)
