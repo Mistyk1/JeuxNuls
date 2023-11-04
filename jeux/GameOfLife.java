@@ -1,9 +1,14 @@
 package jeux;
 
+import java.util.Scanner;
+
+import util.MultiThreading;
 import util.Window;
-import util.Window.WindowLife;
+import util.windows.WindowLife;
 
 public class GameOfLife{
+    private static final Scanner sc = new Scanner(System.in);
+    
     public GameOfLife(){
         GameOfLife.main(null);
     }
@@ -16,6 +21,7 @@ public class GameOfLife{
     public static class LifePlateau{
         private boolean[][] plateau;
         private static LifePlateau instance;
+        private static WindowLife window;
 
         LifePlateau(int rows, int cols){
             if (instance == null){
@@ -29,7 +35,8 @@ public class GameOfLife{
             }
         }
 
-        public static LifePlateau plateauToWindow(){
+        public static LifePlateau plateauToWindow(WindowLife wl){
+            window = wl;
             return instance;
         }
 
@@ -49,15 +56,43 @@ public class GameOfLife{
             this.plateau[row][col] = !this.plateau[row][col];
         }
 
-        public void tick(){
-            boolean[][] newPlateau = new boolean[this.plateau.length][this.plateau[0].length];
-            for (int i = 0; i < this.plateau.length; i++){
-                for (int j = 0; j < this.plateau[0].length; j++){
-                    newPlateau[i][j] = this.plateau[i][j];
+        public int adjacentTo(int x, int y){
+            int adj = 0;
+            for (int i = -1; i <= 1; i++){
+                for (int j = -1; j <= 1; j++){
+                    if (i != 0|| j != 0){
+                        int row = x + i;
+                        int col = y + j;
+                        if (row > this.plateau.length - 1){
+                            row = 0;
+                        } else if (row < 0){
+                            row = this.plateau.length - 1;
+                        }
+                        if (col > this.plateau[0].length - 1){
+                            col = 0;
+                        } else if (col < 0){
+                            col = this.plateau[0].length - 1;
+                        }
+                        if (this.plateau[row][col]){
+                            adj += 1;
+                        }
+                    }
                 }
             }
-            // TODO
-            this.plateau = newPlateau;
+            return adj;
+        }
+
+        public void tick(){
+            if (!WindowLife.getPause()){
+                boolean[][] newPlateau = new boolean[this.plateau.length][this.plateau[0].length];
+                for (int i = 0; i < this.plateau.length; i++){
+                    for (int j = 0; j < this.plateau[0].length; j++){
+                        newPlateau[i][j] = (adjacentTo(i, j) == 3) || (adjacentTo(i, j) == 2 && this.plateau[i][j]);
+                    }
+                }
+                this.plateau = newPlateau;
+                window.refresh();
+            }
         }
     }
     //------------------------
@@ -66,18 +101,29 @@ public class GameOfLife{
 
 
     
-    public static void main(String[] args) {
-        LifePlateau plateau = new LifePlateau(50, 50);
-        Window.main(new String[]{"gameoflife"});
-        while (WindowLife.exists()){
-            if (!WindowLife.getPause()){
-                plateau.tick();
-                try {
-                    Thread.sleep(WindowLife.getSpeed());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+    public static void loop(LifePlateau plateau){
+        while (!WindowLife.exists()){
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
+        while (WindowLife.exists()){
+            plateau.tick();
+            try {
+                Thread.sleep(WindowLife.getSpeed());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.print("Bienvenue au Jeu de la vie!\nQuelle taille de carré souhaitez-vous? > ");
+        int taille = sc.nextInt();
+        LifePlateau plateau = new LifePlateau(taille, taille);
+        MultiThreading.execute(e -> loop(plateau));
+        Window.main(new String[]{"gameoflife"});
     }
 }
