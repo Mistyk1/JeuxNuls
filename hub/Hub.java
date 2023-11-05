@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-public class Hub{
+public abstract class Hub{
     private static Scanner sc = new Scanner(System.in);
 
     private static void write(String path, String str){

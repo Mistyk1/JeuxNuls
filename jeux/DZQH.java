@@ -3,8 +3,6 @@ package jeux;
 import java.util.Random;
 import java.util.Scanner;
 
-import util.Color;
-
 import java.util.ArrayList;
 
 public class DZQH {
@@ -29,10 +27,6 @@ public class DZQH {
                                        {0, 0, 0, 0},
                                        {0, 0, 0, 0}
             };
-        }
-
-        public int[][] getPlateau(){
-            return plateau;
         }
 
         public boolean estPlein(){
