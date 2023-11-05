@@ -26,7 +26,7 @@ public class WindowLife extends Stage{
             instance = this;
             this.plateau = LifePlateau.plateauToWindow(this);
             pause = false;
-            speed = 500;
+            speed = 250;
 
             // Pause
             Button b = new Button("   Pause   ");
@@ -42,7 +42,7 @@ public class WindowLife extends Stage{
             
             // Vitesse
             Label vit = new Label("Vitesse du jeu: " + Integer.toString(speed));
-            Slider slider = new Slider(100, 1000, 500);
+            Slider slider = new Slider(100, 1000, 250);
             slider.setBlockIncrement(1);
             slider.valueProperty().addListener((observable, oldValue, newValue) -> {
                 speed = newValue.intValue();

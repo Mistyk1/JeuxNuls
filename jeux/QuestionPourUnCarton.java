@@ -1,6 +1,5 @@
 package jeux;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
@@ -13,12 +12,12 @@ import javafx.scene.media.MediaPlayer;
 
 import util.Color;
 import util.MultiThreading;
+import util.Terminal;
 import util.Window;
 
 public class QuestionPourUnCarton {
     private static final Random rand = new Random();
     private static final Scanner sc = new Scanner(System.in, "UTF-8");
-    private static final String os = System.getProperty("os.name");
     private static final String presentateur = Color.color("présentateur", Color.YELLOW);
     private static String nom;
 
@@ -184,18 +183,6 @@ public class QuestionPourUnCarton {
 
 
 
-
-    public static void clearScreen() {  
-        try {
-            if (os.contains("Windows")){
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                System.out.print("\033[H\033[2J");
-            }
-        } catch (IOException | InterruptedException  e) {  
-            System.out.println(Color.color("Problème de rafraichissement du terminal :/", Color.RED));
-        }
-    }
 
     public static MediaPlayer sound(String filePath, int volume){ // Volume de x = x% du volume initial
         MediaPlayer mp = null;
@@ -387,19 +374,19 @@ public class QuestionPourUnCarton {
     public static void main(String[] args) {
         com.sun.javafx.application.PlatformImpl.startup(() -> {});
 
-        clearScreen();
+        Terminal.clearScreen();
 
         MultiThreading.execute(e -> Window.main(new String[]{"carton"}), e -> Window.main(new String[]{"cartes"}));
 
         System.out.print("Entrez votre nom svp: ");
         nom = sc.nextLine();
 
-        clearScreen();
+        Terminal.clearScreen();
 
         if (nom.equals("votre nom svp")){
             sleep(2);
             ecrireNoEnter("Putain mais t'est super drôle toi", 2);
-            clearScreen();
+            Terminal.clearScreen();
             sleep(5);
             ecrireNoEnter("ratio", 1);
             nom = "Catin";
@@ -413,7 +400,7 @@ public class QuestionPourUnCarton {
             ecrireNoEnter("Pour des raisons qui devrait se comprendrent, les gros mots sont censuré ██████ SA MÈRE LA GROSSE ████ SA RACE DE █████ ok ça fonctionne", 3);
         }
 
-        clearScreen();
+        Terminal.clearScreen();
         
         int vies = 5;
         List<Question> questions = Question.listeQuestions();
@@ -545,14 +532,9 @@ public class QuestionPourUnCarton {
 		System.out.print(nom + ": "); sc.next(); System.out.println();
         ecrire(presentateur, "Il faut que je vous avoue quelque chose " + nom + ". La vérité est que je ne vous ait pas écouté.");
         ecrire(presentateur, "Sur ce, je vais aller me chercher un Twix™. " + Color.bold("*Se lève de sa chaise et va chercher un Twix*"));
-        ecrireNoEnter("...", 1);
-        ecrireNoEnter("...", 1);
-        ecrireNoEnter("...", 1);
-        ecrireNoEnter("...", 1);
-        ecrireNoEnter("...", 1);
-        ecrireNoEnter("...", 1);
-        ecrireNoEnter("...", 1);
-        ecrireNoEnter("...", 1);
+        for (int i = 0; i < 8; i += 1){
+            ecrireNoEnter("...", 1);
+        }
         ecrire(presentateur, "Mmmh, ce Twix fut étonnamment bon.");
         ecrire(presentateur, "Alors, la quatrième question...");
         ecrire(presentateur, "Oh zut, j'ai fait tomber mon deuxième Twix™ dessus!");
@@ -695,7 +677,7 @@ public class QuestionPourUnCarton {
 
 
     public static void cheminPresentateur(){
-        clearScreen();
+        Terminal.clearScreen();
 
         ecrireNoEnter("...", 1);
         ecrireNoEnter("...", 1);
@@ -722,7 +704,7 @@ public class QuestionPourUnCarton {
         sleep(1.5);
         System.out.println(Color.color("c:; cd 'c:\\Users\\presentateur\\Desktop\\QuestionPourUnCarton'; ", Color.CYAN) + "&" + Color.color(" 'C:\\Program Files\\Java\\jdk1.8.0_321\\bin\\java.exe' '-cp' 'C:\\Users\\presentateur\\AppData\\Roaming\\Code\\User\\workspaceStorage\\4c1f9d31f4b103fa083ee66fd6b94ca1\\redhat.java\\jdt_ws\\CheckJoueur_9d1e0b84\\bin' 'CheckJoueur' ", Color.CYAN));
         sleep(0.2);
-        clearScreen();
+        Terminal.clearScreen();
         System.out.println("Il n'y a aucun joueur\n");
         sleep(2);
         ecrire(presentateur, "Ah ._.");
@@ -742,7 +724,7 @@ public class QuestionPourUnCarton {
                     sleep(1.5);
                     System.out.println(Color.color("c:; cd 'c:\\Users\\presentateur\\Desktop\\QuestionPourUnCarton'; ", Color.CYAN) + "&" + Color.color(" 'C:\\Program Files\\Java\\jdk1.8.0_321\\bin\\java.exe' '-cp' 'C:\\Users\\presentateur\\AppData\\Roaming\\Code\\User\\workspaceStorage\\4c1f9d31f4b103fa083ee66fd6b94ca1\\redhat.java\\jdt_ws\\CreateJoueur_9d1e0b84\\bin' 'CreateJoueur' ", Color.CYAN));
                     sleep(0.2);
-                    clearScreen();
+                    Terminal.clearScreen();
                     sleep(1.5);
                     ecrire(presentateur, "ça fonctionne...");
                     ecrire(presentateur, "ÇA FONCTIO", 0);
@@ -768,7 +750,7 @@ public class QuestionPourUnCarton {
     }
 
     public static void cheminSus(){
-        clearScreen();
+        Terminal.clearScreen();
 
         ecrire(presentateur, "SUS");
         ecrire(presentateur, "SUS SUS AMONGUS");
@@ -820,7 +802,7 @@ public class QuestionPourUnCarton {
                 break;
         }
 
-        clearScreen();
+        Terminal.clearScreen();
 
         ecrire(Color.bold("Après 40 minutes de discussion sur des sujets aussi divers que variées..."));
         ecrire("Chanteur", "Tu va te plaire ici.");

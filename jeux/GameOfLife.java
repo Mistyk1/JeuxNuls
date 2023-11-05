@@ -3,6 +3,7 @@ package jeux;
 import java.util.Scanner;
 
 import util.MultiThreading;
+import util.Terminal;
 import util.Window;
 import util.windows.WindowLife;
 
@@ -120,8 +121,13 @@ public class GameOfLife{
     }
     
     public static void main(String[] args) {
-        System.out.print("Bienvenue au Jeu de la vie!\nQuelle taille de carré souhaitez-vous? > ");
-        int taille = sc.nextInt();
+        System.out.print("Bienvenue au Jeu de la vie!\nQuelle taille de carré souhaitez-vous? (entre 10 et 60) ");
+        int taille = -1;
+        while (taille < 10 || taille > 60){
+            System.out.print("> ");
+            taille = sc.nextInt();
+        }
+        Terminal.clearScreen();
         LifePlateau plateau = new LifePlateau(taille, taille);
         MultiThreading.execute(e -> loop(plateau));
         Window.main(new String[]{"gameoflife"});

@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
-public class MultiThreading{
+public abstract class MultiThreading{
     public static void execute(Consumer<?>... methods){
         ExecutorService executor = Executors.newCachedThreadPool();
         try{
