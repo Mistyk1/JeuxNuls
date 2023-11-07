@@ -11,7 +11,7 @@ public class GameOfLife{
     private static final Scanner sc = new Scanner(System.in);
     
     public GameOfLife(){
-        GameOfLife.main(null);
+        main(null);
     }
 
 
@@ -128,7 +128,7 @@ public class GameOfLife{
         }
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args){
         System.out.print("Bienvenue au Jeu de la vie!\nQuelle taille de carré souhaitez-vous? (entre 10 et 60) ");
         int taille = -1;
         while (taille < 10 || taille > 60){

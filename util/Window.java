@@ -20,7 +20,7 @@ public class Window extends Application{
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         argument = args[0];
         launch();
     }

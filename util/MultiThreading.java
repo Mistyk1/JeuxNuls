@@ -12,10 +12,8 @@ public abstract class MultiThreading{
                 executor.execute(() -> m.accept(null));
             }
         } catch (Exception e){
-            System.out.println(Color.RED + "Erreur de multithreading (" + e.getMessage() + ")" + Color.RESET);
-        } finally {
-            executor.shutdown();
-        }
+            System.out.println(Color.color("Erreur de multithreading (" + e.getMessage() + ")", Color.RED));
+        } finally { executor.shutdown(); }
     }
 }
 

@@ -10,7 +10,7 @@ public class DZQH {
     private static final Random r = new Random();
 
     public DZQH(){
-        DZQH.main(null);
+        main(null);
     }
 
 

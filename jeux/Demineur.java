@@ -9,7 +9,7 @@ public class Demineur{
     private static final Scanner sc = new Scanner(System.in);
 
     public Demineur(){
-        Demineur.main(null);
+        main(null);
     }
 
 

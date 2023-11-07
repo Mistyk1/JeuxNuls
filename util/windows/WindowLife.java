@@ -49,14 +49,12 @@ public class WindowLife extends Stage{
             
             // Vitesse
             Label vit = new Label("Vitesse du jeu: " + Integer.toString(speed));
-            Slider slider = new Slider(100, 1000, 250);
+            Slider slider = new Slider(50, 1000, 250);
             slider.setBlockIncrement(1);
             slider.valueProperty().addListener((observable, oldValue, newValue) -> {
                 speed = newValue.intValue();
                 String str = "Vitesse du jeu: ";
-                if (speed < 10){
-                    str += "   ";
-                } else if (speed < 100 && speed >= 10){
+                if (speed < 100 && speed >= 10){
                     str += "  ";
                 } else if (speed < 1000 && speed >= 100){
                     str += " ";
@@ -80,7 +78,7 @@ public class WindowLife extends Stage{
             StackPane root = new StackPane(v);
             root.setAlignment(Pos.BOTTOM_CENTER);
 
-            Scene scene = new Scene(root, plateau.getNbRows()*20+50, plateau.getNbCols()*20+50);
+            Scene scene = new Scene(root, plateau.getNbRows()*17+50, plateau.getNbCols()*17+50);
 
             setOnCloseRequest(e -> { instance = null; });
             setResizable(false);

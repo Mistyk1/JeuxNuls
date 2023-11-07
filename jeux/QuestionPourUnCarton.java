@@ -22,7 +22,7 @@ public class QuestionPourUnCarton {
     private static String nom;
 
     public QuestionPourUnCarton(){
-        QuestionPourUnCarton.main(null);
+        main(null);
     }
 
 
@@ -371,7 +371,7 @@ public class QuestionPourUnCarton {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         com.sun.javafx.application.PlatformImpl.startup(() -> {});
 
         Terminal.clearScreen();
