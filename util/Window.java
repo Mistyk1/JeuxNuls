@@ -13,7 +13,7 @@ public abstract class Window extends Application{
         if (argument.equals("carton")){
             new WindowQPUC();
         } else if (argument.equals("cartes")){
-            new WindowCartes();
+            //new WindowCartes();
         } else if (argument.equals("gameoflife")){
             new WindowLife();
         }
