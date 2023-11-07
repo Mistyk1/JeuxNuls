@@ -83,6 +83,14 @@ public class GameOfLife{
             return adj;
         }
 
+        public void clear(){
+            for (int i = 0; i < this.plateau.length; i++){
+                for (int j = 0; j < this.plateau[0].length; j++){
+                    this.plateau[i][j] = false;
+                }
+            }
+        }
+
         public void tick(){
             if (!WindowLife.getPause()){
                 boolean[][] newPlateau = new boolean[this.plateau.length][this.plateau[0].length];

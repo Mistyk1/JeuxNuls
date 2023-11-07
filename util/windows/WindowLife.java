@@ -39,6 +39,13 @@ public class WindowLife extends Stage{
                     b.setText("Reprendre");
                 }
             });
+
+            // Clear
+            Button c = new Button("Effacer");
+            c.setOnAction(e -> {
+                plateau.clear();
+                refresh();
+            });
             
             // Vitesse
             Label vit = new Label("Vitesse du jeu: " + Integer.toString(speed));
@@ -61,7 +68,7 @@ public class WindowLife extends Stage{
             hVitesse.setSpacing(10);
 
             // Reste
-            HBox h = new HBox(b, hVitesse);
+            HBox h = new HBox(b, c, hVitesse);
             h.setAlignment(Pos.CENTER);
             h.setSpacing((plateau.getNbCols()*8)/2);
 
@@ -73,7 +80,7 @@ public class WindowLife extends Stage{
             StackPane root = new StackPane(v);
             root.setAlignment(Pos.BOTTOM_CENTER);
 
-            Scene scene = new Scene(root, plateau.getNbRows()*15, plateau.getNbCols()*15+25);
+            Scene scene = new Scene(root, plateau.getNbRows()*20+50, plateau.getNbCols()*20+50);
 
             setOnCloseRequest(e -> { instance = null; });
             setResizable(false);

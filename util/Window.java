@@ -5,7 +5,8 @@ import javafx.stage.Stage;
 
 import util.windows.*;
 
-public abstract class Window extends Application{
+// NE PAS METTRE ABSTRACT
+public class Window extends Application{
     private static String argument;
 
     @Override
