@@ -49,7 +49,7 @@ public class WindowLife extends Stage{
             
             // Vitesse
             Label vit = new Label("Vitesse du jeu: " + Integer.toString(speed));
-            Slider slider = new Slider(50, 1000, 250);
+            Slider slider = new Slider(50, 500, 250);
             slider.setBlockIncrement(1);
             slider.valueProperty().addListener((observable, oldValue, newValue) -> {
                 speed = newValue.intValue();
