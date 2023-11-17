@@ -59,11 +59,12 @@ public class GameOfLife{
 
         public int adjacentTo(int x, int y){
             int adj = 0;
+            int row, col;
             for (int i = -1; i <= 1; i++){
                 for (int j = -1; j <= 1; j++){
                     if (i != 0|| j != 0){
-                        int row = x + i;
-                        int col = y + j;
+                        row = x + i;
+                        col = y + j;
                         if (row > this.plateau.length - 1){
                             row = 0;
                         } else if (row < 0){
