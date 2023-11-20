@@ -56,7 +56,7 @@ public abstract class Hub{
             } catch (IllegalAccessException e) {
                 Terminal.error(e, "Impossible d'instancier la classe ciblée");
             } catch (NoSuchMethodException e) {
-                Terminal.error(e, "La classe ciblée ne possède pas cette classe");
+                Terminal.error(e, "La classe ciblée ne possède pas cette méthode");
             } catch (InvocationTargetException e) {
                 Terminal.error(e, "Erreur de ciblage d'invocation de classe");
             } catch (Exception e) {
@@ -121,10 +121,12 @@ public abstract class Hub{
                 choix = jouer(Knucklebones.class);
             } else if (choix == '3'){
                 //choix = jouer(Puissance4.class);
+                Terminal.clearScreen();
                 System.out.println("Puissance 4 en cours de construction");
                 choix = '#';
             } else if (choix == '4'){
                 //choix = jouer(DZQH.class);
+                Terminal.clearScreen();
                 System.out.println("2048 en cours de construction");
                 choix = '#';
             } else if (choix == '5'){
@@ -133,6 +135,7 @@ public abstract class Hub{
                     choix = '#';
                 } else {
                     //choix = jouer(QuestionPourUnCarton.class);
+                    Terminal.clearScreen();
                     System.out.println("Question pour un Carton en cours de construction");
                     choix = '#';
                 }
