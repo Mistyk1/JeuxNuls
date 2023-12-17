@@ -1,11 +1,11 @@
-package jeux;
+package fr.mistyk1.jeux;
 
 import java.util.Scanner;
 
-import util.MultiThreading;
-import util.Terminal;
-import util.Window;
-import util.windows.WindowLife;
+import fr.mistyk1.util.MultiThreading;
+import fr.mistyk1.util.Terminal;
+import fr.mistyk1.util.Window;
+import fr.mistyk1.windows.WindowLife;
 
 public class GameOfLife{
     private static final Scanner sc = new Scanner(System.in);

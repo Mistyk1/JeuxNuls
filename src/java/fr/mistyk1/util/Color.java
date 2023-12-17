@@ -1,4 +1,4 @@
-package util;
+package fr.mistyk1.util;
 
 public enum Color {
     //Suppression de couleurs

@@ -1,4 +1,4 @@
-package util.windows;
+package fr.mistyk1.windows;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,7 +12,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import jeux.GameOfLife.LifePlateau;
+import fr.mistyk1.jeux.GameOfLife.LifePlateau;
 
 public class WindowLife extends Stage{
     private LifePlateau plateau;

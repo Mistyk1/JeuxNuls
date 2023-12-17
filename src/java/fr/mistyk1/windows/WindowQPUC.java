@@ -1,4 +1,4 @@
-package util.windows;
+package fr.mistyk1.windows;
 
 import java.util.ArrayList;
 import java.util.List;

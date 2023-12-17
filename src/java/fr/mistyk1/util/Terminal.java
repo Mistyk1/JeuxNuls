@@ -1,4 +1,4 @@
-package util;
+package fr.mistyk1.util;
 
 import java.io.IOException;
 

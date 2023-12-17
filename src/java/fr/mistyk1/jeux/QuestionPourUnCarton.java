@@ -1,4 +1,4 @@
-package jeux;
+package fr.mistyk1.jeux;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,10 +10,10 @@ import java.util.Scanner;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import util.Color;
-import util.MultiThreading;
-import util.Terminal;
-import util.Window;
+import fr.mistyk1.util.Color;
+import fr.mistyk1.util.MultiThreading;
+import fr.mistyk1.util.Terminal;
+import fr.mistyk1.util.Window;
 
 public class QuestionPourUnCarton {
     private static final Random rand = new Random();

@@ -28,5 +28,5 @@ hs_err_pid*
 replay_pid*
 
 # other things
-Cartes/
-util/windows/WindowCartes.java
+cartes/
+src/java/fr/mistyk1/windows/WindowCartes.java

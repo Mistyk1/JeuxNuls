@@ -1,9 +1,8 @@
-package util;
+package fr.mistyk1.util;
 
+import fr.mistyk1.windows.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import util.windows.*;
 
 // NE PAS METTRE ABSTRACT
 public class Window extends Application{

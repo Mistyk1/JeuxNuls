@@ -1,9 +1,9 @@
-package jeux;
+package fr.mistyk1.jeux;
 
 import java.util.Random;
 import java.util.Scanner;
 
-import util.Color;
+import fr.mistyk1.util.Color;
 
 public class Knucklebones{
 

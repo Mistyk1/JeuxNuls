@@ -1,19 +1,22 @@
-package hub;
+package fr.mistyk1;
 
-import jeux.*;
-import util.Color;
-import util.Terminal;
+import fr.mistyk1.util.Color;
+import fr.mistyk1.util.Terminal;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
+import fr.mistyk1.jeux.*;
+
 import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-public abstract class Hub{
+public abstract class Main{
     private static Scanner sc = new Scanner(System.in);
+    private static final String PATH_TO_IDEAS = "./assets/hub/users_idea";
 
     private static void write(String path, String str){
         try{
@@ -106,11 +109,11 @@ public abstract class Hub{
             } if (choix == '/'){
                 if (idea){
                     Terminal.clearScreen();
-                    see("./hub/.users_idea");
+                    see(PATH_TO_IDEAS);
                 } else {
                     System.out.print("Idée de jeu à proposer: ");
                     String idee = sc.next();
-                    write("./hub/.users_idea", idee);
+                    write(PATH_TO_IDEAS, idee);
                     Terminal.clearScreen();
                     System.out.println("Merci! Ton idée sera prise en compte et sera (probablement) développée plus tard");
                 }
