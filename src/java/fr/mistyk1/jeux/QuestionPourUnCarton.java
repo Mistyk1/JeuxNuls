@@ -19,6 +19,7 @@ public class QuestionPourUnCarton {
     private static final Random rand = new Random();
     private static final Scanner sc = new Scanner(System.in, "UTF-8");
     private static final String presentateur = Color.color("présentateur", Color.YELLOW);
+    private static final String PATH_TO_SOUNDS = "../../../../assets/questionPourUnCarton/";
     private static String nom;
 
     public QuestionPourUnCarton(){
@@ -184,10 +185,10 @@ public class QuestionPourUnCarton {
 
 
 
-    public static MediaPlayer sound(String filePath, int volume){ // Volume de x = x% du volume initial
+    public static MediaPlayer sound(String fileName, int volume){ // Volume de x = x% du volume initial
         MediaPlayer mp = null;
         try {
-            mp = new MediaPlayer(new Media(QuestionPourUnCarton.class.getResource(filePath).toExternalForm()));
+            mp = new MediaPlayer(new Media(QuestionPourUnCarton.class.getResource(PATH_TO_SOUNDS + fileName).toExternalForm()));
             mp.setVolume(volume / 100.0);
         } catch (Exception e) {
             System.out.println(Color.color("Erreur de lecture du fichier audio (" + e.getMessage() + ")", Color.RED));
@@ -196,7 +197,7 @@ public class QuestionPourUnCarton {
     }
     // Ex:
     //
-    // MediaPlayer vineBoom = sound("assets/questionPourUnCarton/vine_boom.wav", 20);
+    // MediaPlayer vineBoom = sound("vine_boom.wav", 20);
     // vineBoom.play()
 
     public static void sleep(double s){
@@ -623,7 +624,7 @@ public class QuestionPourUnCarton {
         ecrire("Chanteur", Color.bold("*Prend une guitare*"));
         ecrire(Color.bold("*Toute la foule se tait*"));
         ecrireNoEnter("...", 1);
-        //MediaPlayer soloEpique = sound("assets/questionPourUnCarton/solo_épique.wav", 20);
+        //MediaPlayer soloEpique = sound("solo_épique.wav", 20);
         //soloEpique.play()
         ecrireNoEnter("Chanteur", Color.bold("*SOLO DE GUITARE EPIQUE*"), 5);
         ecrire(presentateur, "Viens ici espèce de ████████!");

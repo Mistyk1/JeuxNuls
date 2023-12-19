@@ -16,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public abstract class Main{
     private static Scanner sc = new Scanner(System.in);
-    private static final String PATH_TO_IDEAS = "./assets/hub/users_idea";
+    private static final String PATH_TO_IDEAS = "../../../assets/hub/users_idea";
 
     private static void write(String path, String str){
         try{

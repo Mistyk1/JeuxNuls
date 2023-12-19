@@ -5,6 +5,15 @@ import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
 public abstract class MultiThreading{
+    /**
+     * Execute les méthodes en multithreading
+     * 
+     * <code>
+     * MultiThreading.execute(e -> methode1(), e -> methode2());
+     * </code>
+     * 
+     * @param methods Liste des méthodes à exécuter
+     */
     public static void execute(Consumer<?>... methods){
         ExecutorService executor = Executors.newCachedThreadPool();
         try{
@@ -16,7 +25,3 @@ public abstract class MultiThreading{
         } finally { executor.shutdown(); }
     }
 }
-
-//---- Utilisation de MultiThreading ----
-//MultiThreading.execute(e -> methode1(), e -> methode2());
-//MultiThreading.execute(e -> methode3());
