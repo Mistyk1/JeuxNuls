@@ -1,4 +1,4 @@
-package fr.mistyk1.util;
+package fr.mistyk1.util.javafx;
 
 import fr.mistyk1.windows.*;
 import javafx.application.Application;

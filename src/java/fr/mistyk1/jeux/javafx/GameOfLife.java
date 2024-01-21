@@ -1,4 +1,4 @@
-package fr.mistyk1.jeux;
+package fr.mistyk1.jeux.javafx;
 
 import java.util.Scanner;
 
