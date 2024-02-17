@@ -1,7 +1,6 @@
 package fr.mistyk1;
 
-import fr.mistyk1.util.Color;
-import fr.mistyk1.util.Terminal;
+import fr.mistyk1.util.*;
 
 import java.util.Arrays;
 import java.util.List;
