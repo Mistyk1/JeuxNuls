@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import fr.mistyk1.jeux.*;
+import fr.mistyk1.jeux.javafx.*;
 
 import java.io.FileWriter;
 import java.io.File;

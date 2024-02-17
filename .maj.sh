@@ -1,10 +1,9 @@
 #!/bin/bash
-java JavaFXCheck
 FX=#null
 
 javac -d .classes src/java/fr/mistyk1/util/*.java
 javac -d .classes src/java/fr/mistyk1/jeux/*.java
-if [[ $(< javaFXVersion) != $FX ]]; then
+if [[ $(< src/assets/javaFXVersion) != $FX ]]; then
 	javac -d .classes src/java/fr/mistyk1/util/javafx/*.java
 	javac -d .classes src/java/fr/mistyk1/windows/*.java
 	javac -d .classes src/java/fr/mistyk1/jeux/javafx/*.java

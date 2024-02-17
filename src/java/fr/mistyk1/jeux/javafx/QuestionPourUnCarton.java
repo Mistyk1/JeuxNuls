@@ -13,7 +13,7 @@ import javafx.scene.media.MediaPlayer;
 import fr.mistyk1.util.Color;
 import fr.mistyk1.util.MultiThreading;
 import fr.mistyk1.util.Terminal;
-import fr.mistyk1.util.Window;
+import fr.mistyk1.util.javafx.Window;
 
 public class QuestionPourUnCarton {
     private static final Random rand = new Random();

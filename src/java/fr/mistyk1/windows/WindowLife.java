@@ -12,7 +12,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import fr.mistyk1.jeux.GameOfLife.LifePlateau;
+import fr.mistyk1.jeux.javafx.GameOfLife.LifePlateau;
 
 public class WindowLife extends Stage{
     private LifePlateau plateau;

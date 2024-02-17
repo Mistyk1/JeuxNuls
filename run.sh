@@ -1,10 +1,13 @@
 #!/bin/bash
 
+java JavaFXCheck
+FX=#null
+
 if [ ! -d ./.classes ]; then
     source ./.maj.sh
 fi
 
-if [ ! -e $JAVA_HOME/jre/lib/javafx.properties ]; then
+if [[ $(< src/assets/javaFXVersion) != $FX ]]; then
     java -cp .classes/**/* Main
 else
     java -cp .classes Main noJavaFx

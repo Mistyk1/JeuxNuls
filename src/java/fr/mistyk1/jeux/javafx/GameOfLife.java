@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import fr.mistyk1.util.MultiThreading;
 import fr.mistyk1.util.Terminal;
-import fr.mistyk1.util.Window;
+import fr.mistyk1.util.javafx.Window;
 import fr.mistyk1.windows.WindowLife;
 
 public class GameOfLife{
