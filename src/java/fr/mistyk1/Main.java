@@ -125,15 +125,16 @@ public abstract class Main{
             } else if (choix == '3'){
                 //choix = jouer(Puissance4.class);
                 Terminal.clearScreen();
-                System.out.println("Puissance 4 en cours de construction");
+                System.out.println(Color.color("Puissance 4 en cours de construction", Color.RED));
                 choix = '#';
             } else if (choix == '4'){
                 //choix = jouer(DZQH.class);
                 Terminal.clearScreen();
-                System.out.println("2048 en cours de construction");
+                System.out.println(Color.color("2048 en cours de construction", Color.RED));
                 choix = '#';
             } else if (choix == '5'){
                 if (arguments.contains("noJavaFx")){
+                    Terminal.clearScreen();
                     System.out.println(Color.color("Javafx est nécessaire pour jouer à Question pour un Carton", Color.RED));
                     choix = '#';
                 } else {
@@ -144,6 +145,7 @@ public abstract class Main{
                 }
             } else if (choix == '6'){
                 if (arguments.contains("noJavaFx")){
+                    Terminal.clearScreen();
                     System.out.println(Color.color("Javafx est nécessaire pour jouer au Jeu de la Vie", Color.RED));
                     choix = '#';
                 } else {
